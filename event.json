@@ -233,7 +233,7 @@
         "info": "",
         "id": ""
     },
-        {
+    {
         "Artist": "小倉唯",
         "Year": "2025",
         "Month": "11",
@@ -969,7 +969,7 @@
         "Venue": "YES24 WANDERLOCH HALL",
         "sponsor": "",
         "info": "",
-        "id":"2025051702"
+        "id": "2025051702"
     },
     {
         "Artist": "小倉唯",
@@ -987,7 +987,7 @@
         "Venue": "YES24 WANDERLOCH HALL",
         "sponsor": "",
         "info": "",
-        "id":"2025051701"
+        "id": "2025051701"
     },
     {
         "Artist": "石原夏織",
@@ -1406,7 +1406,7 @@
     {
         "Artist": "小倉唯",
         "Year": "2025",
-        "Month": "03",
+        "Month": "3",
         "Day": "22",
         "Weekday": "土",
         "Start Time": "14:50",
@@ -14675,7 +14675,6 @@
         "info": "",
         "id": ""
     },
-
     {
         "Artist": "小倉唯",
         "Year": "2019",
@@ -16662,8 +16661,6 @@
         "info": "",
         "id": ""
     },
-
-
     {
         "Artist": "小倉唯",
         "Year": "2019",
@@ -29666,7 +29663,7 @@
     {
         "Artist": [
             "ゆいかおり",
-            "StylipS"           
+            "StylipS"
         ],
         "Year": "2012",
         "Month": "1",

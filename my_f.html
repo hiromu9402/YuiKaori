@@ -90,6 +90,19 @@
             });
         });
 
+        function extractSongs(arr) {
+            if (!Array.isArray(arr)) arr = arr ? [arr] : [];
+            const songs = [];
+            arr.forEach(item => {
+                if (typeof item === "string") {
+                    songs.push(item);
+                } else if (item && Array.isArray(item.medley)) {
+                    songs.push(...item.medley);
+                }
+            });
+            return songs;
+        }
+
         function checkMissingSongs() {
             const checkedIds = Array.from(document.querySelectorAll('.checkbox:checked')).map(checkbox => checkbox.id);
 
@@ -105,23 +118,10 @@
             const songTitles = songData.map(song => song.title);
 
             const missingSongs = songTitles.filter(title => {
-                let found = false;
-
-                setlistData.forEach(event => {
-                    if (checkedIds.includes(event.id)) {
-                        if (event.setlist && (event.setlist.includes(title) || (event.setlist.medley && event.setlist.medley.includes(title)))) {
-                            found = true;
-                        }
-                        if (event.encore && event.encore.includes(title)) {
-                            found = true;
-                        }
-                        if (event.Wencore && event.Wencore === title) {
-                            found = true;
-                        }
-                    }
+                return !setlistData.some(event => {
+                    if (!checkedIds.includes(event.id)) return false;
+                    return ["setlist", "encore", "Wencore"].some(section => extractSongs(event[section]).includes(title));
                 });
-
-                return !found;
             });
 
             displayResults(missingSongs);

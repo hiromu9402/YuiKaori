@@ -183,7 +183,7 @@
     });
 
     function extractSongs(arr) {
-        if (!Array.isArray(arr)) return [];
+        if (!Array.isArray(arr)) arr = arr ? [arr] : [];
 
         const songs = [];
 

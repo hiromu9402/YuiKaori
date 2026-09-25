@@ -969,7 +969,7 @@
         "Venue": "YES24 WANDERLOCH HALL",
         "sponsor": "",
         "info": "",
-        "id": ""
+        "id":"2025051702"
     },
     {
         "Artist": "小倉唯",
@@ -987,7 +987,7 @@
         "Venue": "YES24 WANDERLOCH HALL",
         "sponsor": "",
         "info": "",
-        "id": ""
+        "id":"2025051701"
     },
     {
         "Artist": "石原夏織",
@@ -11853,6 +11853,24 @@
         "Artist": "小倉唯",
         "Year": "2021",
         "Month": "3",
+        "Day": "7",
+        "Weekday": "日",
+        "Start Time": "",
+        "class1": "",
+        "class2": "",
+        "class3": "",
+        "title": "ゆいこむ ONLINE PROGRAM",
+        "title2": "",
+        "prefecture": "",
+        "Venue": "オンライン開催",
+        "sponsor": "",
+        "info": "",
+        "id": "2021030701"
+    },
+    {
+        "Artist": "小倉唯",
+        "Year": "2021",
+        "Month": "3",
         "Day": "6",
         "Weekday": "土",
         "Start Time": "17:40",
@@ -12082,6 +12100,24 @@
         "sponsor": "",
         "info": "",
         "id": ""
+    },
+    {
+        "Artist": "小倉唯",
+        "Year": "2020",
+        "Month": "12",
+        "Day": "24",
+        "Weekday": "木",
+        "Start Time": "",
+        "class1": "",
+        "class2": "",
+        "class3": "",
+        "title": "小倉唯 ONLINE クリスマス ライブ 2020 ~Winter Twinkle Magic~",
+        "title2": "",
+        "prefecture": "",
+        "Venue": "オンライン開催",
+        "sponsor": "",
+        "info": "",
+        "id": "2020122401"
     },
     {
         "Artist": "小倉唯",
@@ -12676,6 +12712,24 @@
         "sponsor": "文化放送",
         "info": "",
         "id": ""
+    },
+    {
+        "Artist": "小倉唯",
+        "Year": "2020",
+        "Month": "8",
+        "Day": "15",
+        "Weekday": "土",
+        "Start Time": "",
+        "class1": "",
+        "class2": "",
+        "class3": "",
+        "title": "小倉唯オンラインバースデーパーティー2020~ゆいとおうちクッキング♪~",
+        "title2": "",
+        "prefecture": "",
+        "Venue": "オンライン開催",
+        "sponsor": "",
+        "info": "",
+        "id": "2020081501"
     },
     {
         "Artist": "石原夏織",

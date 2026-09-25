@@ -434,7 +434,7 @@
         "setlist": [
             "So☆Lucky",
             "Hopeful Days",
-            "Caramel Ribbon…"
+            "Caramel Ribbon..."
         ]
     },
     {
@@ -484,7 +484,7 @@
         "venue": "ぴあアリーナMM",
         "id": "2025022301",
         "setlist": [
-            "Honey♡Come!!",
+            "Honey♥Come!!",
             "花占いするの♡",
             "君色のキセキ",
             "秘密♡Melody",
@@ -1039,7 +1039,7 @@
             "To My Dear",
             "Blooming Flower",
             "Harmonia",
-            "わざと触れた",
+            "わざと触れた。",
             "Diorama-Drama",
             "Twinkle Ticking",
             "Gift"
@@ -1286,8 +1286,8 @@
             "Cherish",
             "ポペラ・ホリカ",
             "Paraglider",
-            "半透明の世界で",
-            "夜とワンダーランド",
+            "半透明の世界で",
+            "夜とワンダーランド",
             "Taste of Marmalade",
             "Ray Rule",
             "Abracada-Boo",
@@ -1406,7 +1406,7 @@
         "setlist": [
             "春～spring～",
             "CHE.R.RY",
-            "Crispy Love",
+            "Crispy love",
             "マジックマーチ",
             "Face to Face"
         ]
@@ -1602,7 +1602,7 @@
         "artist": "石原夏織",
         "date": "2022年6月19日",
         "venue": "三郷市文化会館",
-        "id": "2022061902",
+        "id": "2022061901",
         "setlist": [
             "fragilelull 〜そして僕らは〜",
             "Sunny Ray Beam!!",
@@ -1794,7 +1794,7 @@
             "キミに空とクローバー",
             "SUMMER DROP",
             "CREATION×CREATION",
-            "Diorama Drama",
+            "Diorama-Drama",
             "Against.",
             "Plastic Smile"
         ]
@@ -1811,7 +1811,7 @@
             "キミに空とクローバー",
             "SUMMER DROP",
             "CREATION×CREATION",
-            "Diorama Drama",
+            "Diorama-Drama",
             "TEMPEST",
             "Plastic Smile"
         ]
@@ -2219,7 +2219,7 @@
         "setlist": [
             "CREATION×CREATION",
             "オリジナルスター☆彡",
-            "Crispy Love",
+            "Crispy love",
             "Ray Rule",
             "TEMPEST",
             "Sunny You"
@@ -2235,7 +2235,7 @@
         "setlist": [
             "CREATION×CREATION",
             "オリジナルスター☆彡",
-            "Crispy Love",
+            "Crispy love",
             "Untitled Puzzle",
             "TEMPEST",
             "Sunny You"
@@ -2700,6 +2700,7 @@
     {
         "LIVEtitle": "Animelo Summer Live 2018 \"OK!\"",
         "tourtitle": "Animelo Summer Live",
+        "artist": "小倉唯",
         "date": "2018年8月26日",
         "venue": "さいたまスーパーアリーナ",
         "id": "2018082601",
@@ -3513,7 +3514,7 @@
             "Ring Ring Rainbow!!",
             "LUCKY DUCKY!!",
             "倍速∞ラブストレート",
-            "CUE the Future ~「Q」のテーマ~",
+            "CUE the Future　～「Q」のテーマ～",
             "Intro Situation",
             "Rainy Day",
             "Telephone Call",
@@ -3547,7 +3548,7 @@
             "LUCKY DUCKY!!",
             "倍速∞ラブストレート",
             "Intro Situation",
-            "CUE the Future ~「Q」のテーマ~",
+            "CUE the Future　～「Q」のテーマ～",
             "Rainy Day",
             "Telephone Call",
             "Sunny Ray Beam!!",
@@ -3972,7 +3973,7 @@
         "setlist": [
             "Jumpin' Bunny Flash!!",
             "Blitzallies",
-            "Shiny blue",
+            "Shiny Blue",
             "君のYELL",            
             "星降る夜のハッピーリンク"
         ]
@@ -4263,7 +4264,7 @@
             "Magic starter",           
             "ふたり",        
             "クリスタルの誓い",      
-            "CUE the Future 〜「Q」のテーマ〜",
+            "CUE the Future　～「Q」のテーマ～",
             "駆け抜けてBlue",
             "HEARTBEATが止まらないっ!",
             "Shooting☆Smile"
@@ -4292,7 +4293,7 @@
             "Magic starter",           
             "ふたり",        
             "クリスタルの誓い",      
-            "CUE the Future 〜「Q」のテーマ〜",
+            "CUE the Future　～「Q」のテーマ～",
             "駆け抜けてBlue",
             "HEARTBEATが止まらないっ!",
             "Shooting☆Smile"

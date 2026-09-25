@@ -6,7 +6,7 @@ async function fetchJSON(path) {
   return response.json();
 }
 
-// ツアーセットリスト比較ページ（tour.html）の選択肢を作る
+// ツアーセットリスト比較ページ（tour.html）の選択肢を作り、初期選択（なければ先頭）の比較表を表示する
 async function renderTourOptions(select) {
   const data = await fetchJSON('tours.json');
   for (const group of data.groups) {
@@ -21,6 +21,7 @@ async function renderTourOptions(select) {
     }
     select.appendChild(optgroup);
   }
+  if (select.value) select.dispatchEvent(new Event('change'));
 }
 
 // ---- 未回収楽曲チェックツール（my.html / my_c.html / my_f.html） ----

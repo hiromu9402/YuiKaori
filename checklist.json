@@ -609,7 +609,12 @@
         },
         {
             "heading": "Ishihara Kaori 5th Anniversary Live -bouquet-",
-            "lives": []
+            "lives": [
+                {
+                    "id": "2023080601",
+                    "label": "Ishihara Kaori 5th Anniversary Live -bouquet-"
+                }
+            ]
         },
         {
             "heading": "石原夏織 LIVE 2022「Starcast」",

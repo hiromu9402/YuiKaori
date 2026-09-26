@@ -655,7 +655,7 @@
             "Empty//Princess.",
             "Raise",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
         "encore": [
@@ -695,7 +695,7 @@
             "Empty//Princess.",
             "白く咲く花",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
         "encore": [
@@ -732,7 +732,7 @@
             "Empty//Princess.",
             "Raise",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
         "encore": [
@@ -769,7 +769,7 @@
             "Empty//Princess.",
             "白く咲く花",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
         "encore": [
@@ -806,7 +806,7 @@
             "Empty//Princess.",
             "Raise",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
         "encore": [
@@ -843,7 +843,7 @@
             "Empty//Princess.",
             "白く咲く花",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
         "encore": [
@@ -1492,7 +1492,7 @@
         "tourtitle": "Animelo Summer Live",
         "artist": "石原夏織",
         "date": "2022年8月27日",
-        "venue": "日本特殊陶業市民会館",
+        "venue": "さいたまスーパーアリーナ",
         "id": "2022082701",
         "setlist": [
             "Cherish",
@@ -1608,7 +1608,8 @@
         "venue": "三郷市文化会館",
         "id": "2022061901",
         "setlist": [
-            "fragilelull 〜そして僕らは〜",
+            "fragile",
+            "lull 〜そして僕らは〜",
             "Sunny Ray Beam!!",
             "SUMMER DROP",
             "夢想的クロニクル",
@@ -1981,6 +1982,10 @@
         "encore": [
             "I・LOVE・YOU!!",
             "Very Merry Happy Christmas"
+        ],
+        "Wencore": [
+            "ライアーシープ",
+            "ハイタッチ☆メモリー"
         ]
     },
     {
@@ -2058,7 +2063,7 @@
             "Face to Face"
         ],
         "encore": [
-            "虹のソルベージュ",
+            "虹のソルフェージュ",
             "♮ Melody",
             "Face to Face"
         ]
@@ -2102,7 +2107,7 @@
             "Face to Face"
         ],
         "encore": [
-            "虹のソルベージュ",
+            "虹のソルフェージュ",
             "♮ Melody",
             "Face to Face"
         ]
@@ -2131,7 +2136,7 @@
             "Face to Face"
         ],
         "encore": [
-            "虹のソルベージュ",
+            "虹のソルフェージュ",
             "♮ Melody",
             "Face to Face"
         ]
@@ -2505,7 +2510,7 @@
                 ]
             },
             "Love Me × Love Me",
-            "ガーリッシュエイジ",
+            "ドキドキラビリンス",
             "雨の森はウソつき",
             "ショコラ",
             "Sing-a-ling-a-Harmony",
@@ -2585,7 +2590,7 @@
             "17才",
             "Heavenly Lover",
             "Orange Note",
-            "enpathy",
+            "empathy",
             "雨模様リグレット",
             "Ray Rule",
             "Untitled Puzzle",
@@ -2612,7 +2617,7 @@
             "SHINING LINE*",
             "Heavenly Lover",
             "Orange Note",
-            "enpathy",
+            "empathy",
             "雨模様リグレット",
             "Ray Rule",
             "Untitled Puzzle",
@@ -3679,13 +3684,13 @@
             "Charming Do!",
             "パンドラ♡ショコラ",
             "いつだって Call Me!",
-            "in Wonderful Wonder",
+            "PON de Fighting!",
             "A Lovely Tea Break",
             "Get over",
             "Raise",
             "ガーリッシュエイジ",
             "シュガーハートエイク",
-            "きみがここに来る二、三の理由",
+            "やさシク、されたい。",
             "Tinkling Smile",
             "Honey♥Come!!",
             "ともだちピンク",
@@ -4006,7 +4011,7 @@
         "setlist": [
             "Jumpin' Bunny Flash!!",
             "Blitzallies",
-            "ウェイカッ!!",
+            "ウェィカッ!!",
             "君のYELL",
             "星降る夜のハッピーリンク"
         ]

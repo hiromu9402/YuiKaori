@@ -1396,7 +1396,7 @@
         "info": ""
     },
     {
-        "title": "One and Only",
+        "title": "One & Only",
         "artist": "小倉唯",
         "lyrics": "磯谷佳江",
         "music": [
@@ -1472,8 +1472,14 @@
         "title": "すうぃ～と♡ぱーてぃー",
         "artist": "小倉唯",
         "lyrics": "小倉唯",
-        "music": "早川博隆",
-        "arranger": "早川博隆",
+        "music": [
+            "早川博隆",
+            "加藤祐平"
+        ],
+        "arranger": [
+            "加藤祐平",
+            "早川博隆"
+        ],
         "length": "3:26",
         "CDtitle": "So☆Lucky",
         "utanet": "371932",
@@ -1566,11 +1572,14 @@
     {
         "title": "恋のオーバーテイク",
         "artist": "ゆいかおり",
-        "lyrics": "俊龍",
+        "lyrics": "Sizuk",
         "music": "俊龍",
         "arranger": "Sizuk",
         "length": "4:40",
-        "CDtitle": "3 flavors only",
+        "CDtitle": [
+            "3 flavors only",
+            "Puppy"
+        ],
         "utanet": "119381",
         "MVlink": "",
         "Dancelink": "",
@@ -1603,7 +1612,7 @@
         "artist": "ゆいかおり",
         "lyrics": "只野菜摘",
         "music": "太田美知彦",
-        "arranger": "太田美知彦",
+        "arranger": "kohei by SIMONSAYZ",
         "length": "4:07",
         "CDtitle": "Our Steady Boy",
         "utanet": "94469",
@@ -1840,7 +1849,7 @@
     {
         "title": "圧倒的な GO!!",
         "artist": "ゆいかおり",
-        "lyrics": "IzaZ",
+        "lyrics": "IkaZ",
         "music": "OTOKAM",
         "arranger": "OTOKAM",
         "length": "3:47",

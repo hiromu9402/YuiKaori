@@ -170,10 +170,12 @@
 
                                         const MVLink = song.MVlink ? `<a href="https://www.youtube.com/watch?v=${song.MVlink}" target="_blank">MV</a>` : '';
                                         const videoLink = song.videolink ? `<a href="https://www.youtube.com/watch?v=${song.videolink}" target="_blank">ライブ映像</a>` : '';
+                                        // 歌ネットの曲ページは末尾のスラッシュが必要（ないと開けない）
+                                        const titleCell = song.utanet ? `<a href="https://www.uta-net.com/song/${song.utanet}/">${song.title}</a>` : song.title;
 
-                                        const row = 
+                                        const row =
                                             `<tr>
-                                                <td><a href="https://www.uta-net.com/song/${song.utanet}">${song.title}</a></td>
+                                                <td>${titleCell}</td>
                                                 <td>${callLink}</td>
                                                 <td>${MVLink}</td>
                                                 <td>${videoLink}</td> 

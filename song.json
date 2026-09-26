@@ -183,7 +183,7 @@
         "title": "A Lovely Tea Break",
         "artist": "小倉唯",
         "lyrics": "大森祥子",
-        "music": "チーミー",
+        "music": "CHI-MEY",
         "arranger": "大久保利裕",
         "length": "4:10",
         "CDtitle": "Strawberry JAM",
@@ -1363,9 +1363,9 @@
     {
         "title": "スターチス",
         "artist": "小倉唯",
-        "lyrics": "鶴崎輝一",
-        "music": "鶴崎輝一",
-        "arranger": "鶴崎輝一",
+        "lyrics": "鶴﨑輝一",
+        "music": "鶴﨑輝一",
+        "arranger": "鶴﨑輝一",
         "length": "3:03",
         "CDtitle": "Bloomy",
         "utanet": "360303",
@@ -1578,7 +1578,8 @@
         "length": "4:40",
         "CDtitle": [
             "3 flavors only",
-            "Puppy"
+            "Puppy",
+            "Y&K"
         ],
         "utanet": "119381",
         "MVlink": "",
@@ -1597,7 +1598,8 @@
         "length": "3:59",
         "CDtitle": [
             "Our Steady Boy",
-            "Puppy"
+            "Puppy",
+            "Y&K"
         ],
         "utanet": "94470",
         "MVlink": "",
@@ -1632,7 +1634,8 @@
         "length": "4:03",
         "CDtitle": [
             "ふたり/VIVIVID PARTY!",
-            "Puppy"
+            "Puppy",
+            "Y&K"
         ],
         "utanet": "99711",
         "MVlink": "",
@@ -1651,7 +1654,8 @@
         "length": "4:19",
         "CDtitle": [
             "ふたり/VIVIVID PARTY!",
-            "Puppy"
+            "Puppy",
+            "Y&K"
         ],
         "utanet": "99710",
         "MVlink": "",
@@ -1670,7 +1674,8 @@
         "length": "4:01",
         "CDtitle": [
             "HEARTBEATが止まらないっ!",
-            "Puppy"
+            "Puppy",
+            "Y&K"
         ],
         "utanet": "111675",
         "MVlink": "",
@@ -1705,7 +1710,8 @@
         "length": "3:51",
         "CDtitle": [
             "Shooting☆Smile",
-            "Puppy"
+            "Puppy",
+            "Y&K"
         ],
         "utanet": "111395",
         "MVlink": "",
@@ -1722,7 +1728,10 @@
         "music": "前山田健一",
         "arranger": "前山田健一",
         "length": "3:31",
-        "CDtitle": "Shooting☆Smile",
+        "CDtitle": [
+            "Shooting☆Smile",
+            "Y&K"
+        ],
         "utanet": "111394",
         "MVlink": "",
         "Dancelink": "",
@@ -1738,7 +1747,10 @@
         "music": "前山田健一",
         "arranger": "前山田健一",
         "length": "4:02",
-        "CDtitle": "Puppy",
+        "CDtitle": [
+            "Puppy",
+            "Y&K"
+        ],
         "utanet": "119380",
         "MVlink": "",
         "Dancelink": "",
@@ -1836,7 +1848,8 @@
         "length": "4:34",
         "CDtitle": [
             "君のYELL",
-            "Bunny"
+            "Bunny",
+            "Y&K"
         ],
         "utanet": "126993",
         "MVlink": "",
@@ -1874,7 +1887,8 @@
         "length": "4:27",
         "CDtitle": [
             "ウェィカッ!!",
-            "Bunny"
+            "Bunny",
+            "Y&K"
         ],
         "utanet": "137298",
         "MVlink": "",
@@ -1912,7 +1926,8 @@
         "length": "3:58",
         "CDtitle": [
             "Shiny Blue",
-            "Bunny"
+            "Bunny",
+            "Y&K"
         ],
         "utanet": "143314",
         "MVlink": "",
@@ -1929,7 +1944,10 @@
         "music": "板垣祐介",
         "arranger": "板垣祐介",
         "length": "3:44",
-        "CDtitle": "Shiny Blue",
+        "CDtitle": [
+            "Shiny Blue",
+            "Y&K"
+        ],
         "utanet": "143313",
         "MVlink": "",
         "Dancelink": "",
@@ -1945,7 +1963,10 @@
         "music": "前山田健一",
         "arranger": "前山田健一",
         "length": "4:05",
-        "CDtitle": "Bunny",
+        "CDtitle": [
+            "Bunny",
+            "Y&K"
+        ],
         "utanet": "154084",
         "MVlink": "",
         "Dancelink": "",
@@ -2009,7 +2030,10 @@
         "music": "俊龍",
         "arranger": "Sizuk",
         "length": "4:44",
-        "CDtitle": "Bunny",
+        "CDtitle": [
+            "Bunny",
+            "Y&K"
+        ],
         "utanet": "154080",
         "MVlink": "",
         "Dancelink": "",
@@ -2025,7 +2049,10 @@
         "music": "山崎寛子",
         "arranger": "山崎寛子",
         "length": "5:00",
-        "CDtitle": "Bunny",
+        "CDtitle": [
+            "Bunny",
+            "Y&K"
+        ],
         "utanet": "154079",
         "MVlink": "",
         "Dancelink": "",
@@ -2041,7 +2068,10 @@
         "music": "河田貴央",
         "arranger": "河田貴央",
         "length": "5:10",
-        "CDtitle": "Bunny",
+        "CDtitle": [
+            "Bunny",
+            "Y&K"
+        ],
         "utanet": "154078",
         "MVlink": "",
         "Dancelink": "",
@@ -2057,7 +2087,10 @@
         "music": "森慎太郎",
         "arranger": "森慎太郎",
         "length": "4:27",
-        "CDtitle": "Bunny",
+        "CDtitle": [
+            "Bunny",
+            "Y&K"
+        ],
         "utanet": "154077",
         "MVlink": "",
         "Dancelink": "",
@@ -2075,7 +2108,8 @@
         "length": "3:47",
         "CDtitle": [
             "LUCKY DUCKY!!",
-            "Bright Canary"
+            "Bright Canary",
+            "Y&K"
         ],
         "utanet": "162354",
         "MVlink": "",
@@ -2092,7 +2126,10 @@
         "music": "小野貴光",
         "arranger": "大久保薫(編曲、ストリングスアレンジ)",
         "length": "3:58",
-        "CDtitle": "LUCKY DUCKY!!",
+        "CDtitle": [
+            "LUCKY DUCKY!!",
+            "Y&K"
+        ],
         "utanet": "162353",
         "MVlink": "",
         "Dancelink": "",
@@ -2113,7 +2150,8 @@
         "length": "4:54",
         "CDtitle": [
             "Intro Situation",
-            "Bright Canary"
+            "Bright Canary",
+            "Y&K"
         ],
         "utanet": "166534",
         "MVlink": "",
@@ -2148,7 +2186,8 @@
         "length": "4:06",
         "CDtitle": [
             "NEO SIGNALIFE",
-            "Bright Canary"
+            "Bright Canary",
+            "Y&K"
         ],
         "utanet": "177335",
         "MVlink": "",
@@ -2162,12 +2201,13 @@
         "title": "オリオンからのメッセージ",
         "artist": "ゆいかおり",
         "lyrics": "松井五郎",
-        "music": "チーミー",
+        "music": "CHI-MEY",
         "arranger": "大久保友裕",
         "length": "5:11",
         "CDtitle": [
             "NEO SIGNALIFE",
-            "Bright Canary"
+            "Bright Canary",
+            "Y&K"
         ],
         "utanet": "177334",
         "MVlink": "",
@@ -2192,7 +2232,8 @@
         "length": "3:50",
         "CDtitle": [
             "Ring Ring Rainbow!!",
-            "Bright Canary"
+            "Bright Canary",
+            "Y&K"
         ],
         "utanet": "191465",
         "MVlink": "",
@@ -2209,7 +2250,10 @@
         "music": "TSUGE",
         "arranger": "TSUGE",
         "length": "3:51",
-        "CDtitle": "Ring Ring Rainbow!!",
+        "CDtitle": [
+            "Ring Ring Rainbow!!",
+            "Y&K"
+        ],
         "utanet": "191464",
         "MVlink": "",
         "Dancelink": "",
@@ -2225,7 +2269,10 @@
         "music": "服部祐希",
         "arranger": "服部祐希",
         "length": "3:47",
-        "CDtitle": "Bright Canary",
+        "CDtitle": [
+            "Bright Canary",
+            "Y&K"
+        ],
         "utanet": "196763",
         "MVlink": "",
         "Dancelink": "",
@@ -2244,7 +2291,10 @@
             "菊谷知樹(ストリングスアレンジ)"
         ],
         "length": "5:22",
-        "CDtitle": "Bright Canary",
+        "CDtitle": [
+            "Bright Canary",
+            "Y&K"
+        ],
         "utanet": "196762",
         "MVlink": "",
         "Dancelink": "",
@@ -2311,7 +2361,10 @@
             "関根佑樹(編曲、ストリングスアレンジ)"
         ],
         "length": "4:15",
-        "CDtitle": "Bright Canary",
+        "CDtitle": [
+            "Bright Canary",
+            "Y&K"
+        ],
         "utanet": "196758",
         "MVlink": "",
         "Dancelink": "",
@@ -2343,7 +2396,10 @@
         "music": "俊龍",
         "arranger": "中西亮輔",
         "length": "4:56",
-        "CDtitle": "Promise You!!",
+        "CDtitle": [
+            "Promise You!!",
+            "Y&K"
+        ],
         "utanet": "212815",
         "MVlink": "",
         "Dancelink": "",
@@ -2375,7 +2431,10 @@
         "music": "渡邉俊彦",
         "arranger": "大久保薫",
         "length": "4:58",
-        "CDtitle": "AKIBA'S COLLECTION",
+        "CDtitle": [
+            "AKIBA'S COLLECTION",
+            "Y&K"
+        ],
         "utanet": "226668",
         "MVlink": "",
         "Dancelink": "",
@@ -2901,8 +2960,8 @@
         "title": "Starcast",
         "artist": "石原夏織",
         "lyrics": "やなぎなぎ",
-        "music": "柳舘周平",
-        "arranger": "柳舘周平",
+        "music": "栁舘周平",
+        "arranger": "栁舘周平",
         "length": "4:06",
         "CDtitle": "Starcast",
         "utanet": "311206",
@@ -3067,10 +3126,10 @@
         "title": "Gift",
         "artist": "石原夏織",
         "lyrics": [
-            "柳舘周平",
+            "栁舘周平",
             "稲葉エミ"
         ],
-        "music": "柳舘周平",
+        "music": "栁舘周平",
         "arranger": "奈良悠樹",
         "length": "4:32",
         "CDtitle": [

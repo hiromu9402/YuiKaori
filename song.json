@@ -3325,5 +3325,170 @@
         "otherlink": "",
         "call": "",
         "info": ""
+    },
+    {
+        "title": "星眼鏡",
+        "artist": "石原夏織",
+        "lyrics": "児玉雨子",
+        "music": "佐藤純一(fhána)",
+        "arranger": "佐藤純一(fhána)",
+        "length": "",
+        "CDtitle": [
+            "星眼鏡",
+            "ASOVIVA!!!"
+        ],
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "We Can Do!!",
+        "artist": "石原夏織",
+        "lyrics": "つむぎしゃち",
+        "music": [
+            "久下真音",
+            "つむぎしゃち"
+        ],
+        "arranger": "久下真音",
+        "length": "",
+        "CDtitle": [
+            "We Can Do!!",
+            "ASOVIVA!!!"
+        ],
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "チョコレート・メモリアル",
+        "artist": "小倉唯",
+        "lyrics": [
+            "本田正樹",
+            "小倉唯"
+        ],
+        "music": "本田正樹",
+        "arranger": "本田正樹",
+        "length": "",
+        "CDtitle": "チョコレート・メモリアル",
+        "utanet": "387738",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "年下の男の子",
+        "artist": "小倉唯",
+        "lyrics": "千家和也",
+        "music": "穂口雄右",
+        "arranger": "",
+        "length": "",
+        "CDtitle": "チョコレート・メモリアル",
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "ASOBO-YO運命論序説",
+        "artist": "石原夏織",
+        "lyrics": "児玉雨子",
+        "music": "Kijibato",
+        "arranger": "Kijibato",
+        "length": "",
+        "CDtitle": "ASOVIVA!!!",
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "Yummy!Yummy!",
+        "artist": "石原夏織",
+        "lyrics": "つむぎしゃち",
+        "music": [
+            "田辺望",
+            "gratia"
+        ],
+        "arranger": "田辺望",
+        "length": "",
+        "CDtitle": "ASOVIVA!!!",
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "Little Humming Love",
+        "artist": "石原夏織",
+        "lyrics": [
+            "児玉雨子",
+            "つむぎしゃち"
+        ],
+        "music": "YHEL",
+        "arranger": "奈良悠樹",
+        "length": "",
+        "CDtitle": "ASOVIVA!!!",
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "Q.E.D.",
+        "artist": "小倉唯",
+        "lyrics": [
+            "小倉唯",
+            "ずまでスコト"
+        ],
+        "music": "ずまでスコト",
+        "arranger": "HIDEYA KOJIMA",
+        "length": "",
+        "CDtitle": "Q.E.D.",
+        "utanet": "395671",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
+    },
+    {
+        "title": "泡沫マーメイド",
+        "artist": "小倉唯",
+        "lyrics": "小倉唯",
+        "music": "塚田耕平",
+        "arranger": "塚田耕平",
+        "length": "",
+        "CDtitle": "Q.E.D.",
+        "utanet": "",
+        "MVlink": "",
+        "Dancelink": "",
+        "videolink": "",
+        "otherlink": "",
+        "call": "",
+        "info": ""
     }
 ]

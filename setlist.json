@@ -1,5 +1,536 @@
 [
     {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 神奈川公演",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年9月6日",
+        "venue": "よこすか芸術劇場",
+        "id": "2026090601",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Happy Strawberry",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Wild☆Kitty",
+            "ハイタッチ☆メモリー"
+        ],
+        "Wencore": [
+            "わくわくシャンプー&リンス",
+            "トキメキWeekend!"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・ルネこだいら公演 1部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月30日",
+        "venue": "ルネこだいら 大ホール",
+        "id": "2026083001",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Wherever",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・ルネこだいら公演 2部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月30日",
+        "venue": "ルネこだいら 大ホール",
+        "id": "2026083002",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Wherever",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "石原夏織 LIVE 2026「ASOVIVA!!!」",
+        "tourtitle": "石原夏織 LIVE 2026「ASOVIVA!!!」",
+        "artist": "石原夏織",
+        "date": "2026年8月23日",
+        "venue": "北とぴあ さくらホール",
+        "id": "2026082301",
+        "setlist": [
+            "We Can Do!!",
+            "Cherish",
+            "You & I",
+            "CREATION×CREATION",
+            "フィービー・フィービー",
+            "キラリアット",
+            "ASOBO-YO運命論序説",
+            "ポペラ・ホリカ",
+            "Against.",
+            "Yummy!Yummy!",
+            "Abracada-Boo",
+            "Singularity Point",
+            "Little Humming Love",
+            "Remember Heart, Remember Love",
+            "Crispy love",
+            "Face to Face",
+            "Plastic Smile",
+            "Page Flip",
+            "Harmonia",
+            "星眼鏡"
+        ],
+        "encore": [
+            "Paraglider",
+            "Orange Note",
+            "SUMMER DROP"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 愛知公演",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月22日",
+        "venue": "名古屋文理大学文化フォーラム(稲沢市民会館)",
+        "id": "2026082201",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Tinkling Smile",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Future Strike",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・LINE CUBE SHIBUYA公演 1部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月14日",
+        "venue": "LINE CUBE SHIBUYA",
+        "id": "2026081401",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Magic♡Happy",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・LINE CUBE SHIBUYA公演 2部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月14日",
+        "venue": "LINE CUBE SHIBUYA",
+        "id": "2026081402",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Magic♡Happy",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 群馬公演",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月9日",
+        "venue": "メガネのイタガキ文化ホール伊勢崎(伊勢崎市文化会館)",
+        "id": "2026080901",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Tinkling Smile",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "君色のキセキ",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 京都公演 1部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年7月26日",
+        "venue": "京都劇場",
+        "id": "2026072601",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Happy Strawberry",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "すうぃ～と♡ぱーてぃー",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 京都公演 2部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年7月26日",
+        "venue": "京都劇場",
+        "id": "2026072602",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Happy Strawberry",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "すうぃ～と♡ぱーてぃー",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Animelo Summer Live 2026 -Messenger-",
+        "tourtitle": "Animelo Summer Live",
+        "artist": [
+            "小倉唯",
+            "石原夏織",
+            "ゆいかおり"
+        ],
+        "date": "2026年7月11日",
+        "venue": "幕張メッセ 国際展示場ホール",
+        "id": "2026071101",
+        "setlist": [
+            "Q.E.D.",
+            "Future Strike",
+            "Baby Sweet Berry Love",
+            "We Can Do!!",
+            "星眼鏡",
+            "Gift",
+            "Honey♥Come!!",
+            "Cherish",
+            "PUPPY LOVE!!"
+        ]
+    },
+    {
+        "LIVEtitle": "ANISAMA in TAIPEI 2026 -DOSHA！-",
+        "tourtitle": "ANISAMA in TAIPEI",
+        "artist": "小倉唯",
+        "date": "2026年5月10日",
+        "venue": "台北世界貿易中心南港展覽館",
+        "id": "2026051001",
+        "setlist": [
+            "Baby Sweet Berry Love",
+            "Honey♥Come!!",
+            "So☆Lucky"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops 昼公演",
+        "tourtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops",
+        "artist": "小倉唯",
+        "date": "2026年2月11日",
+        "venue": "パルテノン多摩 大ホール",
+        "id": "2026021101",
+        "setlist": [
+            "チョコレート・メモリアル",
+            "バレンタイン・キッス",
+            "アップル・ガール",
+            "いつだって Call Me!",
+            "君が好きです",
+            "赤いリボン",
+            "雨の森はウソつき",
+            {
+                "medley": [
+                    "赤いスイートピー",
+                    "少女A",
+                    "タッチ",
+                    "年下の男の子"
+                ]
+            },
+            "パンドラ♡ショコラ",
+            "チョコレート・メモリアル"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops 夜公演",
+        "tourtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops",
+        "artist": "小倉唯",
+        "date": "2026年2月11日",
+        "venue": "パルテノン多摩 大ホール",
+        "id": "2026021102",
+        "setlist": [
+            "チョコレート・メモリアル",
+            "バレンタイン・キッス",
+            "アップル・ガール",
+            "いつだって Call Me!",
+            "君が好きです",
+            "ショコラ",
+            "雨の森はウソつき",
+            {
+                "medley": [
+                    "赤いスイートピー",
+                    "少女A",
+                    "タッチ",
+                    "年下の男の子"
+                ]
+            },
+            "パンドラ♡ショコラ",
+            "チョコレート・メモリアル"
+        ]
+    },
+    {
+        "LIVEtitle": "リスアニ！LIVE 2026 SATURDAY STAGE",
+        "tourtitle": "リスアニ！LIVE",
+        "artist": "小倉唯",
+        "date": "2026年1月31日",
+        "venue": "幕張メッセ イベントホール",
+        "id": "2026013101",
+        "setlist": [
+            "Future Strike",
+            "Empty//Princess.",
+            "治癒治癒ちゅっ♡",
+            "Honey♥Come!!",
+            "So☆Lucky"
+        ]
+    },
+    {
         "LIVEtitle": "小倉唯 LIVE TOUR 2025「Love♡Ratory」アフターパーティー",
         "tourtitle": "",
         "artist": "小倉唯",

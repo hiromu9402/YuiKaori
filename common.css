@@ -188,27 +188,46 @@ select {
 #results p { margin: 0; padding: 4px 0; border-bottom: 1px solid var(--line); }
 
 /* ---- イベント検索 ---- */
-.filters { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; margin: 0 0 12px; }
-.filters summary { cursor: pointer; color: var(--ink); font-weight: 500; }
-.filters summary span { color: var(--yui); font-weight: 400; margin-left: 6px; }
-.filters[open] summary { margin-bottom: 8px; }
-#checkboxContainer { margin: 0; }
-#checkboxContainer > div {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
-    padding: 6px 0; border-top: 1px solid var(--line);
+/* 絞り込み: 項目ごとのボタンを押すと選択肢が開く（複数選べるプルダウン） */
+.filterbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 6px; }
+#checkboxContainer.filterbar { margin: 0; }
+.dd { position: relative; }
+.dd > button {
+    display: flex; align-items: center; gap: 6px; max-width: 16em; margin: 0;
+    font-size: 13px; padding: 5px 10px;
 }
-#checkboxContainer strong { flex: 0 0 5.5em; color: var(--muted); font-size: 12px; font-weight: 500; }
-/* チェックボックスを丸いボタンの見た目にする（選ぶと色が付く） */
-#checkboxContainer input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
-#checkboxContainer label {
-    display: inline-block; padding: 1px 10px; border: 1px solid var(--line); border-radius: 999px;
-    color: var(--ink); background: var(--panel); cursor: pointer; font-size: 13px; line-height: 1.7;
-    font-variant-numeric: tabular-nums; white-space: nowrap;
+.dd > button .sel { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd > button::after { content: ""; border: 4px solid transparent; border-top-color: var(--muted); margin-top: 4px; }
+.dd.active > button { border-color: var(--yui); background: #fdf0f6; }
+.dd.active > button .sel { color: var(--yui); }
+.dd .panel {
+    position: absolute; z-index: 20; top: calc(100% + 4px); left: 0;
+    width: max-content; max-width: min(92vw, 30em);
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(40, 20, 40, .15); padding: 10px 12px;
 }
-#checkboxContainer label:hover { border-color: var(--yui); }
-#checkboxContainer input:checked + label { background: var(--yui); border-color: var(--yui); color: #fff; }
-#checkboxContainer input:focus-visible + label { outline: 2px solid var(--yui); outline-offset: 2px; }
-.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.dd .opts { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.dd.grid7 .opts { display: grid; grid-template-columns: repeat(7, auto); }
+.dd .opts label {
+    display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px 1px 4px; border-radius: 6px;
+    cursor: pointer; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.dd .opts label:hover { background: var(--hover); }
+.dd .opts input { accent-color: var(--yui); margin: 0; }
+.dd .grp { font-size: 11px; color: var(--muted); margin-top: 6px; border-top: 1px solid var(--line); padding-top: 4px; }
+.dd .grp:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+.dd .foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; border-top: 1px solid var(--line); padding-top: 6px; }
+.dd .foot button, .clear-all { font-size: 12px; background: none; border: none; color: var(--link); padding: 2px; margin: 0; }
+.clear-all { font-size: 13px; }
+.order { font-size: 13px; margin: 0 0 0 auto; }
+@media (max-width: 600px) {
+    .dd { position: static; }
+    .filterbar { position: relative; }
+    .dd .panel { left: 0; right: 0; width: auto; max-width: none; }
+    .order { margin-left: 0; }
+}
+.count { color: var(--muted); font-size: 13px; margin: 2px 0 4px; }
+.count b { color: var(--ink); }
 /* イベントの表: 日付・時刻は折り返さず、分類・with・備考は小さく、タイトルと会場は広めに */
 #eventTable td:nth-child(-n+5) { white-space: nowrap; font-variant-numeric: tabular-nums; }
 #eventTable td:nth-child(n+6):nth-child(-n+8) { color: var(--muted); font-size: .9em; }

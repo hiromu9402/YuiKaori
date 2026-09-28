@@ -28,18 +28,21 @@
             background-color: limegreen;
         }
     </style>
+    <link rel="stylesheet" href="common.css">
 </head>
 
 <body>
-    <h2>ゆいかおり楽曲一覧 
-        <font color="hotpink"><input type="radio" id="yui-solo" name="artist-filter" value="yui" checked class="radio-input">
-        <label for="yui-solo" class="radio-label">唯ソロ</label></font>
-        <font color="deepskyblue"><input type="radio" id="kaori-solo" name="artist-filter" value="kaori" class="radio-input">
-        <label for="kaori-solo" class="radio-label">夏織ソロ</label></font>
-        <font color="orange"><input type="radio" id="yuikaori" name="artist-filter" value="yuikaori" class="radio-input">
-        <label for="yuikaori" class="radio-label">ゆいかおり</label></font>
-        <a href="tour.html">ツアーセットリスト比較ページ</a> <a href="event.html">イベント検索ページ</a> <a href="calendar.html">ゆいかおりカレンダー</a>
-        未回収楽曲チェックツール→ <a href="my.html">唯ソロ</a> <a href="my_c.html">夏織ソロ</a> <a href="my_f.html">ゆいかおり</a></h2>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="index.html" class="on">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <h2>ゆいかおり楽曲一覧</h2>
+    <div class="artist-tabs">
+        <input type="radio" id="yui-solo" name="artist-filter" value="yui" checked class="radio-input">
+        <label for="yui-solo" class="radio-label yui">唯ソロ</label>
+        <input type="radio" id="kaori-solo" name="artist-filter" value="kaori" class="radio-input">
+        <label for="kaori-solo" class="radio-label kaori">夏織ソロ</label>
+        <input type="radio" id="yuikaori" name="artist-filter" value="yuikaori" class="radio-input">
+        <label for="yuikaori" class="radio-label yuikaori">ゆいかおり</label>
+    </div>
+    <div class="table-wrap">
     <table>
         <thead>
             <tr>
@@ -59,6 +62,7 @@
         </thead>
         <tbody id="songTable"></tbody>
     </table>
+    </div>
 
     <script>
         let songData = []; // 追加: 曲データを保存する配列

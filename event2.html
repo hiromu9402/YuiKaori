@@ -30,22 +30,25 @@
             color: orange;
         }
     </style>
+    <link rel="stylesheet" href="common.css">
 </head>
 
 <body>
-    <h2>ゆいかおりイベントデータベース
-        <label><font color="hotpink"><input type="radio" name="artistFilter" id="yuiSolo">唯ソロのみ</font></label>
-        <label><font color="orange"><input type="radio" name="artistFilter" id="yuikaori">ゆいかおり含む</font></label>
-        <label><font color="deepskyblue"><input type="radio" name="artistFilter" id="kaoriSolo" checked>夏織ソロ含む</font></label>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="index.html">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <h2>ゆいかおりイベントデータベース</h2>
+    <div class="artist-tabs">
+        <label class="yui"><input type="radio" name="artistFilter" id="yuiSolo">唯ソロのみ</label>
+        <label class="yuikaori"><input type="radio" name="artistFilter" id="yuikaori">ゆいかおり含む</label>
+        <label class="kaori"><input type="radio" name="artistFilter" id="kaoriSolo" checked>夏織ソロ含む</label>
         <label><input type="radio" name="artistFilter" id="stylips">Stylips含む</label>
-        <a href="index.html">楽曲一覧はこちら</a>
-    </h2>
+    </div>
     <div id="checkboxContainer"></div>
 
     <div>
         <button id="toggleOrder">日時の昇順と降順を入れ替える</button>
     </div>
 
+    <div class="table-wrap">
     <table id="eventTable">
         <tr>
             <th>年</th>
@@ -65,6 +68,7 @@
             <th>セットリスト</th>
         </tr>
     </table>
+    </div>
 
     <script>
         fetch('event.json')

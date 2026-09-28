@@ -26,9 +26,13 @@
             color: orange;
         }
     </style>
+    <link rel="stylesheet" href="common.css">
 </head>
 
 <body>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="index.html">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html" class="on">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <h2>ゆいかおりカレンダー</h2>
+    <div class="table-wrap">
     <table id="eventsTable">
         <thead>
             <tr>
@@ -38,6 +42,7 @@
         </thead>
         <tbody></tbody>
     </table>
+    </div>
 
     <script>
         fetch('event.json')

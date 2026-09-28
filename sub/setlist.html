@@ -10,8 +10,10 @@
         margin: 5px;
     }
 </style>
+    <link rel="stylesheet" href="../common.css">
 </head>
 <body>
+<nav class="gnav"><a class="brand" href="../index.html">ゆいかおり DB</a><a href="../index.html">楽曲一覧</a><a href="../tour.html">ツアー比較</a><a href="../event.html">イベント検索</a><a href="../calendar.html">カレンダー</a><span class="group"><a href="../my.html">唯ソロ</a><a href="../my_c.html">夏織ソロ</a><a href="../my_f.html">ゆいかおり</a></span></nav>
 <div id="liveInfo"></div>
 
 <script>
@@ -51,7 +53,7 @@ if (!targetLiveId) {
                             } else if (typeof song === 'object' && Array.isArray(song.medley)) {
                                 setlistHTML += `<p>${index + 1}. 【メドレー】<br>`;
                                 song.medley.forEach((medleySong, medleyIndex) => {
-                                    setlistHTML += `<a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a>`;
+                                    setlistHTML += `<span class="med"><a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a></span>`;
                                     if (medleyIndex < song.medley.length - 1) {
                                         setlistHTML += '<br>';
                                     }
@@ -76,7 +78,7 @@ if (!targetLiveId) {
                                 } else if (typeof song === 'object' && Array.isArray(song.medley)) {
                                     encoreHTML += `<p>EC${index + 1}. 【メドレー】<br>`;
                                     song.medley.forEach((medleySong, medleyIndex) => {
-                                        encoreHTML += `<a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a>`;
+                                        encoreHTML += `<span class="med"><a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a></span>`;
                                         if (medleyIndex < song.medley.length - 1) {
                                             encoreHTML += '<br>';
                                         }
@@ -102,7 +104,7 @@ if (!targetLiveId) {
                                 } else if (typeof song === 'object' && Array.isArray(song.medley)) {
                                     wencoreHTML += `<p>WEC${index + 1}. 【メドレー】<br>`;
                                     song.medley.forEach((medleySong, medleyIndex) => {
-                                        wencoreHTML += `<a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a>`;
+                                        wencoreHTML += `<span class="med"><a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a></span>`;
                                         if (medleyIndex < song.medley.length - 1) {
                                             wencoreHTML += '<br>';
                                         }
@@ -122,9 +124,9 @@ if (!targetLiveId) {
 
                         ${renderSetlist(liveData.setlist)}
 
-                        ${liveData.encore ? `<p>【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
+                        ${liveData.encore ? `<p class="sec">【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
 
-                        ${liveData.Wencore ? `<p>【ダブルアンコール】</p>${renderWencore(liveData.Wencore)}` : ''}
+                        ${liveData.Wencore ? `<p class="sec">【ダブルアンコール】</p>${renderWencore(liveData.Wencore)}` : ''}
                     `;
 
                     liveInfo.innerHTML = html;

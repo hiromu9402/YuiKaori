@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆいかおり楽曲一覧</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .pink-cell {
+            background-color: hotpink;
+        }
+        .cyan-cell {
+            background-color: cyan;
+        }
+        .green-cell {
+            background-color: limegreen;
+        }
+    </style>
+    <link rel="stylesheet" href="common.css">
+</head>
+
+<body>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="songs.html" class="on">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <h2>ゆいかおり楽曲一覧</h2>
+    <div class="artist-tabs">
+        <input type="radio" id="yui-solo" name="artist-filter" value="yui" checked class="radio-input">
+        <label for="yui-solo" class="radio-label yui">唯ソロ</label>
+        <input type="radio" id="kaori-solo" name="artist-filter" value="kaori" class="radio-input">
+        <label for="kaori-solo" class="radio-label kaori">夏織ソロ</label>
+        <input type="radio" id="yuikaori" name="artist-filter" value="yuikaori" class="radio-input">
+        <label for="yuikaori" class="radio-label yuikaori">ゆいかおり</label>
+    </div>
+    <div class="song-tools">
+        <input type="search" id="songSearch" placeholder="曲名・作詞・作曲・編曲・収録CDで絞り込む" aria-label="楽曲の絞り込み">
+        <span id="songCount"></span>
+    </div>
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th onclick="sortTable('title')" data-col="title">楽曲名</th>
+                <th>コール表</th>
+                <th>MV(抜け有)</th>
+                <th>ライブ映像(抜け有)</th>
+                <th onclick="sortTable('performanceCount')" data-col="performanceCount">披露回数</th>
+                <th onclick="sortTable('latestPerformanceDate')" data-col="latestPerformanceDate">最終披露日</th>
+                <th>作詞</th>
+                <th>作曲</th>
+                <th>編曲</th>
+                <th onclick="sortTable('length')" data-col="length">長さ</th>
+                <th>収録CD</th>
+                <th onclick="sortTable('releaseDate')" data-col="releaseDate">リリース日</th>
+            </tr>
+        </thead>
+        <tbody id="songTable"></tbody>
+    </table>
+    </div>
+
+    <script>
+        let songData = []; // 追加: 曲データを保存する配列
+        let reverseSortPerformanceCount = true; // 披露回数の逆順フラグ
+        let reverseSortPerformanceDate = true; // 最終披露日の逆順フラグ
+        let reverseSortReleaseDate = false; // リリース日の逆順フラグ
+        let releaseDateToggle = 0; // リリース日ソートの状態を管理
+        let reverseSortLength = false; // 長さのソート用
+
+        function formatDateToJapanese(date) {
+            const year = date.getFullYear();
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            return `${year}年${month}月${day}日`;
+        }
+
+        function updateSongDetails(selectedArtist) {
+            fetch('song.json')
+                .then(response => response.json())
+                .then(songs => {
+                    fetch('CD.json')
+                        .then(response => response.json())
+                        .then(CDs => {
+                            fetch('setlist.json')
+                                .then(response => response.json())
+                                .then(setlists => {
+                                    const songTable = document.getElementById('songTable');
+                                    songTable.innerHTML = ''; // Clear existing table rows
+                                    songData = []; // songDataをリセット
+
+                                    songs.forEach(song => {
+                                        if (selectedArtist === 'yui' && song.artist !== '小倉唯') {
+                                            return; // Skip non-Yui songs if '唯ソロ' selected
+                                        } else if (selectedArtist === 'kaori' && song.artist !== '石原夏織') {
+                                            return; // Skip non-Kaori songs if '夏織ソロ' selected
+                                        } else if (selectedArtist === 'yuikaori' && song.artist !== 'ゆいかおり') {
+                                            return; // Skip non-Yuikaori songs if 'ゆいかおり' selected
+                                        }
+
+                                        const matchingCDs = [].concat(song.CDtitle).flatMap(songCDtitle => {
+                                            return CDs.filter(cd => cd.CDtitle === songCDtitle);
+                                        });
+
+                                        const oldestDate = matchingCDs.length > 0 ? matchingCDs.reduce((oldest, current) => {
+                                            const oldestDate = new Date(oldest.date.replace(/年|月/g, '-').replace(/日/g, ''));
+                                            const currentDate = new Date(current.date.replace(/年|月/g, '-').replace(/日/g, ''));
+                                            return oldestDate < currentDate ? oldest : current;
+                                        }) : {
+                                            date: 'No release date found'
+                                        };
+
+                                        const performanceData = setlists.reduce((acc, setlist) => {
+                                            const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
+                                            // setlist / encore / Wencore は配列または文字列。元データを書き換えないようコピーして結合する
+                                            const songsArray = [setlist.setlist, setlist.encore, setlist.Wencore]
+                                                .filter(section => section)
+                                                .flatMap(section => Array.isArray(section) ? section : [section]);
+
+                                            const titles = songsArray.reduce((acc, title) => {
+                                                if (typeof title === 'object' && 'medley' in title) {
+                                                    acc.push(...title.medley);
+                                                } else {
+                                                    acc.push(title);
+                                                }
+                                                return acc;
+                                            }, []);
+
+                                            if (titles.includes(song.title)) {
+                                                acc.count += 1;
+                                                if (!acc.latestDate || date > acc.latestDate) {
+                                                    acc.latestDate = date;
+                                                    acc.id = setlist.id;
+                                                }
+                                            }
+
+                                            return acc;
+                                        }, {
+                                            count: 0,
+                                            latestDate: null,
+                                            id: null
+                                        });
+
+                                        const formattedDate = oldestDate.date !== 'No release date found' ? oldestDate.date : 'No release date found';
+                                        const latestPerformanceDate = performanceData.latestDate ? performanceData.latestDate.toISOString().split('T')[0] : null;
+
+                                        let lyricsClass = ''
+                                        if (song.lyrics.includes('小倉唯')) {
+                                            lyricsClass = 'pink-cell';
+                                        } else if (song.lyrics.includes('石原夏織')) {
+                                            lyricsClass = 'cyan-cell';
+                                        }  else {
+                                            lyricsClass = '';
+                                        }
+;
+                                        let musicClass = ''
+                                        if (song.music.includes('小倉唯')) {
+                                            musicClass = 'pink-cell';
+                                        } else if (song.music.includes('俊龍')) {
+                                            musicClass = 'green-cell';
+                                        }  else {
+                                            musicClass = '';
+                                        }
+
+                                        const callLink = song.call
+                                          ? (!isNaN(Number(song.call))
+                                              ? `<a href="https://salvageyuikaori.seesaa.net/article/${song.call}.html" target="_blank">コール表</a>`
+                                              : `<a href="https://yuicom-callbook.hatenablog.com/entry/${song.call}" target="_blank">コール表</a>`)
+                                          : '';
+
+                                        const MVLink = song.MVlink ? `<a href="https://www.youtube.com/watch?v=${song.MVlink}" target="_blank">MV</a>` : '';
+                                        const videoLink = song.videolink ? `<a href="https://www.youtube.com/watch?v=${song.videolink}" target="_blank">ライブ映像</a>` : '';
+                                        // 歌ネットの曲ページは末尾のスラッシュが必要（ないと開けない）
+                                        // 曲名はその曲の披露一覧を開く（歌詞へのリンクは披露一覧のページにある）
+                                        const titleCell = `<a href="./sub/search.html?name=${encodeURIComponent(song.title)}">${song.title}</a>`;
+
+                                        const row =
+                                            `<tr>
+                                                <td>${titleCell}</td>
+                                                <td>${callLink}</td>
+                                                <td>${MVLink}</td>
+                                                <td>${videoLink}</td> 
+                                                <td><a href="./sub/search.html?name=${encodeURIComponent(song.title)}">${performanceData.count}</a></td> 	
+                                                <td><a href="./sub/setlist.html?id=${performanceData.id}">${performanceData.latestDate ? formatDateToJapanese(new Date(performanceData.latestDate)) : '未披露'}</a></td>
+                                                <td class="${lyricsClass}">${song.lyrics}</td>
+                                                <td class="${musicClass}">${song.music}</td>
+                                                <td>${song.arranger}</td>
+                                                <td>${song.length}</td>
+                                                <td>${song.CDtitle}</td>
+                                                <td>${formattedDate}</td>
+                                            </tr>`;
+
+                                        songData.push({
+                                            title: song.title,
+                                            rowHTML: row,
+                                            performanceCount: performanceData.count,
+                                            latestPerformanceDate: latestPerformanceDate, // 日付のISO形式で保存
+                                            length: song.length,
+                                            releaseDate: formattedDate
+                                        });
+                                    });
+
+                                    // 初期表示
+                                    songData.forEach(song => {
+                                        songTable.innerHTML += song.rowHTML;
+                                    });
+                                    markSorted(null);
+                                    applySongFilter();
+                                });
+                        });
+                });
+        }
+
+        const artistFilters = document.getElementsByName('artist-filter');
+        let selectedArtist = 'yui'; // Default selection
+
+        artistFilters.forEach(filter => {
+            filter.addEventListener('change', () => {
+                selectedArtist = filter.value;
+                updateSongDetails(selectedArtist);
+            });
+        });
+
+function parseJapaneseDate(dateStr) {
+    // "2009年9月26日" → "2009-09-26" のように変換してDateオブジェクトに変換
+    return new Date(dateStr.replace(/年|月/g, '-').replace(/日/g, ''));
+}
+
+function parseTimeToSeconds(timeStr) {
+    if (!timeStr) return 0; // 空の値は 0 とする
+    const parts = timeStr.split(":");
+    return parseInt(parts[0]) * 60 + parseInt(parts[1]); // 分を秒換算
+}
+
+function sortTable(column) {
+    const songTable = document.getElementById('songTable');
+    let sortedData;
+
+    let desc = false; // 並べた向き（見出しの ▲▼ の表示用）
+    if (column === 'performanceCount') {
+        desc = reverseSortPerformanceCount;
+        sortedData = [...songData].sort((a, b) => 
+            reverseSortPerformanceCount ? b.performanceCount - a.performanceCount : a.performanceCount - b.performanceCount
+        );
+        reverseSortPerformanceCount = !reverseSortPerformanceCount;
+    } else if (column === 'latestPerformanceDate') {
+        desc = reverseSortPerformanceDate;
+        sortedData = [...songData].sort((a, b) => {
+            if (!a.latestPerformanceDate) return 1;
+            if (!b.latestPerformanceDate) return -1;
+            return reverseSortPerformanceDate 
+                ? new Date(b.latestPerformanceDate) - new Date(a.latestPerformanceDate) 
+                : new Date(a.latestPerformanceDate) - new Date(b.latestPerformanceDate);
+        });
+        reverseSortPerformanceDate = !reverseSortPerformanceDate;
+    } else if (column === 'releaseDate') {
+        desc = reverseSortReleaseDate;
+        sortedData = [...songData].sort((a, b) => {
+            if (!a.releaseDate) return 1;
+            if (!b.releaseDate) return -1;
+            return reverseSortReleaseDate 
+                ? parseJapaneseDate(b.releaseDate) - parseJapaneseDate(a.releaseDate)
+                : parseJapaneseDate(a.releaseDate) - parseJapaneseDate(b.releaseDate);
+        });
+        reverseSortReleaseDate = !reverseSortReleaseDate;
+    } else if (column === 'length') {
+        desc = reverseSortLength;
+        sortedData = [...songData].sort((a, b) => {
+            return reverseSortLength 
+                ? parseTimeToSeconds(b.length) - parseTimeToSeconds(a.length)
+                : parseTimeToSeconds(a.length) - parseTimeToSeconds(b.length);
+        });
+        reverseSortLength = !reverseSortLength;
+    } else {
+        sortedData = [...songData].sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    songTable.innerHTML = '';
+    sortedData.forEach(song => {
+        songTable.innerHTML += song.rowHTML;
+    });
+    markSorted(column, desc);
+    applySongFilter();
+}
+
+// 並べ替えた列の見出しに ▲（昇順）▼（降順）を付ける
+function markSorted(column, desc) {
+    document.querySelectorAll('th[data-col]').forEach(th => {
+        if (th.dataset.col === column) th.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+        else th.removeAttribute('aria-sort');
+    });
+}
+
+// 検索欄の文字を含む行だけを表示する（曲名・作詞・作曲・編曲・収録CDなど、行の文字全体から探す）
+function applySongFilter() {
+    const words = document.getElementById('songSearch').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    const rows = document.querySelectorAll('#songTable tr');
+    rows.forEach(tr => {
+        const text = tr.textContent.toLowerCase();
+        tr.hidden = !words.every(w => text.includes(w));
+        if (!tr.hidden) shown++;
+    });
+    document.getElementById('songCount').textContent = words.length ? `${shown} / ${rows.length}曲` : `${rows.length}曲`;
+}
+document.getElementById('songSearch').addEventListener('input', applySongFilter);
+        
+        updateSongDetails(selectedArtist); // Initial call to populate the table
+    </script>
+<script src="table-zoom.js"></script>
+<script src="site.js"></script>
+</body>
+
+</html>

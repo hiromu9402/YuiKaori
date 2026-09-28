@@ -434,3 +434,60 @@ button:hover { border-color: var(--yui); }
     .sr-list li { grid-template-columns: minmax(0, 1fr) auto; gap: 0 8px; }
     .sr-list .date { grid-column: 1 / -1; }
 }
+
+/* ---- 楽曲一覧の検索と並べ替えの印 ---- */
+.song-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 8px; }
+.song-tools input[type="search"] {
+    font: inherit; font-size: 14px; flex: 1 1 18em; max-width: 28em; padding: 6px 10px;
+    border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink);
+}
+.song-tools input[type="search"]:focus { outline: 2px solid var(--yui); outline-offset: 1px; border-color: var(--yui); }
+#songCount { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+th[data-col]::after { content: "⇅"; margin-left: 4px; color: var(--line); font-size: .9em; }
+th[data-col]:hover::after { color: var(--muted); }
+th[aria-sort="ascending"]::after { content: "▲"; color: var(--yui); }
+th[aria-sort="descending"]::after { content: "▼"; color: var(--yui); }
+th[aria-sort] { color: var(--ink); }
+
+/* ---- 全ページ共通のフッター（site.js） ---- */
+.site-footer { margin: 32px -20px -40px; padding: 16px 20px 24px; border-top: 1px solid var(--line); background: var(--panel); color: var(--muted); font-size: 12px; }
+.site-footer p { margin: 2px 0; max-width: 80ch; }
+.site-footer b { color: var(--ink); font-weight: 500; margin-right: 6px; }
+
+/* ---- トップページ ---- */
+.home-hero { padding: 18px 0 6px; }
+.home-hero h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: .04em; }
+.home-hero p { margin: 0; color: var(--muted); }
+.home-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.home-stats a { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; color: var(--ink); }
+.home-stats a:hover { border-color: var(--yui); text-decoration: none; }
+.home-stats b { font-size: 26px; font-variant-numeric: tabular-nums; margin-right: 4px; }
+.home-stats small { display: block; color: var(--muted); font-size: 12px; }
+.home-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.home-box { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.home-box h2 { font-size: 15px; margin: 0 0 6px; }
+.home-box h2 span { color: var(--muted); font-weight: 400; font-size: 13px; }
+.home-box .none { color: var(--muted); font-size: 13px; margin: 4px 0; }
+.home-box .more { margin: 6px 0 0; font-size: 12px; text-align: right; }
+.home-list { list-style: none; margin: 0; padding: 0; }
+.home-list li { padding: 5px 0; border-bottom: 1px solid var(--line); font-size: 13px; line-height: 1.5; }
+.home-list li:last-child { border-bottom: none; }
+.home-list .when { display: block; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.home-list .dot { margin-right: 6px; vertical-align: 1px; }
+.home-h2 { font-size: 16px; margin: 22px 0 8px; }
+.home-pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); gap: 10px; }
+.home-pages > a, .home-pages > .card { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; color: var(--ink); }
+.home-pages > a:hover { border-color: var(--yui); text-decoration: none; }
+.home-pages b { display: block; color: var(--link); margin-bottom: 2px; }
+.home-pages span { display: block; color: var(--muted); font-size: 13px; }
+.home-pages .links { display: flex; gap: 10px; margin-top: 4px; }
+@media (max-width: 800px) {
+    .home-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+    /* スマホでは数字の3つの枠を横1列に小さく並べる */
+    .home-stats { gap: 6px; }
+    .home-stats a { padding: 8px 10px; }
+    .home-stats b { font-size: 20px; }
+    .home-stats small { display: none; }
+}

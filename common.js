@@ -9,6 +9,10 @@ async function fetchJSON(path) {
 // ツアーセットリスト比較ページ（tour.html）の選択肢を作り、初期選択（なければ先頭）の比較表を表示する
 async function renderTourOptions(select) {
   const data = await fetchJSON('tours.json');
+  // tour.html?tour=ツアー名 で開いたときは、そのツアーを選ぶ（セットリストのページからのリンク用）
+  const wanted = new URLSearchParams(window.location.search).get('tour');
+  const all = data.groups.flatMap(group => group.tours);
+  const initial = all.includes(wanted) ? wanted : data.default;
   for (const group of data.groups) {
     const optgroup = document.createElement('optgroup');
     optgroup.label = group.group;
@@ -16,7 +20,7 @@ async function renderTourOptions(select) {
       const option = document.createElement('option');
       option.value = title;
       option.textContent = title;
-      option.selected = title === data.default;
+      option.selected = title === initial;
       optgroup.appendChild(option);
     }
     select.appendChild(optgroup);

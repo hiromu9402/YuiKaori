@@ -40,14 +40,12 @@
         <label class="kaori"><input type="checkbox" name="artistFilter" value="kaoriSolo" checked>夏織ソロ</label>
         <label><input type="checkbox" name="artistFilter" value="StylipS">StylipS</label>
     </div>
-    <details class="filters">
-        <summary>年・月・日・曜日・分類・地域で絞り込む<span id="filterCount"></span></summary>
-        <div id="checkboxContainer"></div>
-    </details>
-
-    <div class="toolbar">
-        <button id="toggleOrder">日時の昇順と降順を入れ替える</button>
+    <div class="filterbar">
+        <div id="checkboxContainer" class="filterbar"></div>
+        <button type="button" id="clearFilters" class="clear-all">条件をすべて外す</button>
+        <button id="toggleOrder" class="order">日時の昇順と降順を入れ替える</button>
     </div>
+    <p class="count" id="resultCount"></p>
 
     <div class="table-wrap">
     <table id="eventTable">
@@ -157,14 +155,7 @@ function filterByArtist() {
 
                 // ラジオボタンの選択によるフィルタリングとチェックボックスの条件を反映
                 function filterData() {
-                    const selectedArtist = document.querySelector('input[name="artistFilter"]:checked').id;
-                    let filteredData = filterByArtist(selectedArtist);
-
-                    // filteredDataが空の場合に処理をスキップする
-                    if (!filteredData || filteredData.length === 0) {
-                        console.log("No data available for the selected artist.");
-                        return; // データがない場合は処理を終了
-                    }
+                    let filteredData = filterByArtist() || [];
 
                     // チェックボックスの条件によるフィルタリング
                     const selectedYears = [...document.querySelectorAll('input[type="checkbox"][id^="year"]:checked')].map(cb => cb.value);
@@ -186,8 +177,8 @@ function filterByArtist() {
                     );
 
                     populateTable(filteredData);
-                    const n = document.querySelectorAll('#checkboxContainer input:checked').length;
-                    document.getElementById('filterCount').textContent = n ? `（${n}件の条件で絞り込み中）` : '';
+                    document.getElementById('resultCount').innerHTML = `<b>${filteredData.length}</b> 件`;
+                    updateDropdowns();
                 }
 
                 // 最初にフィルタリングされたデータを表示（デフォルトは唯ソロ）
@@ -245,42 +236,85 @@ const checkboxesDataByRegion = [
 
 const checkboxContainer = document.getElementById('checkboxContainer');
 
-// 他のチェックボックスの動的生成
-checkboxesData.forEach(data => {
-    const div = document.createElement('div');
-    div.innerHTML = `<strong>${data.label}</strong>`;
-    data.values.forEach(value => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `${data.id}-${value}`;
-        checkbox.value = value;
-        const label = document.createElement('label');
-        label.setAttribute('for', checkbox.id);
-        label.textContent = value;
-        div.appendChild(checkbox);
-        div.appendChild(label);
+// 絞り込みの項目ごとに、ボタンと選択肢の一覧（複数選べるプルダウン）を作る。
+// チェックボックスの id（year-2026 など）と値は以前と同じなので、絞り込みの処理はそのまま使える。
+function makeDropdown(label, groups, idPrefix, extraClass) {
+    const dd = document.createElement('div');
+    dd.className = 'dd' + (extraClass ? ' ' + extraClass : '');
+    dd.dataset.prefix = idPrefix;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = `<span>${label}</span><span class="sel">すべて</span>`;
+    const panel = document.createElement('div');
+    panel.className = 'panel';
+    panel.hidden = true;
+    groups.forEach(group => {
+        if (group.label) {
+            const g = document.createElement('div');
+            g.className = 'grp';
+            g.textContent = group.label;
+            panel.appendChild(g);
+        }
+        const opts = document.createElement('div');
+        opts.className = 'opts';
+        group.values.forEach(value => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `${idPrefix}-${value}`;
+            checkbox.value = value;
+            const lab = document.createElement('label');
+            lab.appendChild(checkbox);
+            lab.appendChild(document.createTextNode(value));
+            opts.appendChild(lab);
+        });
+        panel.appendChild(opts);
     });
-    checkboxContainer.appendChild(div);
-});
+    const foot = document.createElement('div');
+    foot.className = 'foot';
+    foot.innerHTML = '<button type="button" class="c">この項目の選択を外す</button><button type="button" class="x">閉じる</button>';
+    panel.appendChild(foot);
+    foot.querySelector('.c').addEventListener('click', () => {
+        panel.querySelectorAll('input:checked').forEach(cb => { cb.checked = false; });
+        filterData();
+    });
+    foot.querySelector('.x').addEventListener('click', closeDropdowns);
+    panel.addEventListener('click', e => e.stopPropagation());
+    button.addEventListener('click', e => {
+        e.stopPropagation();
+        const wasOpen = !panel.hidden;
+        closeDropdowns();
+        if (!wasOpen) { panel.hidden = false; button.setAttribute('aria-expanded', 'true'); }
+    });
+    dd.appendChild(button);
+    dd.appendChild(panel);
+    checkboxContainer.appendChild(dd);
+}
 
-// 都道府県の地域ごとのチェックボックスの動的生成
-checkboxesDataByRegion.forEach(region => {
-    const regionDiv = document.createElement('div');
-    regionDiv.innerHTML = `        <strong>${region.label}</strong>`;
-    region.values.forEach(value => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `prefecture-${value}`;
-        checkbox.value = value;
-        
-        const label = document.createElement('label');
-        label.setAttribute('for', checkbox.id);
-        label.textContent = value;
-        
-        regionDiv.appendChild(checkbox);
-        regionDiv.appendChild(label);
+function closeDropdowns() {
+    document.querySelectorAll('.dd .panel').forEach(p => { p.hidden = true; });
+    document.querySelectorAll('.dd > button').forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+document.addEventListener('click', closeDropdowns);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDropdowns(); });
+
+// ボタンに選んだ内容を表示し、条件が入っている項目に色を付ける
+function updateDropdowns() {
+    document.querySelectorAll('.dd').forEach(dd => {
+        const selected = [...dd.querySelectorAll('input:checked')].map(cb => cb.value);
+        dd.classList.toggle('active', selected.length > 0);
+        dd.querySelector('.sel').textContent = selected.length === 0 ? 'すべて'
+            : selected.length > 3 ? `${selected.slice(0, 3).join('・')} ほか${selected.length - 3}`
+            : selected.join('・');
     });
-    checkboxContainer.appendChild(regionDiv);
+}
+
+checkboxesData.forEach(data => makeDropdown(data.label, [{ values: data.values }], data.id, data.id === 'day' ? 'grid7' : ''));
+makeDropdown('都道府県', checkboxesDataByRegion, 'prefecture');
+
+document.getElementById('clearFilters').addEventListener('click', () => {
+    document.querySelectorAll('#checkboxContainer input:checked').forEach(cb => { cb.checked = false; });
+    filterData();
 });
 
                 // チェックボックスのイベントリスナー

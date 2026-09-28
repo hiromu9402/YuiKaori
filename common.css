@@ -246,9 +246,43 @@ button {
 }
 button:hover { border-color: var(--yui); }
 
-/* 未回収チェック */
-#checklist h3 { display: inline; margin-right: 10px; }
-.result { margin-top: 16px; }
+/* ---- 未回収チェック ---- */
+.cl-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.cl-group { padding: 8px 0 10px; border-bottom: 1px solid var(--line); }
+.cl-group h3 { font-size: 14px; margin: 0 0 6px; }
+.cl-lives { display: flex; flex-wrap: wrap; gap: 6px; }
+.cl-lives input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
+.cl-lives label {
+    display: inline-block; padding: 1px 10px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--panel); cursor: pointer; font-size: 13px; line-height: 1.7;
+}
+.cl-lives label:hover { border-color: var(--yui); }
+.cl-lives label:has(input:checked) { background: var(--yui); border-color: var(--yui); color: #fff; }
+.cl-lives label:has(input:focus-visible) { outline: 2px solid var(--yui); outline-offset: 2px; }
+/* 結果（未回収の曲）は右側に、スクロールしても見える位置に置く */
+.cl-result {
+    position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px;
+}
+.cl-head { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; justify-content: space-between; }
+.cl-summary { font-weight: 500; }
+.cl-clear { font-size: 12px; background: none; border: none; color: var(--link); padding: 2px; margin: 0; }
+.result p { margin: 8px 0 4px; color: var(--muted); font-size: 12px; }
+.result ul { margin: 0; padding-left: 1.2em; }
+.result li { padding: 1px 0; }
+.cl-bar { display: none; }
+@media (max-width: 800px) {
+    .cl-layout { grid-template-columns: minmax(0, 1fr); }
+    .cl-result { position: static; max-height: none; }
+    /* スマホでは画面の下に未回収の曲数を常に出し、押すと結果の欄へ移る */
+    .cl-bar {
+        display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+        background: var(--yui); color: #fff; font-weight: 500; text-align: center;
+    }
+    .cl-bar:hover { text-decoration: none; }
+    body:has(.cl-bar) { padding-bottom: 64px; }
+}
 
 @media (prefers-reduced-motion: no-preference) {
     tbody tr { transition: background .15s; }

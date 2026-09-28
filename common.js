@@ -44,13 +44,16 @@ function extractSongs(arr) {
 }
 
 function renderChecklist(container, groups) {
-  groups.forEach((group, index) => {
-    if (index > 0) container.appendChild(document.createElement('br'));
+  // ツアー・シリーズごとに、見出し（h3）と公演のチェックボックス（丸いボタンの見た目）をまとめる
+  groups.forEach(group => {
+    const box = document.createElement('div');
+    box.className = 'cl-group';
     const heading = document.createElement('h3');
     const strong = document.createElement('strong');
     strong.textContent = group.heading;
     heading.appendChild(strong);
-    container.appendChild(heading);
+    const lives = document.createElement('div');
+    lives.className = 'cl-lives';
     group.lives.forEach(live => {
       const label = document.createElement('label');
       const checkbox = document.createElement('input');
@@ -59,9 +62,24 @@ function renderChecklist(container, groups) {
       checkbox.className = 'checkbox';
       checkbox.addEventListener('change', checkMissingSongs);
       label.append(checkbox, live.label);
-      container.append(label, ' ');
+      lives.append(label, ' ');
     });
+    box.append(heading, lives);
+    container.appendChild(box);
   });
+}
+
+function clearChecklist() {
+  document.querySelectorAll('.checkbox:checked').forEach(cb => { cb.checked = false; });
+  checkMissingSongs();
+}
+
+// 選んだ公演の数と未回収の曲数を、結果欄の見出しとスマホ用の下のバーに出す
+function showChecklistSummary(checked, missing) {
+  const text = checked === 0 ? '公演を選ぶと、まだ聴いていない曲が出ます'
+    : `${checked}公演を選択中 ・ 未回収 ${missing}曲`;
+  document.querySelectorAll('.cl-summary').forEach(el => { el.textContent = text; });
+  document.querySelectorAll('.cl-clear').forEach(el => { el.hidden = checked === 0; });
 }
 
 function checkMissingSongs() {
@@ -69,6 +87,7 @@ function checkMissingSongs() {
   const checkedIds = Array.from(document.querySelectorAll('.checkbox:checked')).map(cb => cb.id);
   if (checkedIds.length === 0) {
     searchResults.innerHTML = '';
+    showChecklistSummary(0, 0);
     return;
   }
   if (!songData || !setlistData) {
@@ -84,8 +103,16 @@ function checkMissingSongs() {
   const count = document.createElement('p');
   count.textContent = `未回収楽曲数: ${missingSongs.length}`;
   const list = document.createElement('ul');
-  missingSongs.forEach(title => list.append(title, document.createElement('br')));
+  missingSongs.forEach(title => {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = `sub/search.html?name=${encodeURIComponent(title)}`;
+    link.textContent = title;
+    item.appendChild(link);
+    list.appendChild(item);
+  });
   searchResults.append(count, list);
+  showChecklistSummary(checkedIds.length, missingSongs.length);
 }
 
 // artist: 対象のアーティスト名（checklist.json のキーと song.json の artist）

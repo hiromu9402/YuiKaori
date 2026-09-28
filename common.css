@@ -1,0 +1,157 @@
+/* 公開サイト共通のスタイル（デザイン案1「すっきり」）
+   各ページの <style> の後に読み込み、ページごとの古い指定を上書きする。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap");
+
+:root {
+    --bg: #fbfafb;
+    --panel: #ffffff;
+    --ink: #2b2730;
+    --muted: #77707e;
+    --line: #e7e3ea;
+    --zebra: #f5f2f6;
+    --hover: #fdeef5;
+    --link: #b73572;
+    --yui: #e0508f;
+    --kaori: #2f9fd8;
+    --yuikaori: #f08a24;
+    --tsunoda: #3aa76d; /* 作曲: 俊龍 */
+}
+
+body {
+    margin: 0;
+    padding: 0 20px 40px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, input:focus-visible + label, select:focus-visible { outline: 2px solid var(--yui); outline-offset: 2px; }
+
+h1, h2 { font-size: 20px; font-weight: 700; margin: 20px 0 12px; }
+h3 { font-size: 16px; font-weight: 700; }
+
+/* ---- ナビゲーションバー ---- */
+.gnav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 18px;
+    margin: 0 -20px;
+    padding: 12px 20px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+}
+.gnav a { color: var(--muted); padding: 4px 0; border-bottom: 2px solid transparent; }
+.gnav a:hover { color: var(--ink); text-decoration: none; }
+.gnav a.on { color: var(--ink); border-bottom-color: var(--yui); }
+.gnav .brand { color: var(--ink); font-weight: 700; letter-spacing: .04em; margin-right: 8px; border: none; }
+.gnav .group { display: inline-flex; gap: 10px; align-items: center; color: var(--muted); }
+.gnav .group::before { content: "未回収チェック"; font-size: 12px; }
+
+/* ---- アーティストの切り替え（ラジオボタン・チェックボックスをタブの見た目に） ---- */
+.artist-tabs { display: flex; flex-wrap: wrap; gap: 4px 18px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+.artist-tabs > input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.artist-tabs input[type="radio"] + label {
+    padding: 6px 2px; color: var(--muted); cursor: pointer;
+    border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.artist-tabs input[type="radio"]:checked + label { color: var(--ink); font-weight: 700; border-bottom-color: currentColor; }
+.artist-tabs label::before {
+    content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    margin-right: 6px; vertical-align: 1px; background: var(--muted);
+}
+.artist-tabs .yui::before { background: var(--yui); }
+.artist-tabs .kaori::before { background: var(--kaori); }
+.artist-tabs .yuikaori::before { background: var(--yuikaori); }
+.artist-tabs input[type="radio"]:checked + label.yui { border-bottom-color: var(--yui); }
+.artist-tabs input[type="radio"]:checked + label.kaori { border-bottom-color: var(--kaori); }
+.artist-tabs input[type="radio"]:checked + label.yuikaori { border-bottom-color: var(--yuikaori); }
+/* 入力欄をラベルの中に持つ絞り込み（イベント検索）は、チェックボックスをそのまま見せる */
+.artist-tabs label:has(input) { padding: 6px 2px; color: var(--muted); cursor: pointer; }
+.artist-tabs label:has(input)::before { display: none; }
+.artist-tabs label:has(input:checked) { color: var(--ink); font-weight: 500; }
+.artist-tabs label.yui:has(input:checked) { color: var(--yui); }
+.artist-tabs label.kaori:has(input:checked) { color: var(--kaori); }
+.artist-tabs label.yuikaori:has(input:checked) { color: var(--yuikaori); }
+.artist-tabs label input { accent-color: var(--yui); margin-right: 4px; }
+
+/* ---- 表 ---- */
+table { width: 100%; border-collapse: collapse; background: var(--panel); }
+th, td { border: none; border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+th {
+    position: sticky; top: 0; z-index: 1;
+    background: var(--panel); color: var(--muted);
+    font-size: 12px; font-weight: 500; white-space: nowrap;
+    border-bottom: 2px solid var(--line);
+}
+th[onclick] { cursor: pointer; }
+th[onclick]:hover { color: var(--ink); }
+tbody tr:nth-child(even) { background: var(--zebra); }
+tbody tr:hover { background: var(--hover); }
+/* 表は枠の中でスクロールする（ページ全体は横にずれない。見出し行は枠の上に残る） */
+.table-wrap {
+    overflow: auto;
+    max-height: calc(100vh - 140px);
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+}
+/* 楽曲一覧: 短い列は折り返さない */
+#songTable td:nth-child(n+2):nth-child(-n+6), #songTable td:nth-child(10), #songTable td:nth-child(12) { white-space: nowrap; }
+#songTable td:first-child { min-width: 11em; }
+th:first-child { white-space: normal; }
+
+/* 作詞・作曲の色分け（楽曲一覧） */
+.pink-cell { background: none; box-shadow: inset 3px 0 0 var(--yui); }
+.cyan-cell { background: none; box-shadow: inset 3px 0 0 var(--kaori); }
+.green-cell { background: none; box-shadow: inset 3px 0 0 var(--tsunoda); }
+
+/* イベント・カレンダーのアーティスト色 */
+.artist1 { color: var(--yui); }
+.artist2 { color: var(--kaori); }
+.artist3 { color: var(--yuikaori); }
+
+/* ツアー比較の強調 */
+#concertTable td, #concertTable th { text-align: center; white-space: pre-wrap; min-width: 8em; }
+.pink { background: #fbe1ec !important; }
+.cyan { background: #dcf0fa !important; }
+.orange { background: #fde8d2 !important; }
+select {
+    font: inherit; color: var(--ink); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin-bottom: 12px;
+}
+
+/* ---- セットリスト・検索結果のページ ---- */
+#liveInfo, #results { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 20px 16px; margin-top: 16px; }
+#liveInfo h2 { margin-bottom: 0; }
+#liveInfo h3 { color: var(--muted); font-weight: 400; font-size: 13px; margin: 2px 0 10px; }
+#liveInfo ul { padding: 0; margin: 0; }
+#liveInfo p { margin: 0; padding: 3px 0; }
+#liveInfo p.sec {
+    font-size: 12px; letter-spacing: .08em; color: var(--muted);
+    border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px;
+}
+#liveInfo .med { display: inline-block; padding-left: 2.2em; font-size: 13px; }
+#results p { margin: 0; padding: 4px 0; border-bottom: 1px solid var(--line); }
+
+/* イベント検索の絞り込み */
+#checkboxContainer { line-height: 1.9; margin-bottom: 10px; }
+#checkboxContainer label { white-space: nowrap; margin-right: 4px; }
+button {
+    font: inherit; color: var(--ink); background: var(--panel); cursor: pointer;
+    border: 1px solid var(--line); border-radius: 6px; padding: 5px 12px; margin-bottom: 10px;
+}
+button:hover { border-color: var(--yui); }
+
+/* 未回収チェック */
+#checklist h3 { display: inline; margin-right: 10px; }
+.result { margin-top: 16px; }
+
+@media (prefers-reduced-motion: no-preference) {
+    tbody tr { transition: background .15s; }
+}

@@ -44,14 +44,20 @@ function extractSongs(arr) {
 }
 
 function renderChecklist(container, groups) {
-  // ツアー・シリーズごとに、見出し（h3）と公演のチェックボックス（丸いボタンの見た目）をまとめる
-  groups.forEach(group => {
-    const box = document.createElement('div');
+  // ツアー・シリーズごとに折りたためる行を作る。行を押すと公演のボタン（チェックボックス）が開く。
+  // 最初は、いちばん新しいツアー（先頭）だけを開いておく。
+  groups.forEach((group, index) => {
+    const box = document.createElement('details');
     box.className = 'cl-group';
+    box.open = index === 0;
+    const summary = document.createElement('summary');
     const heading = document.createElement('h3');
     const strong = document.createElement('strong');
     strong.textContent = group.heading;
     heading.appendChild(strong);
+    const badge = document.createElement('span');
+    badge.className = 'cl-badge';
+    summary.append(heading, badge);
     const lives = document.createElement('div');
     lives.className = 'cl-lives';
     group.lives.forEach(live => {
@@ -64,9 +70,40 @@ function renderChecklist(container, groups) {
       label.append(checkbox, live.label);
       lives.append(label, ' ');
     });
-    box.append(heading, lives);
+    if (group.lives.length > 1) {
+      // そのツアーの公演をまとめて選ぶ・外す
+      const all = document.createElement('button');
+      all.type = 'button';
+      all.className = 'cl-all';
+      all.addEventListener('click', () => {
+        const boxes = [...lives.querySelectorAll('.checkbox')];
+        const on = !boxes.every(cb => cb.checked);
+        boxes.forEach(cb => { cb.checked = on; });
+        checkMissingSongs();
+      });
+      lives.appendChild(all);
+    }
+    box.append(summary, lives);
     container.appendChild(box);
   });
+  updateChecklistBadges();
+}
+
+// 各ツアーの行に、公演数（「9公演」）または選んだ数（「2/9」）を出す
+function updateChecklistBadges() {
+  document.querySelectorAll('.cl-group').forEach(group => {
+    const boxes = [...group.querySelectorAll('.checkbox')];
+    const n = boxes.filter(cb => cb.checked).length;
+    const badge = group.querySelector('.cl-badge');
+    badge.textContent = n ? `${n}/${boxes.length}` : `${boxes.length}公演`;
+    badge.classList.toggle('on', n > 0);
+    const all = group.querySelector('.cl-all');
+    if (all) all.textContent = n === boxes.length ? '全部外す' : '全部選ぶ';
+  });
+}
+
+function toggleChecklistGroups(open) {
+  document.querySelectorAll('.cl-group').forEach(group => { group.open = open; });
 }
 
 function clearChecklist() {
@@ -80,6 +117,7 @@ function showChecklistSummary(checked, missing) {
     : `${checked}公演を選択中 ・ 未回収 ${missing}曲`;
   document.querySelectorAll('.cl-summary').forEach(el => { el.textContent = text; });
   document.querySelectorAll('.cl-clear').forEach(el => { el.hidden = checked === 0; });
+  updateChecklistBadges();
 }
 
 function checkMissingSongs() {

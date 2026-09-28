@@ -248,9 +248,29 @@ button:hover { border-color: var(--yui); }
 
 /* ---- 未回収チェック ---- */
 .cl-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
-.cl-group { padding: 8px 0 10px; border-bottom: 1px solid var(--line); }
-.cl-group h3 { font-size: 14px; margin: 0 0 6px; }
-.cl-lives { display: flex; flex-wrap: wrap; gap: 6px; }
+/* ツアーごとに折りたためる一覧 */
+#checklist { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.cl-tools { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 4px; }
+.cl-tools button, .cl-all { font-size: 12px; background: none; border: none; color: var(--link); padding: 2px 4px; margin: 0; }
+.cl-group { border-top: 1px solid var(--line); }
+.cl-group:first-child { border-top: none; }
+.cl-group > summary { list-style: none; display: flex; align-items: center; gap: 10px; padding: 7px 12px; cursor: pointer; }
+.cl-group > summary::-webkit-details-marker { display: none; }
+.cl-group > summary::before {
+    content: ""; flex: none; width: 6px; height: 6px; margin-right: 2px;
+    border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+    transform: rotate(-45deg); transition: transform .15s;
+}
+.cl-group[open] > summary::before { transform: rotate(45deg); }
+.cl-group > summary:hover { background: var(--hover); }
+.cl-group h3 { flex: 1; min-width: 0; font-size: 14px; margin: 0; }
+.cl-group h3 strong { font-weight: 500; }
+.cl-badge {
+    flex: none; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0 8px;
+}
+.cl-badge.on { background: var(--yui); border-color: var(--yui); color: #fff; font-weight: 500; }
+.cl-lives { display: flex; flex-wrap: wrap; gap: 6px; padding: 2px 12px 10px 30px; }
 .cl-lives input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
 .cl-lives label {
     display: inline-block; padding: 1px 10px; border: 1px solid var(--line); border-radius: 999px;

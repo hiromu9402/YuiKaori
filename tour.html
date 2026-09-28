@@ -17,9 +17,9 @@
   <h1>ツアーセットリスト比較ページ</h1>
   <label for="tourSelect">ツアー名を選択：</label>
   <select id="tourSelect"></select>
-  <br><br>
-  <div class="table-wrap"><table id="concertTable"></table></div>
-  <div class="container" id="setlistContainer"></div>
+  <p class="hint">色の付いた行は、公演によって曲が違うところです。曲名を押すと、その曲を披露した公演の一覧が開きます。</p>
+  <table id="concertTable"></table>
+  <div class="container table-wrap" id="setlistContainer"></div>
 
   <script src="common.js"></script>
   <script>
@@ -31,9 +31,9 @@
     const formatSong = (song) => {
       if (!song) return '';
       if (typeof song === 'object' && song.medley) {
-        return `【メドレー】<br>` +
+        return `<span class="medley-label">【メドレー】</span><br>` +
           song.medley.map(track =>
-            `<a href="./sub/search.html?name=${encodeURIComponent(track)}">${track}</a>`
+            `<span class="med"><a href="./sub/search.html?name=${encodeURIComponent(track)}">${track}</a></span>`
           ).join('<br>');
       }
       return `<a href="./sub/search.html?name=${encodeURIComponent(song)}">${song}</a>`;
@@ -82,8 +82,10 @@
           });
 
           const table = document.createElement('table');
+          table.className = 'compare';
 
           const headerRow = table.insertRow();
+          headerRow.className = 'head';
           headerRow.insertCell().textContent = '';
           concerts.forEach(concert =>
             headerRow.insertCell().textContent =
@@ -91,14 +93,17 @@
           );
 
           const dateRow = table.insertRow();
+          dateRow.className = 'meta';
           dateRow.insertCell().textContent = '開催日';
           concerts.forEach(c => dateRow.insertCell().textContent = c.date);
 
           const venueRow = table.insertRow();
+          venueRow.className = 'meta';
           venueRow.insertCell().textContent = '会場';
           concerts.forEach(c => venueRow.insertCell().textContent = c.venue);
 
           const setHeader = table.insertRow();
+          setHeader.className = 'sec';
           setHeader.insertCell().textContent = '';
           concerts.forEach(() => setHeader.insertCell().textContent = '【セットリスト】');
 
@@ -116,6 +121,7 @@
 
           if (maxEncoreLength > 0) {
             const encHeader = table.insertRow();
+            encHeader.className = 'sec';
             encHeader.insertCell().textContent = '';
             concerts.forEach(() => encHeader.insertCell().textContent = '【アンコール】');
 
@@ -136,6 +142,7 @@
           if (maxWencore > 0) {
 
             const wencoreHeader = table.insertRow();
+            wencoreHeader.className = 'sec';
             wencoreHeader.insertCell().textContent = '';
 
             concerts.forEach((concert, idx) => {

@@ -187,9 +187,40 @@ select {
 #liveInfo .med { display: inline-block; padding-left: 2.2em; font-size: 13px; }
 #results p { margin: 0; padding: 4px 0; border-bottom: 1px solid var(--line); }
 
-/* イベント検索の絞り込み */
-#checkboxContainer { line-height: 1.9; margin-bottom: 10px; }
-#checkboxContainer label { white-space: nowrap; margin-right: 4px; }
+/* ---- イベント検索 ---- */
+.filters { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; margin: 0 0 12px; }
+.filters summary { cursor: pointer; color: var(--ink); font-weight: 500; }
+.filters summary span { color: var(--yui); font-weight: 400; margin-left: 6px; }
+.filters[open] summary { margin-bottom: 8px; }
+#checkboxContainer { margin: 0; }
+#checkboxContainer > div {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    padding: 6px 0; border-top: 1px solid var(--line);
+}
+#checkboxContainer strong { flex: 0 0 5.5em; color: var(--muted); font-size: 12px; font-weight: 500; }
+/* チェックボックスを丸いボタンの見た目にする（選ぶと色が付く） */
+#checkboxContainer input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
+#checkboxContainer label {
+    display: inline-block; padding: 1px 10px; border: 1px solid var(--line); border-radius: 999px;
+    color: var(--ink); background: var(--panel); cursor: pointer; font-size: 13px; line-height: 1.7;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+#checkboxContainer label:hover { border-color: var(--yui); }
+#checkboxContainer input:checked + label { background: var(--yui); border-color: var(--yui); color: #fff; }
+#checkboxContainer input:focus-visible + label { outline: 2px solid var(--yui); outline-offset: 2px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+/* イベントの表: 日付・時刻は折り返さず、分類・with・備考は小さく、タイトルと会場は広めに */
+#eventTable td:nth-child(-n+5) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+#eventTable td:nth-child(n+6):nth-child(-n+8) { color: var(--muted); font-size: .9em; }
+#eventTable td:nth-child(9) { min-width: 16em; font-weight: 500; }
+#eventTable td:nth-child(12) { min-width: 10em; }
+#eventTable td:nth-child(13), #eventTable td:nth-child(14) { color: var(--muted); font-size: .9em; }
+.setlist-link {
+    display: inline-block; white-space: nowrap; padding: 0 10px; font-size: .9em;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--panel);
+}
+.setlist-link:hover { border-color: var(--yui); text-decoration: none; }
+
 button {
     font: inherit; color: var(--ink); background: var(--panel); cursor: pointer;
     border: 1px solid var(--line); border-radius: 6px; padding: 5px 12px; margin-bottom: 10px;

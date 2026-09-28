@@ -462,6 +462,19 @@
         ]
     },
     {
+        "LIVEtitle": "Sho Watanabe 20th Anniversary Fes.2026 supported by リスアニ！",
+        "tourtitle": "",
+        "artist": "石原夏織",
+        "date": "2026年4月19日",
+        "venue": "豊洲PIT",
+        "id": "2026041901",
+        "setlist": [
+            "Paraglider",
+            "Page Flip",
+            "Clover wish"
+        ]
+    },
+    {
         "LIVEtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops 昼公演",
         "tourtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops",
         "artist": "小倉唯",
@@ -528,6 +541,21 @@
             "治癒治癒ちゅっ♡",
             "Honey♥Come!!",
             "So☆Lucky"
+        ]
+    },
+    {
+        "LIVEtitle": "京 Premium Live 2025",
+        "tourtitle": "",
+        "artist": "石原夏織",
+        "date": "2025年12月27日",
+        "venue": "ロームシアター京都",
+        "id": "2025122701",
+        "setlist": [
+            "Ray Rule",
+            "ムーンランナー",
+            "Cherish",
+            "ポペラ・ホリカ",
+            "Plastic Smile"
         ]
     },
     {
@@ -2582,7 +2610,7 @@
             "半透明の世界で",
             "CREATION×CREATION",
             "ポペラ・ホリカ",
-            "Clover Wish",
+            "Clover wish",
             "Crispy love",
             "Orange Note",
             "empathy",

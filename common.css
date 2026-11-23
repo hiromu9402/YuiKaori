@@ -494,8 +494,6 @@ th[aria-sort] { color: var(--ink); }
 
 /* 作家（writers.html・sub/writer.html と、作家名のリンク） */
 .song-tools .to-writers { margin-left: auto; font-size: 13px; white-space: nowrap; }
-a.writer { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
-a.writer:hover { text-decoration-color: currentColor; }
 #writerTable td:nth-child(n+2) { text-align: right; width: 4.5em; white-space: nowrap; }
 .wr-wrap .table-wrap { margin-top: 12px; }
 .wr-table td:nth-child(n+2):nth-child(-n+4), .wr-table td:last-child { white-space: nowrap; }

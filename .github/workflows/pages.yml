@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # データの更新日（meta.json）を git の履歴から調べるため、全履歴を取る
       - name: 許可リストのテスト（ubuntu-latest に入っている python3 を使う）
         run: python3 -m unittest discover -s tools -p 'test_*.py' -v
       - name: 公開ファイルを集める

@@ -63,7 +63,7 @@ class BuildSiteTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertTrue(site_files.allowed(path))
         for path in ["HANDOFF.md", "README.md", ".gitignore", ".git/config", "tools/site_files.py",
-                     "tools/test_site.py", "admin/serve.py", ".github/workflows/pages.yml", "sub/../tools/x.html",
+                     "tools/test_site.py", "tests/probe.js", "tests/test_pages.py", "admin/serve.py", ".github/workflows/pages.yml", "sub/../tools/x.html",
                      "sub/notes.md", "../index.html", ".hidden.html"]:
             with self.subTest(path=path):
                 self.assertFalse(site_files.allowed(path))

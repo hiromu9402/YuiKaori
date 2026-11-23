@@ -1,0 +1,38 @@
+# main に push されたら、公開サイトのファイルだけを GitHub Pages に公開する。
+# 公開するファイルは admin/deploy/site_files.py の許可リストで決める（admin/ や README.md は公開しない）。
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: 公開ファイルを集める（ubuntu-latest に入っている python3 を使う）
+        run: python3 admin/deploy/build_site.py _site
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

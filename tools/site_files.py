@@ -16,6 +16,10 @@ ALLOWED = [
 ]
 
 
+# 管理画面から書き出すデータのファイル。これらが最後に変わった日を「データ更新」として出す（build_site.py の meta.json）
+DATA_FILES = ["song.json", "CD.json", "setlist.json", "event.json", "tours.json", "checklist.json"]
+
+
 def allowed(relpath):
     return any(p.match(relpath) for p in ALLOWED)
 

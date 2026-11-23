@@ -11,12 +11,14 @@
 |---|---|
 | `index.html` | トップ |
 | `songs.html` | 楽曲一覧（披露回数など） |
+| `writers.html` | 作家から探す（作詞・作曲・編曲の作家ごとの曲数） |
 | `tour.html` | ツアー比較 |
 | `event.html` | イベント検索 |
 | `calendar.html` | カレンダー |
 | `my.html`・`my_c.html`・`my_f.html` | 未回収楽曲チェック |
 | `sub/setlist.html` | 公演ごとのセットリスト |
 | `sub/search.html` | 曲ごとの披露一覧 |
+| `sub/writer.html` | 作家ごとの曲の一覧 |
 
 データは直下の JSON（`song.json`・`CD.json`・`setlist.json`・`event.json`・`tours.json`・`checklist.json`）にあり、各ページがそれを読み込んで表示します。
 
@@ -24,7 +26,7 @@
 
 - 直下と `sub/` … 公開サイト（静的な HTML・CSS・JS と JSON）
 - `tools/` … 公開の仕組み（許可リスト `site_files.py`、公開ファイルを集める `build_site.py`、手元で確かめる `serve_site.py`、そのテスト）
-- `tests/` … ページの動きのテスト（headless Chromium）。トップの数字、楽曲一覧の検索と並べ替え、ツアー比較の選択、イベント検索の絞り込み、セットリストの「○回目」、ナビゲーションとフッター、JavaScript のエラーがないことを確かめます。
+- `tests/` … ページの動きのテスト（headless Chromium）。トップの数字、楽曲一覧の検索と並べ替え、作家の一覧と作家ごとのページ、ツアー比較の選択、イベント検索の絞り込み、セットリストの「○回目」、ナビゲーションとフッター、JavaScript のエラーがないことを確かめます。
 - `.github/workflows/pages.yml` … `main` に push されると、公開サイトのファイルだけを GitHub Pages に公開します。公開するファイルは `tools/site_files.py` の許可リストで決めていて、`tools/` やこの README は公開されません。
 
 ## データの更新の流れ

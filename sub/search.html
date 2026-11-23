@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../common.css">
 </head>
 <body>
-<nav class="gnav"><a class="brand" href="../index.html">ゆいかおり DB</a><a href="../songs.html">楽曲一覧</a><a href="../tour.html">ツアー比較</a><a href="../event.html">イベント検索</a><a href="../calendar.html">カレンダー</a><span class="group"><a href="../my.html">唯ソロ</a><a href="../my_c.html">夏織ソロ</a><a href="../my_f.html">ゆいかおり</a></span></nav>
+<nav class="gnav"><a class="brand" href="../index.html">ゆいかおり DB</a><a href="../songs.html">楽曲一覧</a><a href="../writers.html">作家</a><a href="../tour.html">ツアー比較</a><a href="../event.html">イベント検索</a><a href="../calendar.html">カレンダー</a><span class="group"><a href="../my.html">唯ソロ</a><a href="../my_c.html">夏織ソロ</a><a href="../my_f.html">ゆいかおり</a></span></nav>
 <div class="sr-wrap">
 <section class="sr-song" id="song">
     <h2 id="title"></h2>
@@ -16,6 +16,7 @@
 <div id="stats"></div>
 <div id="results"></div>
 </div>
+<script src="../writer.js"></script>
 <script>
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const arr = v => Array.isArray(v) ? v : (v ? [v] : []);
@@ -63,9 +64,9 @@ async function searchSetlist() {
         ].filter(Boolean);
         info.innerHTML = `<dl class="sr-meta">
             <div><dt>歌</dt><dd>${esc(song.artist)}</dd></div>
-            <div><dt>作詞</dt><dd>${esc(song.lyrics)}</dd></div>
-            <div><dt>作曲</dt><dd>${esc(song.music)}</dd></div>
-            <div><dt>編曲</dt><dd>${esc(song.arranger)}</dd></div>
+            <div><dt>作詞</dt><dd>${YKWriters.writerLinks(song.lyrics, '../')}</dd></div>
+            <div><dt>作曲</dt><dd>${YKWriters.writerLinks(song.music, '../')}</dd></div>
+            <div><dt>編曲</dt><dd>${YKWriters.writerLinks(song.arranger, '../')}</dd></div>
             ${song.length ? `<div><dt>長さ</dt><dd>${esc(song.length)}</dd></div>` : ''}
             <div class="wide"><dt>収録CD</dt><dd>${esc(arr(song.CDtitle).join(' / '))}${first ? `（${esc(first.date)} 発売）` : ''}</dd></div>
           </dl>` + (links.length ? `<div class="sr-links">${links.join('')}</div>` : '');

@@ -32,7 +32,7 @@
 </head>
 
 <body>
-<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="songs.html" class="on">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="songs.html" class="on">楽曲一覧</a><a href="writers.html">作家</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
     <h2>ゆいかおり楽曲一覧</h2>
     <div class="artist-tabs">
         <input type="radio" id="yui-solo" name="artist-filter" value="yui" checked class="radio-input">
@@ -45,6 +45,7 @@
     <div class="song-tools">
         <input type="search" id="songSearch" placeholder="曲名・作詞・作曲・編曲・収録CDで絞り込む" aria-label="楽曲の絞り込み">
         <span id="songCount"></span>
+        <a href="writers.html" class="to-writers">作家から探す →</a>
     </div>
     <div class="table-wrap">
     <table>
@@ -68,6 +69,7 @@
     </table>
     </div>
 
+    <script src="writer.js"></script>
     <script>
         let songData = []; // 追加: 曲データを保存する配列
         let reverseSortPerformanceCount = true; // 披露回数の逆順フラグ
@@ -190,9 +192,9 @@
                                                 <td>${videoLink}</td> 
                                                 <td><a href="./sub/search.html?name=${encodeURIComponent(song.title)}">${performanceData.count}</a></td> 	
                                                 <td><a href="./sub/setlist.html?id=${performanceData.id}">${performanceData.latestDate ? formatDateToJapanese(new Date(performanceData.latestDate)) : '未披露'}</a></td>
-                                                <td class="${lyricsClass}">${song.lyrics}</td>
-                                                <td class="${musicClass}">${song.music}</td>
-                                                <td>${song.arranger}</td>
+                                                <td class="${lyricsClass}">${YKWriters.writerLinks(song.lyrics, './')}</td>
+                                                <td class="${musicClass}">${YKWriters.writerLinks(song.music, './')}</td>
+                                                <td>${YKWriters.writerLinks(song.arranger, './')}</td>
                                                 <td>${song.length}</td>
                                                 <td>${song.CDtitle}</td>
                                                 <td>${formattedDate}</td>

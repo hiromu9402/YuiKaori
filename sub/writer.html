@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作家の曲一覧</title>
+<link rel="stylesheet" href="../common.css">
+</head>
+<body>
+<nav class="gnav"><a class="brand" href="../index.html">ゆいかおり DB</a><a href="../songs.html">楽曲一覧</a><a href="../writers.html">作家</a><a href="../tour.html">ツアー比較</a><a href="../event.html">イベント検索</a><a href="../calendar.html">カレンダー</a><span class="group"><a href="../my.html">唯ソロ</a><a href="../my_c.html">夏織ソロ</a><a href="../my_f.html">ゆいかおり</a></span></nav>
+<div class="sr-wrap wr-wrap">
+<section class="sr-song" id="writer">
+    <h2 id="title"></h2>
+    <div id="writerInfo"></div>
+</section>
+<div class="table-wrap">
+<table id="songTable" class="wr-table">
+    <thead><tr><th>曲名</th><th>歌</th><th>担当</th><th>リリース日</th><th>収録CD</th><th>披露回数</th></tr></thead>
+    <tbody></tbody>
+</table>
+</div>
+<p class="hint"><a href="../writers.html">作家の一覧に戻る</a></p>
+</div>
+<script src="../writer.js"></script>
+<script>
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const arr = v => Array.isArray(v) ? v : (v ? [v] : []);
+const ymd = date => (String(date).match(/\d+/g) || []).map(Number);
+const dateKey = date => ymd(date).map((n, i) => String(n).padStart(i ? 2 : 4, '0')).join('-');
+const ARTIST = { '小倉唯': ['唯ソロ', 'artist1'], '石原夏織': ['夏織ソロ', 'artist2'], 'ゆいかおり': ['ゆいかおり', 'artist3'] };
+const songsOf = live => ['setlist', 'encore', 'Wencore']
+    .flatMap(k => arr(live[k]).filter(Boolean).flatMap(t => typeof t === 'object' ? arr(t.medley) : [t]));
+
+async function show() {
+    const name = (new URLSearchParams(location.search).get('name') || '').trim();
+    const [songs, cds, lives] = await Promise.all(['../song.json', '../CD.json', '../setlist.json']
+        .map(url => fetch(url).then(r => r.json())));
+    const writer = YKWriters.collectWriters(songs).get(YKWriters.writerKey(name));
+    document.title = `${name || '作家'} の曲一覧`;
+    document.getElementById('title').textContent = writer ? `${writer.name} の曲（${writer.songs.length}曲）` : name;
+    if (!writer) {
+        document.getElementById('writerInfo').innerHTML = `<p class="sr-note">${name ? 'この作家の曲は、楽曲一覧にありません。' : '作家が指定されていません。'}</p>`;
+        document.getElementById('songTable').hidden = true;
+        return;
+    }
+    const roleCount = label => writer.songs.filter(x => x.roles.includes(label)).length;
+    const forms = [...writer.forms];
+    document.getElementById('writerInfo').innerHTML = `<dl class="sr-meta">
+        ${YKWriters.ROLES.map(([, label]) => `<div><dt>${label}</dt><dd>${roleCount(label)}曲</dd></div>`).join('')}
+        ${forms.length > 1 ? `<div class="wide"><dt>表記</dt><dd>${forms.map(esc).join(' / ')}</dd></div>` : ''}
+      </dl>`;
+
+    // 披露回数（その曲を歌った公演の数）と、最初に収録した CD の発売日
+    const performed = new Map();
+    lives.forEach(live => new Set(songsOf(live)).forEach(t => performed.set(t, (performed.get(t) || 0) + 1)));
+    const release = song => arr(song.CDtitle).map(t => cds.find(c => c.CDtitle === t)).filter(Boolean)
+        .sort((a, b) => dateKey(a.date).localeCompare(dateKey(b.date)))[0];
+    const rows = writer.songs.map(({ song, roles }) => ({ song, roles, cd: release(song) }))
+        .sort((a, b) => (b.cd ? dateKey(b.cd.date) : '').localeCompare(a.cd ? dateKey(a.cd.date) : '') || a.song.title.localeCompare(b.song.title, 'ja'));
+    document.querySelector('#songTable tbody').innerHTML = rows.map(({ song, roles, cd }) => {
+        const [artist, cls] = ARTIST[song.artist] || [song.artist, ''];
+        const n = performed.get(song.title) || 0;
+        const link = `search.html?name=${encodeURIComponent(song.title)}`;
+        return `<tr>
+          <td><a href="${link}">${esc(song.title)}</a></td>
+          <td class="${cls}">${esc(artist)}</td>
+          <td>${esc(roles.join('・'))}</td>
+          <td>${cd ? esc(cd.date) : ''}</td>
+          <td>${esc(arr(song.CDtitle).join(' / '))}</td>
+          <td>${n ? `<a href="${link}">${n}</a>` : '未披露'}</td>
+        </tr>`;
+    }).join('');
+}
+
+show().catch(error => {
+    console.error(error);
+    document.getElementById('writerInfo').innerHTML = '<p class="sr-note">データを読み込めませんでした。</p>';
+});
+</script>
+<script src="../table-zoom.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

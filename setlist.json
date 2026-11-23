@@ -1,5 +1,564 @@
 [
     {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 神奈川公演",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年9月6日",
+        "venue": "よこすか芸術劇場",
+        "id": "2026090601",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Happy Strawberry",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Wild☆Kitty",
+            "ハイタッチ☆メモリー"
+        ],
+        "Wencore": [
+            "わくわくシャンプー&リンス",
+            "トキメキWeekend!"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・ルネこだいら公演 1部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月30日",
+        "venue": "ルネこだいら 大ホール",
+        "id": "2026083001",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Wherever",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・ルネこだいら公演 2部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月30日",
+        "venue": "ルネこだいら 大ホール",
+        "id": "2026083002",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Wherever",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "石原夏織 LIVE 2026「ASOVIVA!!!」",
+        "tourtitle": "石原夏織 LIVE 2026「ASOVIVA!!!」",
+        "artist": "石原夏織",
+        "date": "2026年8月23日",
+        "venue": "北とぴあ さくらホール",
+        "id": "2026082301",
+        "setlist": [
+            "We Can Do!!",
+            "Cherish",
+            "You & I",
+            "CREATION×CREATION",
+            "フィービー・フィービー",
+            "キラリアット",
+            "ASOBO-YO運命論序説",
+            "ポペラ・ホリカ",
+            "Against.",
+            "Yummy!Yummy!",
+            "Abracada-Boo",
+            "Singularity Point",
+            "Little Humming Love",
+            "Remember Heart, Remember Love",
+            "Crispy love",
+            "Face to Face",
+            "Plastic Smile",
+            "Page Flip",
+            "Harmonia",
+            "星眼鏡"
+        ],
+        "encore": [
+            "Paraglider",
+            "Orange Note",
+            "SUMMER DROP"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 愛知公演",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月22日",
+        "venue": "名古屋文理大学文化フォーラム(稲沢市民会館)",
+        "id": "2026082201",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Tinkling Smile",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Future Strike",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・LINE CUBE SHIBUYA公演 1部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月14日",
+        "venue": "LINE CUBE SHIBUYA",
+        "id": "2026081401",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Magic♡Happy",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 東京・LINE CUBE SHIBUYA公演 2部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月14日",
+        "venue": "LINE CUBE SHIBUYA",
+        "id": "2026081402",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "ハピネス*センセーション",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "Magic♡Happy",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 群馬公演",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年8月9日",
+        "venue": "メガネのイタガキ文化ホール伊勢崎(伊勢崎市文化会館)",
+        "id": "2026080901",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Tinkling Smile",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Baby Sweet Berry Love",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "君色のキセキ",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 京都公演 1部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年7月26日",
+        "venue": "京都劇場",
+        "id": "2026072601",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Happy Strawberry",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "Get over",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "すうぃ～と♡ぱーてぃー",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～ 京都公演 2部",
+        "tourtitle": "Yui's＊Company. LIVE TOUR 2026 SUMMER ～泡沫のマーメイド♡～",
+        "artist": "小倉唯",
+        "date": "2026年7月26日",
+        "venue": "京都劇場",
+        "id": "2026072602",
+        "setlist": [
+            "プラチナ・パスポート",
+            "Hop Step Jump!",
+            "Happy Strawberry",
+            "秘密♡Melody",
+            "Q.E.D.",
+            {
+                "medley": [
+                    "Empty//Princess.",
+                    "ドキドキラビリンス",
+                    "ガーリッシュエイジ"
+                ]
+            },
+            "センチメンタルメッセージ",
+            {
+                "medley": [
+                    "Clear Morning",
+                    "Wind of Bloom"
+                ]
+            },
+            "Raise",
+            {
+                "medley": [
+                    "So☆Lucky",
+                    "治癒治癒ちゅっ♡",
+                    "Honey♥Come!!"
+                ]
+            },
+            "泡沫マーメイド"
+        ],
+        "encore": [
+            "永遠少年",
+            "すうぃ～と♡ぱーてぃー",
+            "ハイタッチ☆メモリー"
+        ]
+    },
+    {
+        "LIVEtitle": "Animelo Summer Live 2026 -Messenger-",
+        "tourtitle": "Animelo Summer Live",
+        "artist": [
+            "小倉唯",
+            "石原夏織",
+            "ゆいかおり"
+        ],
+        "date": "2026年7月11日",
+        "venue": "幕張メッセ 国際展示場ホール",
+        "id": "2026071101",
+        "setlist": [
+            "Q.E.D.",
+            "Future Strike",
+            "Baby Sweet Berry Love",
+            "We Can Do!!",
+            "星眼鏡",
+            "Gift",
+            "Honey♥Come!!",
+            "Cherish",
+            "PUPPY LOVE!!"
+        ]
+    },
+    {
+        "LIVEtitle": "ANISAMA in TAIPEI 2026 -DOSHA！-",
+        "tourtitle": "ANISAMA in TAIPEI",
+        "artist": "小倉唯",
+        "date": "2026年5月10日",
+        "venue": "台北世界貿易中心南港展覽館",
+        "id": "2026051001",
+        "setlist": [
+            "Baby Sweet Berry Love",
+            "Honey♥Come!!",
+            "So☆Lucky"
+        ]
+    },
+    {
+        "LIVEtitle": "Sho Watanabe 20th Anniversary Fes.2026 supported by リスアニ！",
+        "tourtitle": "",
+        "artist": "石原夏織",
+        "date": "2026年4月19日",
+        "venue": "豊洲PIT",
+        "id": "2026041901",
+        "setlist": [
+            "Paraglider",
+            "Page Flip",
+            "Clover wish"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops 昼公演",
+        "tourtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops",
+        "artist": "小倉唯",
+        "date": "2026年2月11日",
+        "venue": "パルテノン多摩 大ホール",
+        "id": "2026021101",
+        "setlist": [
+            "チョコレート・メモリアル",
+            "バレンタイン・キッス",
+            "アップル・ガール",
+            "いつだって Call Me!",
+            "君が好きです",
+            "赤いリボン",
+            "雨の森はウソつき",
+            {
+                "medley": [
+                    "赤いスイートピー",
+                    "少女A",
+                    "タッチ",
+                    "年下の男の子"
+                ]
+            },
+            "パンドラ♡ショコラ",
+            "チョコレート・メモリアル"
+        ]
+    },
+    {
+        "LIVEtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops 夜公演",
+        "tourtitle": "Yui's＊company.社員総会2026 ～甘い香りに誘われて♡～ with music by baladin pops",
+        "artist": "小倉唯",
+        "date": "2026年2月11日",
+        "venue": "パルテノン多摩 大ホール",
+        "id": "2026021102",
+        "setlist": [
+            "チョコレート・メモリアル",
+            "バレンタイン・キッス",
+            "アップル・ガール",
+            "いつだって Call Me!",
+            "君が好きです",
+            "ショコラ",
+            "雨の森はウソつき",
+            {
+                "medley": [
+                    "赤いスイートピー",
+                    "少女A",
+                    "タッチ",
+                    "年下の男の子"
+                ]
+            },
+            "パンドラ♡ショコラ",
+            "チョコレート・メモリアル"
+        ]
+    },
+    {
+        "LIVEtitle": "リスアニ！LIVE 2026 SATURDAY STAGE",
+        "tourtitle": "リスアニ！LIVE",
+        "artist": "小倉唯",
+        "date": "2026年1月31日",
+        "venue": "幕張メッセ イベントホール",
+        "id": "2026013101",
+        "setlist": [
+            "Future Strike",
+            "Empty//Princess.",
+            "治癒治癒ちゅっ♡",
+            "Honey♥Come!!",
+            "So☆Lucky"
+        ]
+    },
+    {
+        "LIVEtitle": "京 Premium Live 2025",
+        "tourtitle": "",
+        "artist": "石原夏織",
+        "date": "2025年12月27日",
+        "venue": "ロームシアター京都",
+        "id": "2025122701",
+        "setlist": [
+            "Ray Rule",
+            "ムーンランナー",
+            "Cherish",
+            "ポペラ・ホリカ",
+            "Plastic Smile"
+        ]
+    },
+    {
         "LIVEtitle": "小倉唯 LIVE TOUR 2025「Love♡Ratory」アフターパーティー",
         "tourtitle": "",
         "artist": "小倉唯",
@@ -10,10 +569,10 @@
             "Love∞Vision",
             "花占いするの♡",
             {
-            "medley": [
-                "LOVE涙色",
-                "ラムのラブソング",
-                "Baby, Baby, Baby♡"
+                "medley": [
+                    "LOVE涙色",
+                    "ラムのラブソング",
+                    "Baby, Baby, Baby♡"
                 ]
             }
         ]
@@ -36,9 +595,9 @@
             "治癒治癒ちゅっ♡",
             "ドキドキラビリンス",
             {
-            "medley": [
-                "エンジョイ!",
-                "PRISM BEAT"
+                "medley": [
+                    "エンジョイ!",
+                    "PRISM BEAT"
                 ]
             },
             "True Path",
@@ -47,15 +606,15 @@
             "Wish",
             "ハートフォレスト",
             {
-            "medley": [
-                "君色のキセキ",
-                "Lovely Happily Shiny Days",
-                "ハピネス*センセーション"
+                "medley": [
+                    "君色のキセキ",
+                    "Lovely Happily Shiny Days",
+                    "ハピネス*センセーション"
                 ]
             },
             "Baby Sweet Berry Love"
         ],
-        "encore": [          
+        "encore": [
             "Magic♡Happy",
             "Fightin★Pose",
             {
@@ -89,9 +648,9 @@
             "治癒治癒ちゅっ♡",
             "Wild☆Kitty",
             {
-            "medley": [
-                "エンジョイ!",
-                "PRISM BEAT"
+                "medley": [
+                    "エンジョイ!",
+                    "PRISM BEAT"
                 ]
             },
             "True Path",
@@ -100,15 +659,15 @@
             "Wish",
             "ハートフォレスト",
             {
-            "medley": [
-                "君色のキセキ",
-                "Lovely Happily Shiny Days",
-                "ハピネス*センセーション"
+                "medley": [
+                    "君色のキセキ",
+                    "Lovely Happily Shiny Days",
+                    "ハピネス*センセーション"
                 ]
             },
             "Baby Sweet Berry Love"
         ],
-        "encore": [          
+        "encore": [
             "Magic♡Happy",
             "Fightin★Pose",
             {
@@ -138,9 +697,9 @@
             "治癒治癒ちゅっ♡",
             "Wild☆Kitty",
             {
-            "medley": [
-                "エンジョイ!",
-                "PRISM BEAT"
+                "medley": [
+                    "エンジョイ!",
+                    "PRISM BEAT"
                 ]
             },
             "True Path",
@@ -149,15 +708,15 @@
             "Wish",
             "ハートフォレスト",
             {
-            "medley": [
-                "君色のキセキ",
-                "Lovely Happily Shiny Days",
-                "ハピネス*センセーション"
+                "medley": [
+                    "君色のキセキ",
+                    "Lovely Happily Shiny Days",
+                    "ハピネス*センセーション"
                 ]
             },
             "Baby Sweet Berry Love"
         ],
-        "encore": [          
+        "encore": [
             "Magic♡Happy",
             "Fightin★Pose",
             {
@@ -187,9 +746,9 @@
             "治癒治癒ちゅっ♡",
             "ドキドキラビリンス",
             {
-            "medley": [
-                "エンジョイ!",
-                "PRISM BEAT"
+                "medley": [
+                    "エンジョイ!",
+                    "PRISM BEAT"
                 ]
             },
             "True Path",
@@ -198,15 +757,15 @@
             "Wish",
             "ハートフォレスト",
             {
-            "medley": [
-                "君色のキセキ",
-                "Lovely Happily Shiny Days",
-                "ハピネス*センセーション"
+                "medley": [
+                    "君色のキセキ",
+                    "Lovely Happily Shiny Days",
+                    "ハピネス*センセーション"
                 ]
             },
             "Baby Sweet Berry Love"
         ],
-        "encore": [          
+        "encore": [
             "Magic♡Happy",
             "Fightin★Pose",
             {
@@ -434,7 +993,7 @@
         "setlist": [
             "So☆Lucky",
             "Hopeful Days",
-            "Caramel Ribbon…"
+            "Caramel Ribbon..."
         ]
     },
     {
@@ -484,7 +1043,7 @@
         "venue": "ぴあアリーナMM",
         "id": "2025022301",
         "setlist": [
-            "Honey♡Come!!",
+            "Honey♥Come!!",
             "花占いするの♡",
             "君色のキセキ",
             "秘密♡Melody",
@@ -629,7 +1188,9 @@
         "date": "2024年12月1日",
         "venue": "幕張メッセ",
         "id": "2024120101",
-        "setlist": "Baby Sweet Berry Love"
+        "setlist": [
+            "Baby Sweet Berry Love"
+        ]
     },
     {
         "LIVEtitle": "小倉唯 LIVE TOUR 2024 ~Bloomy × Meet you!~ 横浜公演",
@@ -653,10 +1214,10 @@
             "Empty//Princess.",
             "Raise",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
-        "encore": [          
+        "encore": [
             "わくわくシャンプー&リンス",
             {
                 "medley": [
@@ -667,7 +1228,9 @@
             },
             "君色のキセキ"
         ],
-        "Wencore": "エブリデイ☆ハッピーデイ"
+        "Wencore": [
+            "エブリデイ☆ハッピーデイ"
+        ]
     },
     {
         "LIVEtitle": "小倉唯 LIVE TOUR 2024 ~Bloomy × Meet you!~ 愛知公演",
@@ -691,10 +1254,10 @@
             "Empty//Princess.",
             "白く咲く花",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
-        "encore": [          
+        "encore": [
             "わくわくシャンプー&リンス",
             {
                 "medley": [
@@ -728,10 +1291,10 @@
             "Empty//Princess.",
             "Raise",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
-        "encore": [          
+        "encore": [
             "わくわくシャンプー&リンス",
             {
                 "medley": [
@@ -765,10 +1328,10 @@
             "Empty//Princess.",
             "白く咲く花",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
-        "encore": [          
+        "encore": [
             "わくわくシャンプー&リンス",
             {
                 "medley": [
@@ -802,10 +1365,10 @@
             "Empty//Princess.",
             "Raise",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
-        "encore": [          
+        "encore": [
             "わくわくシャンプー&リンス",
             {
                 "medley": [
@@ -839,10 +1402,10 @@
             "Empty//Princess.",
             "白く咲く花",
             "Clear Morning",
-            "One and Only",
+            "One & Only",
             "Wind of Bloom"
         ],
-        "encore": [          
+        "encore": [
             "わくわくシャンプー&リンス",
             {
                 "medley": [
@@ -928,7 +1491,7 @@
             "CREATION×CREATION",
             "マジックマーチ",
             "Starcast"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織 2nd LIVE TOUR -Calm Magic- 神奈川公演",
@@ -960,7 +1523,7 @@
             "ポペラ・ホリカ",
             "マジックマーチ",
             "Page Flip"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "Yui Ogura Fan Meeting in Seoul presented by KOE 夜公演",
@@ -1016,7 +1579,7 @@
             "Water Front",
             "マジックマーチ",
             "半透明の世界で"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織 2nd LIVE TOUR -Calm Magic- 大阪公演",
@@ -1039,7 +1602,7 @@
             "To My Dear",
             "Blooming Flower",
             "Harmonia",
-            "わざと触れた",
+            "わざと触れた。",
             "Diorama-Drama",
             "Twinkle Ticking",
             "Gift"
@@ -1048,7 +1611,7 @@
             "Orange Note",
             "マジックマーチ",
             "虹のソルフェージュ"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "ゆいちゃん・ハローキティ~きらきらリボン♡大作戦~ 第3部",
@@ -1096,7 +1659,7 @@
         "setlist": [
             "Cherish",
             "Gift"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織 ファンクラブイベント「UNITY」vol.03 東京夜公演",
@@ -1111,7 +1674,7 @@
             "夜とワンダーランド",
             "Harmonia",
             "Gift"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織 ファンクラブイベント「UNITY」vol.03 東京昼公演",
@@ -1126,7 +1689,7 @@
             "フィービー・フィービー",
             "Harmonia",
             "Gift"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織 ファンクラブイベント「UNITY」vol.03 大阪公演",
@@ -1141,7 +1704,7 @@
             "リトルシング",
             "Harmonia",
             "Gift"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織ファンクラブイベント「Ishihara Kaori Xmas Sweets Party」 夜公演",
@@ -1157,7 +1720,7 @@
             "恋人はサンタクロース",
             "Blooming Flower",
             "Page Flip"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "石原夏織ファンクラブイベント「Ishihara Kaori Xmas Sweets Party」 昼公演",
@@ -1173,7 +1736,7 @@
             "ロマンスの神様",
             "Blooming Flower",
             "Page Flip"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "京 Premium Live 2023",
@@ -1186,8 +1749,7 @@
             "Paraglider",
             "Starcast",
             "empathy",
-            "虹のソルフェージュ",
-            "17歳"
+            "虹のソルフェージュ"
         ]
     },
     {
@@ -1218,7 +1780,7 @@
         "encore": [
             "Tinkling Smile",
             "秘密♡Melody"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "小倉唯 Memorial LIVE 2023 ~To the 11'Eleven~ 昼公演",
@@ -1248,7 +1810,7 @@
         "encore": [
             "Charming Do!",
             "秘密♡Melody"
-        ]    
+        ]
     },
     {
         "LIVEtitle": "Animelo Summer Live 2023 -AXEL-",
@@ -1286,8 +1848,8 @@
             "Cherish",
             "ポペラ・ホリカ",
             "Paraglider",
-            "半透明の世界で",
-            "夜とワンダーランド",
+            "半透明の世界で",
+            "夜とワンダーランド",
             "Taste of Marmalade",
             "Ray Rule",
             "Abracada-Boo",
@@ -1345,7 +1907,7 @@
             "ハイタッチ☆メモリー"
         ]
     },
-        {
+    {
         "LIVEtitle": "小倉唯 Memorial LIVE 2023 ~10th Anniversary Assemble!!~ 昼公演",
         "tourtitle": "小倉唯 Memorial LIVE 2023 ~10th Anniversary Assemble!!~",
         "artist": "小倉唯",
@@ -1405,8 +1967,8 @@
         "id": "2023032101",
         "setlist": [
             "春～spring～",
-            "CHE.R.RY",
-            "Crispy Love",
+            "チェリー",
+            "Crispy love",
             "マジックマーチ",
             "Face to Face"
         ]
@@ -1422,7 +1984,8 @@
             "Cherish",
             "半透明の世界で",
             "虹のソルフェージュ",
-            "Plastic Smile"
+            "Plastic Smile",
+            "もうひとりの私"
         ]
     },
     {
@@ -1488,7 +2051,7 @@
         "tourtitle": "Animelo Summer Live",
         "artist": "石原夏織",
         "date": "2022年8月27日",
-        "venue": "日本特殊陶業市民会館",
+        "venue": "さいたまスーパーアリーナ",
         "id": "2022082701",
         "setlist": [
             "Cherish",
@@ -1589,6 +2152,7 @@
         "id": "2022061902",
         "setlist": [
             "Hello, Again ～昔からある場所～",
+            "♡桃色片想い♡",
             "Sunny Ray Beam!!",
             "♮ Melody",
             "Abracada-Boo",
@@ -1602,9 +2166,10 @@
         "artist": "石原夏織",
         "date": "2022年6月19日",
         "venue": "三郷市文化会館",
-        "id": "2022061902",
+        "id": "2022061901",
         "setlist": [
-            "fragilelull 〜そして僕らは〜",
+            "fragile",
+            "lull 〜そして僕らは〜",
             "Sunny Ray Beam!!",
             "SUMMER DROP",
             "夢想的クロニクル",
@@ -1666,8 +2231,7 @@
         "encore": [
             "Ray Rule",
             "Cherish",
-            "半透明の世界で",
-            "Sunny You"
+            "半透明の世界で"
         ]
     },
     {
@@ -1794,7 +2358,7 @@
             "キミに空とクローバー",
             "SUMMER DROP",
             "CREATION×CREATION",
-            "Diorama Drama",
+            "Diorama-Drama",
             "Against.",
             "Plastic Smile"
         ]
@@ -1811,7 +2375,7 @@
             "キミに空とクローバー",
             "SUMMER DROP",
             "CREATION×CREATION",
-            "Diorama Drama",
+            "Diorama-Drama",
             "TEMPEST",
             "Plastic Smile"
         ]
@@ -1832,12 +2396,12 @@
             "A Lovely Tea Break",
             "Love Me × Love Me",
             {
-                "medley" : [
+                "medley": [
                     "エンジョイ!",
                     "ガーリッシュエイジ",
                     "ドキドキラビリンス"
                 ]
-            },   
+            },
             "Fightin★Pose",
             "かけがえのない瞬間",
             "ハートフォレスト",
@@ -1846,7 +2410,9 @@
             "ずっとふたりで",
             "I・LOVE・YOU!!"
         ],
-        "encore": "Look@Me♡"
+        "encore": [
+            "Look@Me♡"
+        ]
     },
     {
         "LIVEtitle": "小倉唯 LIVE 2021「#Re♥LOVEcall」 昼公演",
@@ -1864,12 +2430,12 @@
             "A Lovely Tea Break",
             "Love Me × Love Me",
             {
-                "medley" : [
+                "medley": [
                     "エンジョイ!",
                     "ガーリッシュエイジ",
                     "ドキドキラビリンス"
                 ]
-            },   
+            },
             "Fightin★Pose",
             "かけがえのない瞬間",
             "ハートフォレスト",
@@ -1878,7 +2444,9 @@
             "ずっとふたりで",
             "I・LOVE・YOU!!"
         ],
-        "encore": "ハピネス*センセーション"
+        "encore": [
+            "ハピネス*センセーション"
+        ]
     },
     {
         "LIVEtitle": "ゆいこむ ONLINE PROGRAM",
@@ -1973,6 +2541,10 @@
         "encore": [
             "I・LOVE・YOU!!",
             "Very Merry Happy Christmas"
+        ],
+        "Wencore": [
+            "ライアーシープ",
+            "ハイタッチ☆メモリー"
         ]
     },
     {
@@ -2038,7 +2610,7 @@
             "半透明の世界で",
             "CREATION×CREATION",
             "ポペラ・ホリカ",
-            "Clover Wish",
+            "Clover wish",
             "Crispy love",
             "Orange Note",
             "empathy",
@@ -2050,7 +2622,7 @@
             "Face to Face"
         ],
         "encore": [
-            "虹のソルベージュ",
+            "虹のソルフェージュ",
             "♮ Melody",
             "Face to Face"
         ]
@@ -2094,7 +2666,7 @@
             "Face to Face"
         ],
         "encore": [
-            "虹のソルベージュ",
+            "虹のソルフェージュ",
             "♮ Melody",
             "Face to Face"
         ]
@@ -2123,7 +2695,7 @@
             "Face to Face"
         ],
         "encore": [
-            "虹のソルベージュ",
+            "虹のソルフェージュ",
             "♮ Melody",
             "Face to Face"
         ]
@@ -2219,7 +2791,7 @@
         "setlist": [
             "CREATION×CREATION",
             "オリジナルスター☆彡",
-            "Crispy Love",
+            "Crispy love",
             "Ray Rule",
             "TEMPEST",
             "Sunny You"
@@ -2235,7 +2807,7 @@
         "setlist": [
             "CREATION×CREATION",
             "オリジナルスター☆彡",
-            "Crispy Love",
+            "Crispy love",
             "Untitled Puzzle",
             "TEMPEST",
             "Sunny You"
@@ -2310,7 +2882,9 @@
             "Tinkling Smile",
             "thx!!"
         ],
-        "Wencore": "ピーナッツ!"
+        "Wencore": [
+            "ピーナッツ!"
+        ]
     },
     {
         "LIVEtitle": "小倉唯 LIVE TOUR 2019「Step Apple」幕張公演1日目",
@@ -2495,7 +3069,7 @@
                 ]
             },
             "Love Me × Love Me",
-            "ガーリッシュエイジ",
+            "ドキドキラビリンス",
             "雨の森はウソつき",
             "ショコラ",
             "Sing-a-ling-a-Harmony",
@@ -2555,6 +3129,7 @@
         "venue": "大阪城ホール",
         "id": "2019011901",
         "setlist": [
+            "Starry Wish",
             "ハイタッチ☆メモリー",
             "永遠少年",
             "Future Strike"
@@ -2575,7 +3150,7 @@
             "17才",
             "Heavenly Lover",
             "Orange Note",
-            "enpathy",
+            "empathy",
             "雨模様リグレット",
             "Ray Rule",
             "Untitled Puzzle",
@@ -2602,7 +3177,7 @@
             "SHINING LINE*",
             "Heavenly Lover",
             "Orange Note",
-            "enpathy",
+            "empathy",
             "雨模様リグレット",
             "Ray Rule",
             "Untitled Puzzle",
@@ -2700,6 +3275,7 @@
     {
         "LIVEtitle": "Animelo Summer Live 2018 \"OK!\"",
         "tourtitle": "Animelo Summer Live",
+        "artist": "小倉唯",
         "date": "2018年8月26日",
         "venue": "さいたまスーパーアリーナ",
         "id": "2018082601",
@@ -2748,8 +3324,6 @@
         "venue": "東京ドームシティ ラクーアガーデンステージ",
         "id": "2018081501",
         "setlist": [
-            "winter tale",
-            "Future Strike",
             "永遠少年",
             "PON de Fighting!",
             "ハイタッチ☆メモリー"
@@ -2769,7 +3343,9 @@
             "Future Strike",
             "Raise"
         ],
-        "encore": "Honey♥Come!!"
+        "encore": [
+            "Honey♥Come!!"
+        ]
     },
     {
         "LIVEtitle": "リスアニ！Park Vol.02",
@@ -3117,7 +3693,9 @@
             "Future Strike",
             "プラチナ・パスポート"
         ],
-        "encore": "Baby Sweet Berry Love"
+        "encore": [
+            "Baby Sweet Berry Love"
+        ]
     },
     {
         "LIVEtitle": "KING SUPER LIVE 2017 TRINITY",
@@ -3167,7 +3745,9 @@
             "君のYELL",
             "Our Steady Boy"
         ],
-        "Wencore": "Ring Ring Rainbow!!"
+        "Wencore": [
+            "Ring Ring Rainbow!!"
+        ]
     },
     {
         "LIVEtitle": "ゆいかおりLIVE TOUR「Starlight Link」大阪公演",
@@ -3467,7 +4047,9 @@
             "PUPPY LOVE!!",
             "Our Steady Boy"
         ],
-        "Wencore": "恋のオーバーテイク"
+        "Wencore": [
+            "恋のオーバーテイク"
+        ]
     },
     {
         "LIVEtitle": "ゆいかおりLIVE TOUR「RAINBOW CANARY!!」横浜公演2日目",
@@ -3513,7 +4095,7 @@
             "Ring Ring Rainbow!!",
             "LUCKY DUCKY!!",
             "倍速∞ラブストレート",
-            "CUE the Future ~「Q」のテーマ~",
+            "CUE the Future　～「Q」のテーマ～",
             "Intro Situation",
             "Rainy Day",
             "Telephone Call",
@@ -3547,7 +4129,7 @@
             "LUCKY DUCKY!!",
             "倍速∞ラブストレート",
             "Intro Situation",
-            "CUE the Future ~「Q」のテーマ~",
+            "CUE the Future　～「Q」のテーマ～",
             "Rainy Day",
             "Telephone Call",
             "Sunny Ray Beam!!",
@@ -3660,7 +4242,7 @@
             "Charming Do!",
             "パンドラ♡ショコラ",
             "いつだって Call Me!",
-            "in Wonderful Wonder",
+            "PON de Fighting!",
             "A Lovely Tea Break",
             "Get over",
             "Raise",
@@ -3669,7 +4251,7 @@
             "きみがここに来る二、三の理由",
             "Tinkling Smile",
             "Honey♥Come!!",
-            "ともだちピンク",
+            "やさシク、されたい。",
             "Happy Strawberry",
             "Sing-a-ling-a-Harmony"
         ],
@@ -3689,9 +4271,9 @@
         "venue": "さいたまスーパーアリーナ",
         "id": "2015062101",
         "setlist": [
+            "Our Steady Boy",
             "Baby Sweet Berry Love",
-            "Charming Do!",
-            "Our Steady Boy"
+            "Charming Do!"
         ]
     },
     {
@@ -3705,9 +4287,9 @@
         "venue": "さいたまスーパーアリーナ",
         "id": "2015062001",
         "setlist": [
+            "Our Steady Boy",
             "Baby Sweet Berry Love",
-            "Raise",
-            "Our Steady Boy"
+            "Raise"
         ]
     },
     {
@@ -3771,7 +4353,7 @@
             "Jumpin' Bunny Flash!!",
             "星降る夜のハッピーリンク"
         ]
-    },    
+    },
     {
         "LIVEtitle": "ゆいかおりLIVE TOUR「HEARTY PARTY!!」愛知公演",
         "tourtitle": "ゆいかおりLIVE TOUR「HEARTY PARTY!!」",
@@ -3802,7 +4384,7 @@
             "Jumpin' Bunny Flash!!",
             "星降る夜のハッピーリンク"
         ]
-    },   
+    },
     {
         "LIVEtitle": "Animelo Summer Live 2014 -ONENESS-",
         "tourtitle": "Animelo Summer Live",
@@ -3825,7 +4407,7 @@
                     "PUPPY LOVE!!",
                     "Intro Situation"
                 ]
-            }            
+            }
         ]
     },
     {
@@ -3845,7 +4427,7 @@
             "Our Steady Boy",
             "星降る夜のハッピーリンク"
         ]
-    },   
+    },
     {
         "LIVEtitle": "ゆいかおりBIRTHDAY SPECIAL LIVE「INTRODUCTION!!」昼公演",
         "tourtitle": "ゆいかおりBIRTHDAY SPECIAL LIVE「INTRODUCTION!!」",
@@ -3863,7 +4445,7 @@
             "Our Steady Boy",
             "星降る夜のハッピーリンク"
         ]
-    },   
+    },
     {
         "LIVEtitle": "ゆいかおりSPECIAL LIVE「LUCKY TUNES!!」夜公演",
         "tourtitle": "ゆいかおりSPECIAL LIVE「LUCKY TUNES!!」",
@@ -3882,7 +4464,7 @@
             "Our Steady Boy",
             "LUCKY DUCKY!!"
         ]
-    },   
+    },
     {
         "LIVEtitle": "ゆいかおりSPECIAL LIVE「LUCKY TUNES!!」昼公演",
         "tourtitle": "ゆいかおりSPECIAL LIVE「LUCKY TUNES!!」",
@@ -3901,7 +4483,7 @@
             "Our Steady Boy",
             "LUCKY DUCKY!!"
         ]
-    },   
+    },
     {
         "LIVEtitle": "ゆいかおりLIVE「BUNNY FLASH!!」夜公演",
         "tourtitle": "ゆいかおりLIVE「BUNNY FLASH!!」",
@@ -3919,9 +4501,9 @@
             "Charming Do!",
             "Magic starter",
             "Sunny Ray Beam!!",
-            "marble",       
+            "marble",
             "ハツコイメイズ",
-            "Blitzallies",            
+            "Blitzallies",
             "圧倒的な GO!!",
             "Jumpin' Bunny Flash!!",
             "PUPPY LOVE!!",
@@ -3949,9 +4531,9 @@
             "Charming Do!",
             "Magic starter",
             "Sunny Ray Beam!!",
-            "ゆびきりCalendar",       
+            "ゆびきりCalendar",
             "ハツコイメイズ",
-            "Blitzallies",            
+            "Blitzallies",
             "圧倒的な GO!!",
             "Jumpin' Bunny Flash!!",
             "PUPPY LOVE!!",
@@ -3961,7 +4543,7 @@
             "君のYELL",
             "星降る夜のハッピーリンク"
         ]
-    },   
+    },
     {
         "LIVEtitle": "「ゆいかおりの実♪デジタル」公開録音&ミニライブ 夜公演",
         "tourtitle": "「ゆいかおりの実♪デジタル」公開録音&ミニライブ",
@@ -3972,11 +4554,11 @@
         "setlist": [
             "Jumpin' Bunny Flash!!",
             "Blitzallies",
-            "Shiny blue",
-            "君のYELL",            
+            "Shiny Blue",
+            "君のYELL",
             "星降る夜のハッピーリンク"
         ]
-    },   
+    },
     {
         "LIVEtitle": "「ゆいかおりの実♪デジタル」公開録音&ミニライブ 昼公演",
         "tourtitle": "「ゆいかおりの実♪デジタル」公開録音&ミニライブ",
@@ -3987,11 +4569,11 @@
         "setlist": [
             "Jumpin' Bunny Flash!!",
             "Blitzallies",
-            "ウェイカッ!!",
-            "君のYELL",            
+            "ウェィカッ!!",
+            "君のYELL",
             "星降る夜のハッピーリンク"
         ]
-    },   
+    },
     {
         "LIVEtitle": "Animelo Summer Live 2013 -FLAG NINE-",
         "tourtitle": "Animelo Summer Live",
@@ -4010,7 +4592,7 @@
                 ]
             },
             "ウェィカッ!!",
-            "Shiny Blue"       
+            "Shiny Blue"
         ]
     },
     {
@@ -4020,8 +4602,10 @@
         "date": "2013年3月24日",
         "venue": "グランキューブ大阪",
         "id": "2013032401",
-        "setlist": "Baby Sweet Berry Love"
-    },   
+        "setlist": [
+            "Baby Sweet Berry Love"
+        ]
+    },
     {
         "LIVEtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」東京夜公演",
         "tourtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」",
@@ -4032,16 +4616,16 @@
         "setlist": [
             "ウェィカッ!!",
             "Our Song",
-            "Our Steady Boy",            
+            "Our Steady Boy",
             "HEARTBEATが止まらないっ!",
-            "Shooting☆Smile",            
+            "Shooting☆Smile",
             "Raise",
             "ともだちピンク",
-            "Magic starter",           
+            "Magic starter",
             "運命は2度ベルを鳴らすんです",
-            "ゆびきりCalendar",       
+            "ゆびきりCalendar",
             "ふたり",
-            "未来形アイドル",            
+            "VIVIVID PARTY!",
             "圧倒的な GO!!",
             "君のYELL",
             "PUPPY LOVE!!"
@@ -4050,7 +4634,7 @@
             "恋のオーバーテイク",
             "ウェィカッ!!"
         ]
-    },   
+    },
     {
         "LIVEtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」東京昼公演",
         "tourtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」",
@@ -4061,16 +4645,16 @@
         "setlist": [
             "ウェィカッ!!",
             "Our Song",
-            "Our Steady Boy",            
+            "Our Steady Boy",
             "HEARTBEATが止まらないっ!",
-            "Shooting☆Smile",            
+            "Shooting☆Smile",
             "Raise",
             "黒髪流儀。技あり!",
-            "Magic starter",           
+            "Magic starter",
             "キミのもとへ!",
-            "ゆびきりCalendar",       
+            "ゆびきりCalendar",
             "ふたり",
-            "未来形アイドル",            
+            "未来形アイドル",
             "圧倒的な GO!!",
             "君のYELL",
             "PUPPY LOVE!!"
@@ -4079,7 +4663,7 @@
             "恋のオーバーテイク",
             "ウェィカッ!!"
         ]
-    },  
+    },
     {
         "LIVEtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」愛知公演",
         "tourtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」",
@@ -4090,16 +4674,16 @@
         "setlist": [
             "ウェィカッ!!",
             "Our Song",
-            "Our Steady Boy",            
+            "Our Steady Boy",
             "HEARTBEATが止まらないっ!",
-            "Shooting☆Smile",            
+            "Shooting☆Smile",
             "Raise",
             "ともだちピンク",
-            "Magic starter",           
+            "Magic starter",
             "運命は2度ベルを鳴らすんです",
-            "ゆびきりCalendar",       
+            "ゆびきりCalendar",
             "ふたり",
-            "未来形アイドル",            
+            "未来形アイドル",
             "圧倒的な GO!!",
             "君のYELL",
             "PUPPY LOVE!!"
@@ -4108,7 +4692,7 @@
             "恋のオーバーテイク",
             "ウェィカッ!!"
         ]
-    },  
+    },
     {
         "LIVEtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」大阪公演",
         "tourtitle": "ゆいかおり1st LIVE TOUR「WAKE UP!!」",
@@ -4119,16 +4703,16 @@
         "setlist": [
             "ウェィカッ!!",
             "Our Song",
-            "Our Steady Boy",            
+            "Our Steady Boy",
             "HEARTBEATが止まらないっ!",
-            "Shooting☆Smile",            
+            "Shooting☆Smile",
             "Raise",
             "黒髪流儀。技あり!",
-            "Magic starter",           
+            "Magic starter",
             "キミのもとへ!",
-            "ゆびきりCalendar",       
+            "ゆびきりCalendar",
             "ふたり",
-            "未来形アイドル",            
+            "未来形アイドル",
             "圧倒的な GO!!",
             "君のYELL",
             "PUPPY LOVE!!"
@@ -4137,7 +4721,7 @@
             "恋のオーバーテイク",
             "ウェィカッ!!"
         ]
-    },  
+    },
     {
         "LIVEtitle": "Animelo Summer Live 2012 -INFINITY∞-",
         "tourtitle": "Animelo Summer Live",
@@ -4151,7 +4735,7 @@
                     "PUPPY LOVE!!",
                     "Our Steady Boy"
                 ]
-            }   
+            }
         ]
     },
     {
@@ -4165,12 +4749,12 @@
             "Raise",
             "きみがここに来る二、三の理由",
             "黒髪流儀。技あり!",
-            "PON de Fighting!",       
+            "PON de Fighting!",
             "キュッ!キュッ!CURIOSITY!!",
             "ともだちピンク",
             "Raise"
         ]
-    },  
+    },
     {
         "LIVEtitle": "小倉唯BIRTHDAY SPECIALミニライブ~SEVENTEEN! 昼公演",
         "tourtitle": "小倉唯BIRTHDAY SPECIALミニライブ~SEVENTEEN!",
@@ -4182,12 +4766,12 @@
             "Raise",
             "きみがここに来る二、三の理由",
             "黒髪流儀。技あり!",
-            "PON de Fighting!",       
+            "PON de Fighting!",
             "キュッ!キュッ!CURIOSITY!!",
             "ともだちピンク",
             "Raise"
         ]
-    },  
+    },
     {
         "LIVEtitle": "ゆいかおり2nd LIVE「YELL for YOU」NIGHT ~夢見る君へ~",
         "tourtitle": "ゆいかおり2nd LIVE「YELL for YOU」",
@@ -4198,15 +4782,15 @@
         "setlist": [
             "恋のオーバーテイク",
             "Shooting☆Smile",
-            "圧倒的な GO!!",            
+            "圧倒的な GO!!",
             "未来形アイドル",
-            "VIVIVID PARTY!",            
+            "VIVIVID PARTY!",
             "キュッ!キュッ!CURIOSITY!!",
-            "Magic starter",           
+            "Magic starter",
             "ゆずれない願い",
-            "もうひとりの私",       
+            "もうひとりの私",
             "クリスタルの誓い",
-            "ふたり",            
+            "ふたり",
             "君のYELL",
             "Our Song",
             "PUPPY LOVE!!"
@@ -4215,7 +4799,7 @@
             "駆け抜けてBlue",
             "Our Steady Boy"
         ]
-    },  
+    },
     {
         "LIVEtitle": "ゆいかおり2nd LIVE「YELL for YOU」DAY ~頑張る君へ~",
         "tourtitle": "ゆいかおり2nd LIVE「YELL for YOU」",
@@ -4226,15 +4810,15 @@
         "setlist": [
             "恋のオーバーテイク",
             "HEARTBEATが止まらないっ!",
-            "圧倒的な GO!!",            
+            "圧倒的な GO!!",
             "未来形アイドル",
-            "VIVIVID PARTY!",            
+            "VIVIVID PARTY!",
             "キュッ!キュッ!CURIOSITY!!",
-            "Magic starter",           
+            "Magic starter",
             "ゆずれない願い",
-            "もうひとりの私",       
+            "もうひとりの私",
             "クリスタルの誓い",
-            "ふたり",            
+            "ふたり",
             "君のYELL",
             "Our Song",
             "PUPPY LOVE!!"
@@ -4243,7 +4827,7 @@
             "駆け抜けてBlue",
             "Our Steady Boy"
         ]
-    },  
+    },
     {
         "LIVEtitle": "ゆいかおり1st LIVE「PUPPY LOVE!!」夜公演",
         "tourtitle": "ゆいかおり1st LIVE「PUPPY LOVE!!」",
@@ -4254,16 +4838,16 @@
         "setlist": [
             "恋のオーバーテイク",
             "PUPPY LOVE!!",
-            "VIVIVID PARTY!",           
+            "VIVIVID PARTY!",
             "未来形アイドル",
-            "Our Song",   
+            "Our Song",
             "バランスKISS",
-            "もうひとりの私",               
+            "もうひとりの私",
             "キュッ!キュッ!CURIOSITY!!",
-            "Magic starter",           
-            "ふたり",        
-            "クリスタルの誓い",      
-            "CUE the Future 〜「Q」のテーマ〜",
+            "Magic starter",
+            "ふたり",
+            "クリスタルの誓い",
+            "CUE the Future　～「Q」のテーマ～",
             "駆け抜けてBlue",
             "HEARTBEATが止まらないっ!",
             "Shooting☆Smile"
@@ -4272,7 +4856,7 @@
             "Our Steady Boy",
             "恋のオーバーテイク"
         ]
-    },  
+    },
     {
         "LIVEtitle": "ゆいかおり1st LIVE「PUPPY LOVE!!」昼公演",
         "tourtitle": "ゆいかおり1st LIVE「PUPPY LOVE!!」",
@@ -4283,16 +4867,16 @@
         "setlist": [
             "恋のオーバーテイク",
             "PUPPY LOVE!!",
-            "VIVIVID PARTY!",           
+            "VIVIVID PARTY!",
             "未来形アイドル",
-            "Our Song",   
+            "Our Song",
             "ふたりのハニーボーイ",
-            "もうひとりの私",               
+            "もうひとりの私",
             "キュッ!キュッ!CURIOSITY!!",
-            "Magic starter",           
-            "ふたり",        
-            "クリスタルの誓い",      
-            "CUE the Future 〜「Q」のテーマ〜",
+            "Magic starter",
+            "ふたり",
+            "クリスタルの誓い",
+            "CUE the Future　～「Q」のテーマ～",
             "駆け抜けてBlue",
             "HEARTBEATが止まらないっ!",
             "Shooting☆Smile"

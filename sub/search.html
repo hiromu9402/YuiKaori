@@ -4,95 +4,113 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>楽曲披露一覧</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-}
-</style>
+    <link rel="stylesheet" href="../common.css">
 </head>
 <body>
-<h2 id="title"></h2>
+<nav class="gnav"><a class="brand" href="../index.html">ゆいかおり DB</a><a href="../songs.html">楽曲一覧</a><a href="../tour.html">ツアー比較</a><a href="../event.html">イベント検索</a><a href="../calendar.html">カレンダー</a><span class="group"><a href="../my.html">唯ソロ</a><a href="../my_c.html">夏織ソロ</a><a href="../my_f.html">ゆいかおり</a></span></nav>
+<div class="sr-wrap">
+<section class="sr-song" id="song">
+    <h2 id="title"></h2>
+    <div id="songInfo"></div>
+</section>
+<div id="stats"></div>
 <div id="results"></div>
+</div>
 <script>
-function loadJSON(url, callback) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', url, true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == 200) {
-      callback(JSON.parse(xobj.responseText));
-    }
-  };
-  xobj.send(null);
-}
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const arr = v => Array.isArray(v) ? v : (v ? [v] : []);
+const COLOR = { '小倉唯': 'var(--yui)', '石原夏織': 'var(--kaori)', 'ゆいかおり': 'var(--yuikaori)' };
+const WEEKDAYS = '日月火水木金土';
+const ymd = date => date.match(/\d+/g).map(Number);
+const withWeekday = date => { const [y, m, d] = ymd(date); return `${y}年${m}月${d}日（${WEEKDAYS[new Date(y, m - 1, d).getDay()]}）`; };
 
-function parseQueryString(url) {
-  var params = {};
-  var parser = document.createElement('a');
-  parser.href = url;
-  var query = parser.search.substring(1);
-  var vars = query.split('&');
-  for (var i = 0; i < vars.length; i++) {
-    var pair = vars[i].split('=');
-    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-  }
-  return params;
-}
-
-function searchSetlist() {
-  const url = window.location.href;
-  const queryParams = parseQueryString(url);
-  const name = queryParams.name;
-
-  loadJSON('../setlist.json', function(data) {
-    const matchingData = data.filter(item => {
-      let allSongs = [];
-
-      function extractSongs(songs) {
-        songs.forEach(song => {
-          if (typeof song === 'string') {
-            allSongs.push(song);
-          } else if (song.medley) {
-            allSongs = allSongs.concat(song.medley);
-          }
+// 公演の中で、その曲を何曲目に歌ったか（本編 5、EC2、メドレーの中 など）
+function positions(live, name) {
+    const out = [];
+    [['setlist', ''], ['encore', 'EC'], ['Wencore', 'WEC']].forEach(([key, prefix]) => {
+        arr(live[key]).forEach((item, i) => {
+            const no = prefix + (i + 1);
+            if (item === name) out.push(key === 'setlist' ? `${no}曲目` : no);
+            else if (item && typeof item === 'object' && arr(item.medley).includes(name)) out.push(`${no}（メドレー）`);
         });
-      }
-
-      function processSection(section) {
-        if (section) {
-          if (!Array.isArray(section)) {
-            section = [section];
-          }
-          extractSongs(section);
-        }
-      }
-
-      processSection(item.setlist);
-      processSection(item.encore);
-      processSection(item.Wencore);
-
-      return allSongs.includes(name);
     });
+    return out;
+}
 
-    const count = matchingData.length;
+async function searchSetlist() {
+    const name = new URLSearchParams(window.location.search).get('name') || '';
+    const [lives, songs, cds] = await Promise.all(['../setlist.json', '../song.json', '../CD.json']
+        .map(url => fetch(url).then(r => r.json())));
+    const matching = lives.filter(live => positions(live, name).length > 0)
+        .sort((a, b) => b.id.localeCompare(a.id));
+    const count = matching.length;
+    document.title = `「${name}」の披露一覧`;
+    // 見出しの文字は以前と同じ形にしておく
+    document.getElementById('title').innerText = `「${name}」の披露一覧：${count}回`;
+
+    // 曲の情報（楽曲一覧にある曲だけ）
+    const song = songs.find(s => s.title === name);
+    const info = document.getElementById('songInfo');
+    if (song) {
+        document.querySelector('.sr-wrap').style.setProperty('--c', COLOR[song.artist] || 'var(--muted)');
+        const cdDates = arr(song.CDtitle).map(t => cds.find(c => c.CDtitle === t)).filter(Boolean);
+        const first = cdDates.sort((a, b) => ymd(a.date).join('-').localeCompare(ymd(b.date).join('-')))[0];
+        const links = [
+            song.utanet && `<a href="https://www.uta-net.com/song/${esc(song.utanet)}/" target="_blank" rel="noopener">歌詞（歌ネット）</a>`,
+            song.MVlink && `<a href="https://www.youtube.com/watch?v=${esc(song.MVlink)}" target="_blank" rel="noopener">MV</a>`,
+            song.videolink && `<a href="https://www.youtube.com/watch?v=${esc(song.videolink)}" target="_blank" rel="noopener">ライブ映像</a>`,
+            song.call && `<a href="${isNaN(Number(song.call)) ? `https://yuicom-callbook.hatenablog.com/entry/${esc(song.call)}` : `https://salvageyuikaori.seesaa.net/article/${esc(song.call)}.html`}" target="_blank" rel="noopener">コール表</a>`,
+        ].filter(Boolean);
+        info.innerHTML = `<dl class="sr-meta">
+            <div><dt>歌</dt><dd>${esc(song.artist)}</dd></div>
+            <div><dt>作詞</dt><dd>${esc(song.lyrics)}</dd></div>
+            <div><dt>作曲</dt><dd>${esc(song.music)}</dd></div>
+            <div><dt>編曲</dt><dd>${esc(song.arranger)}</dd></div>
+            ${song.length ? `<div><dt>長さ</dt><dd>${esc(song.length)}</dd></div>` : ''}
+            <div class="wide"><dt>収録CD</dt><dd>${esc(arr(song.CDtitle).join(' / '))}${first ? `（${esc(first.date)} 発売）` : ''}</dd></div>
+          </dl>` + (links.length ? `<div class="sr-links">${links.join('')}</div>` : '');
+    } else {
+        info.innerHTML = '<p class="sr-note">楽曲一覧に載っていない曲（カバーやキャラクターソングなど）です。</p>';
+    }
 
     if (count === 0) {
-      document.getElementById('title').innerText = `「${name}」の披露一覧：0回`;
-      document.getElementById('results').innerHTML = '<p>No live information found for the provided name.</p>';
-      return;
+        document.getElementById('results').innerHTML = '<p class="sr-note">この曲を披露した公演は登録されていません。</p>';
+        return;
     }
 
-    const resultDiv = document.getElementById('results');
-    resultDiv.innerHTML = matchingData.map(item => `
-      <p><a href="./setlist.html?id=${item.id}">${item.date} ${item.LIVEtitle}</a></p>
-    `).join('');
+    // 初披露・最終披露と、年ごとの披露回数
+    const oldest = matching[matching.length - 1], newest = matching[0];
+    const perYear = {};
+    matching.forEach(live => { const y = ymd(live.date)[0]; perYear[y] = (perYear[y] || 0) + 1; });
+    const years = Object.keys(perYear).map(Number);
+    const allYears = [];
+    for (let y = Math.min(...years); y <= Math.max(...years); y++) allYears.push(y);
+    const max = Math.max(...Object.values(perYear));
+    const card = (label, live) => `<a href="setlist.html?id=${encodeURIComponent(live.id)}"><small>${label}</small>${withWeekday(live.date)}<span>${esc(live.LIVEtitle)}</span></a>`;
+    document.getElementById('stats').innerHTML = `
+      <div class="sr-stats${count === 1 ? ' one' : ''}">
+        ${count === 1 ? card('披露した公演', oldest) : card('初披露', oldest) + card('最終披露', newest)}
+      </div>
+      ${allYears.length < 2 ? '' : `<div class="sr-years"><h3>年ごとの披露回数</h3><div class="bars">${allYears.map(y =>
+          `<div class="bar" title="${y}年 ${perYear[y] || 0}回"><span class="n">${perYear[y] || ''}</span><span class="b" style="height:${Math.round((perYear[y] || 0) / max * 100)}%"></span><span class="y">${String(y).slice(2)}</span></div>`).join('')}</div></div>`}`;
 
-    document.getElementById('title').innerText = `「${name}」の披露一覧：${count}回`;
-  });
+    // 公演の一覧（新しい順、年ごとに区切る）
+    let html = '', year = null;
+    matching.forEach(live => {
+        const y = ymd(live.date)[0];
+        if (y !== year) { html += `${year === null ? '' : '</ol>'}<h3 class="sr-year">${y}年<span>${perYear[y]}回</span></h3><ol class="sr-list">`; year = y; }
+        html += `<li><span class="date">${withWeekday(live.date).replace(/^\d+年/, '')}</span>` +
+            `<a href="./setlist.html?id=${encodeURIComponent(live.id)}">${esc(live.LIVEtitle)}</a>` +
+            `<span class="pos">${esc(positions(live, name).join('・'))}</span></li>`;
+    });
+    document.getElementById('results').innerHTML = html + '</ol>';
 }
 
-searchSetlist();
+searchSetlist().catch(error => {
+    console.error(error);
+    document.getElementById('results').innerHTML = '<p class="sr-note">データを読み込めませんでした。</p>';
+});
 </script>
+<script src="../site.js"></script>
 </body>
 </html>

@@ -28,22 +28,26 @@
             color: orange;
         }
     </style>
+    <link rel="stylesheet" href="common.css">
 </head>
 
 <body>
-    <h2>ゆいかおりイベントデータベース
-        <label><font color="hotpink"><input type="checkbox" name="artistFilter" value="yuiSolo" checked>唯ソロ</font></label>
-        <label><font color="orange"><input type="checkbox" name="artistFilter" value="yuikaori" checked>ゆいかおり</font></label>
-        <label><font color="deepskyblue"><input type="checkbox" name="artistFilter" value="kaoriSolo" checked>夏織ソロ</font></label>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="songs.html">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html" class="on">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <h2>ゆいかおりイベントデータベース</h2>
+    <div class="artist-tabs">
+        <label class="yui"><input type="checkbox" name="artistFilter" value="yuiSolo" checked>唯ソロ</label>
+        <label class="yuikaori"><input type="checkbox" name="artistFilter" value="yuikaori" checked>ゆいかおり</label>
+        <label class="kaori"><input type="checkbox" name="artistFilter" value="kaoriSolo" checked>夏織ソロ</label>
         <label><input type="checkbox" name="artistFilter" value="StylipS">StylipS</label>
-        <a href="index.html">楽曲一覧はこちら</a>
-    </h2>
-    <div id="checkboxContainer"></div>
-
-    <div>
-        <button id="toggleOrder">日時の昇順と降順を入れ替える</button>
     </div>
+    <div class="filterbar">
+        <div id="checkboxContainer" class="filterbar"></div>
+        <button type="button" id="clearFilters" class="clear-all">条件をすべて外す</button>
+        <button id="toggleOrder" class="order">日時の昇順と降順を入れ替える</button>
+    </div>
+    <p class="count" id="resultCount"></p>
 
+    <div class="table-wrap">
     <table id="eventTable">
         <tr>
             <th>年</th>
@@ -63,6 +67,7 @@
             <th>セットリスト</th>
         </tr>
     </table>
+    </div>
 
     <script>
         fetch('event.json')
@@ -118,8 +123,9 @@
                             if (event.id) {
                                 const setlistCell = row.insertCell();
                                 const setlistLink = document.createElement('a');
-                                setlistLink.href = `https://tokiyui.github.io/YuiKaori/sub/setlist.html?id=${event.id}`;
+                                setlistLink.href = `sub/setlist.html?id=${event.id}`;
                                 setlistLink.textContent = 'セットリスト';
+                                setlistLink.className = 'setlist-link';
                                 setlistCell.appendChild(setlistLink);
                             } else {
                                 row.insertCell().textContent = '';
@@ -149,14 +155,7 @@ function filterByArtist() {
 
                 // ラジオボタンの選択によるフィルタリングとチェックボックスの条件を反映
                 function filterData() {
-                    const selectedArtist = document.querySelector('input[name="artistFilter"]:checked').id;
-                    let filteredData = filterByArtist(selectedArtist);
-
-                    // filteredDataが空の場合に処理をスキップする
-                    if (!filteredData || filteredData.length === 0) {
-                        console.log("No data available for the selected artist.");
-                        return; // データがない場合は処理を終了
-                    }
+                    let filteredData = filterByArtist() || [];
 
                     // チェックボックスの条件によるフィルタリング
                     const selectedYears = [...document.querySelectorAll('input[type="checkbox"][id^="year"]:checked')].map(cb => cb.value);
@@ -178,6 +177,8 @@ function filterByArtist() {
                     );
 
                     populateTable(filteredData);
+                    document.getElementById('resultCount').innerHTML = `<b>${filteredData.length}</b> 件`;
+                    updateDropdowns();
                 }
 
                 // 最初にフィルタリングされたデータを表示（デフォルトは唯ソロ）
@@ -189,7 +190,8 @@ function filterByArtist() {
                 });
 
 const checkboxesData = [
-    { id: 'year', label: '年', values: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'] },
+    // 年はデータにある年をすべて並べる（固定の一覧だと新しい年を選べなくなる）
+    { id: 'year', label: '年', values: [...new Set(data.map(e => e.Year))].filter(y => y).sort() },
     { id: 'month', label: '月', values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'] },
     { id: 'day', label: '日', values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'] },
     { id: 'youbi', label: '曜日', values: ['日', '月', '火', '水', '木', '金', '土'] },
@@ -234,42 +236,85 @@ const checkboxesDataByRegion = [
 
 const checkboxContainer = document.getElementById('checkboxContainer');
 
-// 他のチェックボックスの動的生成
-checkboxesData.forEach(data => {
-    const div = document.createElement('div');
-    div.innerHTML = `<strong>${data.label}</strong>`;
-    data.values.forEach(value => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `${data.id}-${value}`;
-        checkbox.value = value;
-        const label = document.createElement('label');
-        label.setAttribute('for', checkbox.id);
-        label.textContent = value;
-        div.appendChild(checkbox);
-        div.appendChild(label);
+// 絞り込みの項目ごとに、ボタンと選択肢の一覧（複数選べるプルダウン）を作る。
+// チェックボックスの id（year-2026 など）と値は以前と同じなので、絞り込みの処理はそのまま使える。
+function makeDropdown(label, groups, idPrefix, extraClass) {
+    const dd = document.createElement('div');
+    dd.className = 'dd' + (extraClass ? ' ' + extraClass : '');
+    dd.dataset.prefix = idPrefix;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = `<span>${label}</span><span class="sel">すべて</span>`;
+    const panel = document.createElement('div');
+    panel.className = 'panel';
+    panel.hidden = true;
+    groups.forEach(group => {
+        if (group.label) {
+            const g = document.createElement('div');
+            g.className = 'grp';
+            g.textContent = group.label;
+            panel.appendChild(g);
+        }
+        const opts = document.createElement('div');
+        opts.className = 'opts';
+        group.values.forEach(value => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `${idPrefix}-${value}`;
+            checkbox.value = value;
+            const lab = document.createElement('label');
+            lab.appendChild(checkbox);
+            lab.appendChild(document.createTextNode(value));
+            opts.appendChild(lab);
+        });
+        panel.appendChild(opts);
     });
-    checkboxContainer.appendChild(div);
-});
+    const foot = document.createElement('div');
+    foot.className = 'foot';
+    foot.innerHTML = '<button type="button" class="c">この項目の選択を外す</button><button type="button" class="x">閉じる</button>';
+    panel.appendChild(foot);
+    foot.querySelector('.c').addEventListener('click', () => {
+        panel.querySelectorAll('input:checked').forEach(cb => { cb.checked = false; });
+        filterData();
+    });
+    foot.querySelector('.x').addEventListener('click', closeDropdowns);
+    panel.addEventListener('click', e => e.stopPropagation());
+    button.addEventListener('click', e => {
+        e.stopPropagation();
+        const wasOpen = !panel.hidden;
+        closeDropdowns();
+        if (!wasOpen) { panel.hidden = false; button.setAttribute('aria-expanded', 'true'); }
+    });
+    dd.appendChild(button);
+    dd.appendChild(panel);
+    checkboxContainer.appendChild(dd);
+}
 
-// 都道府県の地域ごとのチェックボックスの動的生成
-checkboxesDataByRegion.forEach(region => {
-    const regionDiv = document.createElement('div');
-    regionDiv.innerHTML = `        <strong>${region.label}</strong>`;
-    region.values.forEach(value => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `prefecture-${value}`;
-        checkbox.value = value;
-        
-        const label = document.createElement('label');
-        label.setAttribute('for', checkbox.id);
-        label.textContent = value;
-        
-        regionDiv.appendChild(checkbox);
-        regionDiv.appendChild(label);
+function closeDropdowns() {
+    document.querySelectorAll('.dd .panel').forEach(p => { p.hidden = true; });
+    document.querySelectorAll('.dd > button').forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+document.addEventListener('click', closeDropdowns);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDropdowns(); });
+
+// ボタンに選んだ内容を表示し、条件が入っている項目に色を付ける
+function updateDropdowns() {
+    document.querySelectorAll('.dd').forEach(dd => {
+        const selected = [...dd.querySelectorAll('input:checked')].map(cb => cb.value);
+        dd.classList.toggle('active', selected.length > 0);
+        dd.querySelector('.sel').textContent = selected.length === 0 ? 'すべて'
+            : selected.length > 3 ? `${selected.slice(0, 3).join('・')} ほか${selected.length - 3}`
+            : selected.join('・');
     });
-    checkboxContainer.appendChild(regionDiv);
+}
+
+checkboxesData.forEach(data => makeDropdown(data.label, [{ values: data.values }], data.id, data.id === 'day' ? 'grid7' : ''));
+makeDropdown('都道府県', checkboxesDataByRegion, 'prefecture');
+
+document.getElementById('clearFilters').addEventListener('click', () => {
+    document.querySelectorAll('#checkboxContainer input:checked').forEach(cb => { cb.checked = false; });
+    filterData();
 });
 
                 // チェックボックスのイベントリスナー
@@ -286,6 +331,8 @@ checkboxesDataByRegion.forEach(region => {
                 });
             });
     </script>
+<script src="table-zoom.js"></script>
+<script src="site.js"></script>
 </body>
 
 </html>

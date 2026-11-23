@@ -376,7 +376,7 @@
         "type": "compilation",
         "artist": "石原夏織",
         "date": "2023年11月22日"
-    }, 	
+    },
     {
         "CDtitle": "Gift",
         "type": "digital",
@@ -436,5 +436,35 @@
         "type": "minialbum",
         "artist": "小倉唯",
         "date": "2025年11月25日"
+    },
+    {
+        "CDtitle": "星眼鏡",
+        "type": "digital",
+        "artist": "石原夏織",
+        "date": "2026年1月8日"
+    },
+    {
+        "CDtitle": "We Can Do!!",
+        "type": "digital",
+        "artist": "石原夏織",
+        "date": "2026年1月8日"
+    },
+    {
+        "CDtitle": "チョコレート・メモリアル",
+        "type": "single",
+        "artist": "小倉唯",
+        "date": "2026年2月11日"
+    },
+    {
+        "CDtitle": "ASOVIVA!!!",
+        "type": "minialbum",
+        "artist": "石原夏織",
+        "date": "2026年3月25日"
+    },
+    {
+        "CDtitle": "Q.E.D.",
+        "type": "single",
+        "artist": "小倉唯",
+        "date": "2026年7月22日"
     }
 ]

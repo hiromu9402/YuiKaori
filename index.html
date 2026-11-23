@@ -4,278 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ゆいかおり楽曲一覧</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .pink-cell {
-            background-color: hotpink;
-        }
-        .cyan-cell {
-            background-color: cyan;
-        }
-        .green-cell {
-            background-color: limegreen;
-        }
-    </style>
+    <title>ゆいかおり DB</title>
+    <link rel="stylesheet" href="common.css">
 </head>
 
 <body>
-    <h2>ゆいかおり楽曲一覧 
-        <font color="hotpink"><input type="radio" id="yui-solo" name="artist-filter" value="yui" checked class="radio-input">
-        <label for="yui-solo" class="radio-label">唯ソロ</label></font>
-        <font color="deepskyblue"><input type="radio" id="kaori-solo" name="artist-filter" value="kaori" class="radio-input">
-        <label for="kaori-solo" class="radio-label">夏織ソロ</label></font>
-        <font color="orange"><input type="radio" id="yuikaori" name="artist-filter" value="yuikaori" class="radio-input">
-        <label for="yuikaori" class="radio-label">ゆいかおり</label></font>
-        <a href="tour.html">ツアーセットリスト比較ページ</a> <a href="event.html">イベント検索ページ</a> <a href="calendar.html">ゆいかおりカレンダー</a>
-        未回収楽曲チェックツール→ <a href="my.html">唯ソロ</a> <a href="my_c.html">夏織ソロ</a> <a href="my_f.html">ゆいかおり</a></h2>
-    <table>
-        <thead>
-            <tr>
-                <th onclick="sortTable('title')">楽曲名(クリックすると歌詞が開きます)</th>
-                <th>コール表</th>
-                <th>MV(抜け有)</th>
-                <th>ライブ映像(抜け有)</th>
-                <th onclick="sortTable('performanceCount')">披露回数</th>
-                <th onclick="sortTable('latestPerformanceDate')">最終披露日</th>
-                <th>作詞</th>
-                <th>作曲</th>
-                <th>編曲</th>
-                <th onclick="sortTable('length')">長さ</th>
-                <th>収録CD</th>
-                <th onclick="sortTable('releaseDate')">リリース日</th>
-            </tr>
-        </thead>
-        <tbody id="songTable"></tbody>
-    </table>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="songs.html">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <header class="home-hero">
+        <h1>ゆいかおり DB</h1>
+        <p>小倉唯・石原夏織・ゆいかおりの楽曲、ライブのセットリスト、イベントをまとめたデータベースです。</p>
+    </header>
+
+    <div class="home-stats" id="stats"></div>
+
+    <div class="home-grid">
+        <section class="home-box">
+            <h2>今日の出来事<span id="todayLabel"></span></h2>
+            <div id="today"></div>
+            <p class="more"><a href="calendar.html">カレンダーを見る →</a></p>
+        </section>
+        <section class="home-box">
+            <h2>これからの予定</h2>
+            <div id="upcoming"></div>
+            <p class="more"><a href="event.html">イベント検索を見る →</a></p>
+        </section>
+        <section class="home-box">
+            <h2>最近の公演</h2>
+            <div id="recent"></div>
+            <p class="more"><a href="tour.html">ツアー比較を見る →</a></p>
+        </section>
+    </div>
+
+    <h2 class="home-h2">ページの案内</h2>
+    <div class="home-pages">
+        <a href="songs.html"><b>楽曲一覧</b><span>全曲の作家・収録CD・披露回数・最終披露日。曲名から披露した公演の一覧へ。</span></a>
+        <a href="tour.html"><b>ツアー比較</b><span>同じツアーの公演のセットリストを並べて、違う曲が一目で分かる。</span></a>
+        <a href="event.html"><b>イベント検索</b><span>ライブ・リリース・特典会などを年・月・分類・地域で絞り込む。</span></a>
+        <a href="calendar.html"><b>カレンダー</b><span>その日付に過去どんな出来事があったかを「○年前」付きで。</span></a>
+        <div class="card"><b>未回収チェック</b><span>行った公演を選ぶと、まだ聴いていない曲が分かる。</span><span class="links"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></div>
+    </div>
 
     <script>
-        let songData = []; // 追加: 曲データを保存する配列
-        let reverseSortPerformanceCount = true; // 披露回数の逆順フラグ
-        let reverseSortPerformanceDate = true; // 最終披露日の逆順フラグ
-        let reverseSortReleaseDate = false; // リリース日の逆順フラグ
-        let releaseDateToggle = 0; // リリース日ソートの状態を管理
-        let reverseSortLength = false; // 長さのソート用
+        const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const arr = v => Array.isArray(v) ? v : (v ? [v] : []);
+        const DOT = { '小倉唯': 'd1', '石原夏織': 'd2', 'ゆいかおり': 'd3', 'StylipS': 'd4' };
+        const WEEKDAYS = '日月火水木金土';
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const TM = now.getMonth() + 1, TD = now.getDate(), TY = now.getFullYear();
+        const dateOf = e => new Date(Number(e.Year), Number(e.Month) - 1, Number(e.Day));
+        const liveDate = l => { const [y, m, d] = l.date.match(/\d+/g).map(Number); return new Date(y, m - 1, d); };
+        const fmt = d => `${d.getMonth() + 1}月${d.getDate()}日（${WEEKDAYS[d.getDay()]}）`;
+        const title = e => e.class1 === 'リリース' ? `${esc(e.class2)}「${esc(e.title)}」リリース` : esc(e.title);
+        const dot = a => `<span class="dot ${DOT[arr(a)[0]] || ''}"></span>`;
+        // ホームでは雑誌・ラジオなどの細かい予定は出さず、ライブ・イベント・リリースに絞る
+        const MAIN = ['ライブ', 'ファンクラブイベント', '特典会', 'リリイベ', 'イベント', 'リリース'];
 
-        function formatDateToJapanese(date) {
-            const year = date.getFullYear();
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const day = date.getDate().toString().padStart(2, '0');
-            return `${year}年${month}月${day}日`;
-        }
+        Promise.all(['song.json', 'setlist.json', 'event.json'].map(f => fetch(f).then(r => r.json())))
+            .then(([songs, lives, events]) => {
+                // 数字のまとめ
+                const per = a => songs.filter(s => s.artist === a).length;
+                document.getElementById('stats').innerHTML = `
+                    <a href="songs.html"><b>${songs.length}</b><span>曲</span><small>唯ソロ ${per('小倉唯')}・夏織ソロ ${per('石原夏織')}・ゆいかおり ${per('ゆいかおり')}</small></a>
+                    <a href="tour.html"><b>${lives.length}</b><span>公演</span><small>セットリストを登録した公演</small></a>
+                    <a href="event.html"><b>${events.length}</b><span>件</span><small>イベント・リリース・出演など</small></a>`;
 
-        function updateSongDetails(selectedArtist) {
-            fetch('song.json')
-                .then(response => response.json())
-                .then(songs => {
-                    fetch('CD.json')
-                        .then(response => response.json())
-                        .then(CDs => {
-                            fetch('setlist.json')
-                                .then(response => response.json())
-                                .then(setlists => {
-                                    const songTable = document.getElementById('songTable');
-                                    songTable.innerHTML = ''; // Clear existing table rows
-                                    songData = []; // songDataをリセット
+                // 今日の出来事（過去の年の同じ日付）
+                document.getElementById('todayLabel').textContent = `（${TM}月${TD}日）`;
+                const todays = events.filter(e => Number(e.Month) === TM && Number(e.Day) === TD && MAIN.includes(e.class1))
+                    .sort((a, b) => Number(b.Year) - Number(a.Year));
+                document.getElementById('today').innerHTML = todays.length ? '<ul class="home-list">' + todays.slice(0, 6).map(e => {
+                    const ago = TY - Number(e.Year);
+                    return `<li><span class="when">${esc(e.Year)}年・${ago > 0 ? ago + '年前' : '今年'}</span>${dot(e.Artist)}${e.id ? `<a href="sub/setlist.html?id=${encodeURIComponent(e.id)}">${title(e)}</a>` : title(e)}</li>`;
+                }).join('') + '</ul>' : '<p class="none">今日の日付の出来事はありません。</p>';
 
-                                    songs.forEach(song => {
-                                        if (selectedArtist === 'yui' && song.artist !== '小倉唯') {
-                                            return; // Skip non-Yui songs if '唯ソロ' selected
-                                        } else if (selectedArtist === 'kaori' && song.artist !== '石原夏織') {
-                                            return; // Skip non-Kaori songs if '夏織ソロ' selected
-                                        } else if (selectedArtist === 'yuikaori' && song.artist !== 'ゆいかおり') {
-                                            return; // Skip non-Yuikaori songs if 'ゆいかおり' selected
-                                        }
+                // これからの予定（今日以降、近い順）
+                const upcoming = events.filter(e => MAIN.includes(e.class1) && dateOf(e) >= today)
+                    .sort((a, b) => dateOf(a) - dateOf(b) || String(a['Start Time']).localeCompare(String(b['Start Time'])));
+                document.getElementById('upcoming').innerHTML = upcoming.length ? '<ul class="home-list">' + upcoming.slice(0, 6).map(e => {
+                    const d = dateOf(e);
+                    return `<li><span class="when">${d.getFullYear() !== TY ? d.getFullYear() + '年' : ''}${fmt(d)}</span>${dot(e.Artist)}${title(e)}</li>`;
+                }).join('') + '</ul>' : '<p class="none">登録されている予定はありません。</p>';
 
-                                        const matchingCDs = [].concat(song.CDtitle).flatMap(songCDtitle => {
-                                            return CDs.filter(cd => cd.CDtitle === songCDtitle);
-                                        });
-
-                                        const oldestDate = matchingCDs.length > 0 ? matchingCDs.reduce((oldest, current) => {
-                                            const oldestDate = new Date(oldest.date.replace(/年|月/g, '-').replace(/日/g, ''));
-                                            const currentDate = new Date(current.date.replace(/年|月/g, '-').replace(/日/g, ''));
-                                            return oldestDate < currentDate ? oldest : current;
-                                        }) : {
-                                            date: 'No release date found'
-                                        };
-
-                                        const performanceData = setlists.reduce((acc, setlist) => {
-                                            const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
-                                            const songsArray = Array.isArray(setlist.setlist) ? setlist.setlist : [setlist.setlist];
-                                            if (!Array.isArray(setlist.encore)) {
-                                                songsArray.push(setlist.encore); // If encore is not an array, treat it as a single element array
-                                            } else {
-                                                songsArray.push(...setlist.encore);
-                                            }
-                                            if (setlist.Wencore) songsArray.push(setlist.Wencore);
-
-                                            const titles = songsArray.reduce((acc, title) => {
-                                                if (typeof title === 'object' && 'medley' in title) {
-                                                    acc.push(...title.medley);
-                                                } else {
-                                                    acc.push(title);
-                                                }
-                                                return acc;
-                                            }, []);
-
-                                            if (titles.includes(song.title)) {
-                                                acc.count += 1;
-                                                if (!acc.latestDate || date > acc.latestDate) {
-                                                    acc.latestDate = date;
-                                                    acc.id = setlist.id;
-                                                }
-                                            }
-
-                                            return acc;
-                                        }, {
-                                            count: 0,
-                                            latestDate: null,
-                                            id: null
-                                        });
-
-                                        const formattedDate = oldestDate.date !== 'No release date found' ? oldestDate.date : 'No release date found';
-                                        const latestPerformanceDate = performanceData.latestDate ? performanceData.latestDate.toISOString().split('T')[0] : null;
-
-                                        let lyricsClass = ''
-                                        if (song.lyrics.includes('小倉唯')) {
-                                            lyricsClass = 'pink-cell';
-                                        } else if (song.lyrics.includes('石原夏織')) {
-                                            lyricsClass = 'cyan-cell';
-                                        }  else {
-                                            lyricsClass = '';
-                                        }
-;
-                                        let musicClass = ''
-                                        if (song.music.includes('小倉唯')) {
-                                            musicClass = 'pink-cell';
-                                        } else if (song.music.includes('俊龍')) {
-                                            musicClass = 'green-cell';
-                                        }  else {
-                                            musicClass = '';
-                                        }
-
-                                        const callLink = song.call
-                                          ? (!isNaN(Number(song.call))
-                                              ? `<a href="https://salvageyuikaori.seesaa.net/article/${song.call}.html" target="_blank">コール表</a>`
-                                              : `<a href="https://yuicom-callbook.hatenablog.com/entry/${song.call}" target="_blank">コール表</a>`)
-                                          : '';
-
-                                        const MVLink = song.MVlink ? `<a href="https://www.youtube.com/watch?v=${song.MVlink}" target="_blank">MV</a>` : '';
-                                        const videoLink = song.videolink ? `<a href="https://www.youtube.com/watch?v=${song.videolink}" target="_blank">ライブ映像</a>` : '';
-
-                                        const row = 
-                                            `<tr>
-                                                <td><a href="https://www.uta-net.com/song/${song.utanet}">${song.title}</a></td>
-                                                <td>${callLink}</td>
-                                                <td>${MVLink}</td>
-                                                <td>${videoLink}</td> 
-                                                <td><a href="./sub/search.html?name=${song.title}">${performanceData.count}</a></td> 	
-                                                <td><a href="./sub/setlist.html?id=${performanceData.id}">${performanceData.latestDate ? formatDateToJapanese(new Date(performanceData.latestDate)) : '未披露'}</a></td>
-                                                <td class="${lyricsClass}">${song.lyrics}</td>
-                                                <td class="${musicClass}">${song.music}</td>
-                                                <td>${song.arranger}</td>
-                                                <td>${song.length}</td>
-                                                <td>${song.CDtitle}</td>
-                                                <td>${formattedDate}</td>
-                                            </tr>`;
-
-                                        songData.push({
-                                            title: song.title,
-                                            rowHTML: row,
-                                            performanceCount: performanceData.count,
-                                            latestPerformanceDate: latestPerformanceDate, // 日付のISO形式で保存
-                                            length: song.length,
-                                            releaseDate: formattedDate
-                                        });
-                                    });
-
-                                    // 初期表示
-                                    songData.forEach(song => {
-                                        songTable.innerHTML += song.rowHTML;
-                                    });
-                                });
-                        });
-                });
-        }
-
-        const artistFilters = document.getElementsByName('artist-filter');
-        let selectedArtist = 'yui'; // Default selection
-
-        artistFilters.forEach(filter => {
-            filter.addEventListener('change', () => {
-                selectedArtist = filter.value;
-                updateSongDetails(selectedArtist);
-            });
-        });
-
-function parseJapaneseDate(dateStr) {
-    // "2009年9月26日" → "2009-09-26" のように変換してDateオブジェクトに変換
-    return new Date(dateStr.replace(/年|月/g, '-').replace(/日/g, ''));
-}
-
-function parseTimeToSeconds(timeStr) {
-    if (!timeStr) return 0; // 空の値は 0 とする
-    const parts = timeStr.split(":");
-    return parseInt(parts[0]) * 60 + parseInt(parts[1]); // 分を秒換算
-}
-
-function sortTable(column) {
-    const songTable = document.getElementById('songTable');
-    let sortedData;
-
-    if (column === 'performanceCount') {
-        sortedData = [...songData].sort((a, b) => 
-            reverseSortPerformanceCount ? b.performanceCount - a.performanceCount : a.performanceCount - b.performanceCount
-        );
-        reverseSortPerformanceCount = !reverseSortPerformanceCount;
-    } else if (column === 'latestPerformanceDate') {
-        sortedData = [...songData].sort((a, b) => {
-            if (!a.latestPerformanceDate) return 1;
-            if (!b.latestPerformanceDate) return -1;
-            return reverseSortPerformanceDate 
-                ? new Date(b.latestPerformanceDate) - new Date(a.latestPerformanceDate) 
-                : new Date(a.latestPerformanceDate) - new Date(b.latestPerformanceDate);
-        });
-        reverseSortPerformanceDate = !reverseSortPerformanceDate;
-    } else if (column === 'releaseDate') {
-        sortedData = [...songData].sort((a, b) => {
-            if (!a.releaseDate) return 1;
-            if (!b.releaseDate) return -1;
-            return reverseSortReleaseDate 
-                ? parseJapaneseDate(b.releaseDate) - parseJapaneseDate(a.releaseDate)
-                : parseJapaneseDate(a.releaseDate) - parseJapaneseDate(b.releaseDate);
-        });
-        reverseSortReleaseDate = !reverseSortReleaseDate;
-    } else if (column === 'length') {
-        sortedData = [...songData].sort((a, b) => {
-            return reverseSortLength 
-                ? parseTimeToSeconds(b.length) - parseTimeToSeconds(a.length)
-                : parseTimeToSeconds(a.length) - parseTimeToSeconds(b.length);
-        });
-        reverseSortLength = !reverseSortLength;
-    } else {
-        sortedData = [...songData].sort((a, b) => a.title.localeCompare(b.title));
-    }
-
-    songTable.innerHTML = '';
-    sortedData.forEach(song => {
-        songTable.innerHTML += song.rowHTML;
-    });
-}
-        
-        updateSongDetails(selectedArtist); // Initial call to populate the table
+                // 最近の公演（セットリストのある公演のうち、今日までの新しいもの）
+                const recent = lives.filter(l => liveDate(l) <= today).sort((a, b) => b.id.localeCompare(a.id));
+                document.getElementById('recent').innerHTML = '<ul class="home-list">' + recent.slice(0, 6).map(l =>
+                    `<li><span class="when">${liveDate(l).getFullYear()}年${fmt(liveDate(l))}</span>${dot(l.artist)}<a href="sub/setlist.html?id=${encodeURIComponent(l.id)}">${esc(l.LIVEtitle)}</a></li>`).join('') + '</ul>';
+            })
+            .catch(error => console.error('Error fetching data: ', error));
     </script>
+<script src="site.js"></script>
 </body>
 
 </html>

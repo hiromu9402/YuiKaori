@@ -1,0 +1,10 @@
+# 作業用のメモ（コミットしない）
+HANDOFF.md
+# 管理画面の仮想環境とデータ（DB・秘密鍵はリポジトリの外に置くが、念のため）
+.venv
+admin/data/
+*.sqlite3
+__pycache__/
+*.pyc
+# build_site.py の出力
+_site/

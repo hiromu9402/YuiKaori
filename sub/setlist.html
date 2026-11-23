@@ -3,149 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>セットリスト表示</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 5px;
-    }
-</style>
+<title>セットリスト</title>
+    <link rel="stylesheet" href="../common.css">
 </head>
 <body>
+<nav class="gnav"><a class="brand" href="../index.html">ゆいかおり DB</a><a href="../songs.html">楽曲一覧</a><a href="../tour.html">ツアー比較</a><a href="../event.html">イベント検索</a><a href="../calendar.html">カレンダー</a><span class="group"><a href="../my.html">唯ソロ</a><a href="../my_c.html">夏織ソロ</a><a href="../my_f.html">ゆいかおり</a></span></nav>
+<div class="sl-wrap">
 <div id="liveInfo"></div>
+<p class="sl-legend">「初披露」はこの公演が DB の中で最初の披露、「○回目」はこの公演までの披露回数です（DB に登録されている公演だけで数えています）。「楽曲一覧外」はカバーやキャラクターソングなど、楽曲一覧に載っていない曲です。</p>
+</div>
 
 <script>
-const urlParams = new URLSearchParams(window.location.search);
-const targetLiveId = urlParams.get('id');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const arr = v => Array.isArray(v) ? v : (v ? [v] : []);
+// 公演の曲名をメドレーも展開して並べる
+const songsOf = live => ['setlist', 'encore', 'Wencore']
+    .flatMap(key => arr(live[key]).flatMap(item => (item && typeof item === 'object') ? item.medley : [item]))
+    .filter(Boolean);
+const COLOR = { '小倉唯': 'var(--yui)', '石原夏織': 'var(--kaori)', 'ゆいかおり': 'var(--yuikaori)' };
+const WEEKDAYS = '日月火水木金土';
+const songLink = title => `search.html?name=${encodeURIComponent(title)}`;
+const liveLink = id => `setlist.html?id=${encodeURIComponent(id)}`;
 
-if (!targetLiveId) {
-    document.getElementById('liveInfo').innerHTML = '<p>No ID provided in the query parameters.</p>';
-} else {
-    const jsonFiles = [];
-    jsonFiles.push("../setlist.json");
+async function loadLiveInfo() {
+    const liveInfo = document.getElementById('liveInfo');
+    const id = new URLSearchParams(window.location.search).get('id');
+    if (!id) {
+        liveInfo.innerHTML = '<p>公演が指定されていません。</p>';
+        return;
+    }
+    const [lives, songs] = await Promise.all([
+        fetch('../setlist.json').then(r => r.json()),
+        fetch('../song.json').then(r => r.json()),
+    ]);
+    const live = lives.find(item => item.id === id);
+    if (!live) {
+        liveInfo.innerHTML = '<p>指定された公演が見つかりません。</p>';
+        return;
+    }
+    const catalog = new Set(songs.map(s => s.title));
+    const byDate = [...lives].sort((a, b) => a.id.localeCompare(b.id));
 
-    let found = false;
-
-    const loadLiveInfo = async () => {
-        for (const file of jsonFiles) {
-            try {
-                const response = await fetch(file);
-                const data = await response.json();
-                const liveData = data.find(item => item.id === targetLiveId);
-
-                if (liveData) {
-                    const liveInfo = document.getElementById('liveInfo');
-
-                    const getDayOfWeek = dateString => {
-                        const days = ['日', '月', '火', '水', '木', '金', '土'];
-                        const date = new Date(dateString.replace(/年|月|日/g, '/'));
-                        return days[date.getDay()];
-                    };
-
-                    // セットリスト表示（メドレー対応）
-                    const renderSetlist = setlist => {
-                        let setlistHTML = '<ul>';
-                        setlist.forEach((song, index) => {
-                            if (typeof song === 'string') {
-                                setlistHTML += `<p>${index + 1}. <a href="./search.html?name=${encodeURIComponent(song)}">${song}</a></p>`;
-                            } else if (typeof song === 'object' && Array.isArray(song.medley)) {
-                                setlistHTML += `<p>${index + 1}. 【メドレー】<br>`;
-                                song.medley.forEach((medleySong, medleyIndex) => {
-                                    setlistHTML += `<a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a>`;
-                                    if (medleyIndex < song.medley.length - 1) {
-                                        setlistHTML += '<br>';
-                                    }
-                                });
-                                setlistHTML += `</p>`;
-                            }
-                        });
-                        setlistHTML += '</ul>';
-                        return setlistHTML;
-                    };
-
-                    // Encore（EC）の表示
-                    const renderEncore = encore => {
-                        if (!Array.isArray(encore)) encore = encore ? [encore] : [];
-                        let encoreHTML = '';
-
-                        if (encore.length > 0) {
-                            encoreHTML += '<ul>';
-                            encore.forEach((song, index) => {
-                                if (typeof song === 'string') {
-                                    encoreHTML += `<p>EC${index + 1}. <a href="./search.html?name=${encodeURIComponent(song)}">${song}</a></p>`;
-                                } else if (typeof song === 'object' && Array.isArray(song.medley)) {
-                                    encoreHTML += `<p>EC${index + 1}. 【メドレー】<br>`;
-                                    song.medley.forEach((medleySong, medleyIndex) => {
-                                        encoreHTML += `<a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a>`;
-                                        if (medleyIndex < song.medley.length - 1) {
-                                            encoreHTML += '<br>';
-                                        }
-                                    });
-                                    encoreHTML += `</p>`;
-                                }
-                            });
-                            encoreHTML += '</ul>';
-                        }
-                        return encoreHTML;
-                    };
-
-                    // WEncore（WEC）の表示
-                    const renderWencore = wencore => {
-                        if (!Array.isArray(wencore)) wencore = wencore ? [wencore] : [];
-                        let wencoreHTML = '';
-
-                        if (wencore.length > 0) {
-                            wencoreHTML += '<ul>';
-                            wencore.forEach((song, index) => {
-                                if (typeof song === 'string') {
-                                    wencoreHTML += `<p>WEC${index + 1}. <a href="./search.html?name=${encodeURIComponent(song)}">${song}</a></p>`;
-                                } else if (typeof song === 'object' && Array.isArray(song.medley)) {
-                                    wencoreHTML += `<p>WEC${index + 1}. 【メドレー】<br>`;
-                                    song.medley.forEach((medleySong, medleyIndex) => {
-                                        wencoreHTML += `<a href="./search.html?name=${encodeURIComponent(medleySong)}">${medleySong}</a>`;
-                                        if (medleyIndex < song.medley.length - 1) {
-                                            wencoreHTML += '<br>';
-                                        }
-                                    });
-                                    wencoreHTML += `</p>`;
-                                }
-                            });
-                            wencoreHTML += '</ul>';
-                        }
-                        return wencoreHTML;
-                    };
-
-                    // HTMLまとめて出力
-                    const html = `
-                        <h2>${liveData.LIVEtitle}</h2>
-                        <h3>${liveData.date} (${getDayOfWeek(liveData.date)}) @${liveData.venue}</h3>
-
-                        ${renderSetlist(liveData.setlist)}
-
-                        ${liveData.encore ? `<p>【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
-
-                        ${liveData.Wencore ? `<p>【ダブルアンコール】</p>${renderWencore(liveData.Wencore)}` : ''}
-                    `;
-
-                    liveInfo.innerHTML = html;
-
-                    found = true;
-                    break;
-                }
-            } catch (error) {
-                console.error(`Error fetching data from ${file}:`, error);
+    // この公演までの披露回数（公演IDは日付順なので、ID順に数える）
+    const countUpTo = title => {
+        let n = 0;
+        for (const x of byDate) {
+            if (songsOf(x).includes(title)) n++;
+            if (x.id === id) break;
+        }
+        return n;
+    };
+    const songRow = (title, no) => {
+        const n = countUpTo(title);
+        const tags = (n === 1 ? '<span class="tag first">初披露</span>' : `<span class="tag cnt">${n}回目</span>`) +
+            (catalog.has(title) ? '' : '<span class="tag cover">楽曲一覧外</span>');
+        return `<li class="song">${no !== null ? `<span class="no">${no}</span>` : ''}` +
+            `<a class="title" href="${songLink(title)}">${esc(title)}</a><span class="tags">${tags}</span></li>`;
+    };
+    const section = (label, items, prefix) => {
+        items = arr(items).filter(Boolean);
+        if (!items.length) return '';
+        const count = items.reduce((s, t) => s + (typeof t === 'object' ? t.medley.length : 1), 0);
+        let html = `<div class="sec"><b>${label}</b>${count}曲</div><ol class="songs">`;
+        items.forEach((item, i) => {
+            const no = prefix + (i + 1);
+            if (typeof item === 'object') {
+                html += `<li><div class="medley-head"><span class="no">${no}</span><span class="ml">メドレー</span></div>` +
+                    `<ol class="songs medley">${item.medley.map(t => songRow(t, null)).join('')}</ol></li>`;
+            } else {
+                html += songRow(item, no);
             }
-        }
-
-        if (!found) {
-            document.getElementById('liveInfo').innerHTML =
-                '<p>No live information found for the provided ID.</p>';
-        }
+        });
+        return html + '</ol>';
     };
 
-    loadLiveInfo();
-}
-</script>
+    const [y, m, d] = live.date.match(/\d+/g).map(Number);
+    const artists = arr(live.artist);
+    const sameArtist = byDate.filter(x => arr(x.artist).some(a => artists.includes(a)));
+    const index = sameArtist.findIndex(x => x.id === id);
+    const prev = sameArtist[index - 1], next = sameArtist[index + 1];
+    const tour = live.tourtitle ? byDate.filter(x => x.tourtitle === live.tourtitle) : [];
+    document.title = `${live.LIVEtitle} セットリスト`;
 
+    liveInfo.innerHTML = `
+      <article class="sl-live" style="--c:${COLOR[artists[0]] || 'var(--muted)'}">
+        <div class="sl-head">
+          ${live.tourtitle && live.tourtitle !== live.LIVEtitle ? `<p class="tour">${esc(live.tourtitle)}</p>` : ''}
+          <h2>${esc(live.LIVEtitle)}</h2>
+          <div class="meta"><span><b>${y}年${m}月${d}日（${WEEKDAYS[new Date(y, m - 1, d).getDay()]}）</b></span>
+            <span>${esc(live.venue)}</span><span>${esc(artists.join('・'))}</span><span>全${songsOf(live).length}曲</span></div>
+          ${tour.length > 1 ? `<div class="actions"><a href="../tour.html?tour=${encodeURIComponent(live.tourtitle)}">ツアー比較で見る</a></div>` : ''}
+        </div>
+        ${section('本編', live.setlist, '')}${section('アンコール', live.encore, 'EC')}${section('ダブルアンコール', live.Wencore, 'WEC')}
+      </article>
+      <div class="sl-nav">
+        ${prev ? `<a href="${liveLink(prev.id)}"><small>← 前の公演（${esc(prev.date)}）</small>${esc(prev.LIVEtitle)}</a>` : '<span></span>'}
+        ${next ? `<a class="next" href="${liveLink(next.id)}"><small>次の公演（${esc(next.date)}） →</small>${esc(next.LIVEtitle)}</a>` : ''}
+      </div>
+      ${tour.length > 1 ? `<div class="sl-same"><h3>同じツアーの公演</h3><div class="chips">${tour.map(x =>
+            `<a href="${liveLink(x.id)}"${x.id === id ? ' class="cur"' : ''}>${esc(x.LIVEtitle.replace(live.tourtitle, '').trim() || x.LIVEtitle)}</a>`).join('')}</div></div>` : ''}`;
+}
+
+loadLiveInfo().catch(error => {
+    console.error(error);
+    document.getElementById('liveInfo').innerHTML = '<p>公演の情報を読み込めませんでした。</p>';
+});
+</script>
+<script src="../site.js"></script>
 </body>
 </html>

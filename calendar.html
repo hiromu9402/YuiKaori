@@ -4,93 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Calendar</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        .artist1 {
-            color: hotpink;
-        }
-        .artist2 {
-            color: deepskyblue;
-        }
-        .artist3 {
-            color: orange;
-        }
-    </style>
+    <title>ゆいかおりカレンダー</title>
+    <link rel="stylesheet" href="common.css">
 </head>
 
 <body>
-    <table id="eventsTable">
-        <thead>
-            <tr>
-                <th>日付</th>
-                <th>イベントタイトル</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<nav class="gnav"><a class="brand" href="index.html">ゆいかおり DB</a><a href="songs.html">楽曲一覧</a><a href="tour.html">ツアー比較</a><a href="event.html">イベント検索</a><a href="calendar.html" class="on">カレンダー</a><span class="group"><a href="my.html">唯ソロ</a><a href="my_c.html">夏織ソロ</a><a href="my_f.html">ゆいかおり</a></span></nav>
+    <h2>ゆいかおりカレンダー</h2>
+    <p class="hint">その日付に、過去どの年にどんな出来事があったかを並べています。月のボタンで移動でき、出演と種類で絞り込めます。</p>
+    <section class="cal-today" id="today"></section>
+    <div class="cal-controls">
+        <div class="cal-months" id="months"></div>
+        <div class="cal-filters">
+            <div class="grp" id="artists"><span class="lab">出演</span></div>
+            <div class="grp" id="cats"><span class="lab">種類</span></div>
+            <label class="cal-toggle"><input type="checkbox" id="showEmpty">出来事のない日も表示</label>
+        </div>
+    </div>
+    <div id="list"></div>
 
     <script>
+        const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        // [出演者, 表示名, 色のクラス, 最初から選ぶか]
+        const ARTISTS = [['小倉唯', '唯ソロ', 'd1', true], ['石原夏織', '夏織ソロ', 'd2', true],
+                         ['ゆいかおり', 'ゆいかおり', 'd3', true], ['StylipS', 'StylipS', 'd4', false]];
+        const LIVE = ['ライブ', 'ファンクラブイベント', '特典会', 'リリイベ', 'イベント'];
+        const MEDIA = ['テレビ', 'ラジオ', '雑誌', '配信', 'USEN'];
+        // [キー, 表示名, 大分類が当てはまるか, 最初から選ぶか]
+        const CATS = [['live', 'ライブ・イベント', c => LIVE.includes(c), true],
+                      ['release', 'リリース', c => c === 'リリース', true],
+                      ['media', 'テレビ・ラジオ・雑誌・配信', c => MEDIA.includes(c), false],
+                      ['other', 'その他', c => !LIVE.includes(c) && c !== 'リリース' && !MEDIA.includes(c), false]];
+        const WEEKDAYS = '日月火水木金土';
+        const MAXDAY = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        const now = new Date(), TM = now.getMonth() + 1, TD = now.getDate(), TY = now.getFullYear();
+        const artistsOf = e => Array.isArray(e.Artist) ? e.Artist : [e.Artist];
+        const dotOf = e => (ARTISTS.find(a => a[0] === artistsOf(e)[0]) || [0, 0, 'd0'])[2];
+
+        function eventHTML(e) {
+            const ago = TY - Number(e.Year);
+            const when = ago > 0 ? `${ago}年前` : ago === 0 ? '今年' : `${-ago}年後`;
+            const title = e.class1 === 'リリース' ? `${esc(e.class2)}「${esc(e.title)}」リリース` : esc(e.title);
+            return `<div class="cal-ev"><span class="yr"><b>${esc(e.Year)}年</b>・${when}</span>` +
+                (e.class1 ? `<span class="cat">${esc(e.class1)}</span>` : '') +
+                `<span class="tt"><span class="dot ${dotOf(e)}"></span>${title}</span>` +
+                (e.id ? `<a class="sl" href="sub/setlist.html?id=${encodeURIComponent(e.id)}">セットリスト</a>` : '') + '</div>';
+        }
+
+        let events = [];
+        function render() {
+            const arts = [...document.querySelectorAll('#artists input:checked')].map(i => i.value);
+            const cats = CATS.filter(c => document.getElementById('cat-' + c[0]).checked);
+            const byDay = {};
+            events.filter(e => artistsOf(e).some(a => arts.includes(a)) && cats.some(c => c[2](e.class1)))
+                .forEach(e => { (byDay[Number(e.Month) * 100 + Number(e.Day)] ??= []).push(e); });
+            Object.values(byDay).forEach(list => list.sort((a, b) => Number(b.Year) - Number(a.Year)));
+            const showEmpty = document.getElementById('showEmpty').checked;
+            let html = '';
+            for (let m = 1; m <= 12; m++) {
+                html += `<h3 class="cal-month" id="m${m}">${m}月</h3>`;
+                for (let d = 1; d <= MAXDAY[m - 1]; d++) {
+                    const list = byDay[m * 100 + d] || [];
+                    const today = m === TM && d === TD;
+                    if (!list.length && !showEmpty && !today) continue;
+                    const valid = new Date(TY, m - 1, d).getMonth() === m - 1;  // 今年に2月29日がないときは曜日を出さない
+                    const wd = valid ? `（${WEEKDAYS[new Date(TY, m - 1, d).getDay()]}）` : '';
+                    html += `<div class="cal-day${today ? ' is-today' : ''}${list.length ? '' : ' empty'}" id="d${m}-${d}">` +
+                        `<div class="date">${m}月${d}日<small>${today ? '今日' : ''}${wd}</small></div><div>` +
+                        (list.length ? list.map(eventHTML).join('') : '<span class="none">出来事はありません</span>') + '</div></div>';
+                }
+            }
+            document.getElementById('list').innerHTML = html;
+            const t = byDay[TM * 100 + TD] || [];
+            document.getElementById('today').innerHTML = `<h3>今日（${TM}月${TD}日）の出来事</h3>` +
+                (t.length ? t.map(eventHTML).join('') : '<p class="none">今日の日付の出来事はありません。</p>');
+        }
+
+        function scrollToElement(el) {
+            const offset = document.querySelector('.cal-controls').offsetHeight + 8;
+            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset });
+        }
+
+        document.getElementById('months').innerHTML = [...Array(12)].map((_, i) =>
+            `<button type="button" data-m="${i + 1}"${i + 1 === TM ? ' class="now"' : ''}>${i + 1}月</button>`).join('');
+        document.querySelectorAll('#months button').forEach(b =>
+            b.addEventListener('click', () => scrollToElement(document.getElementById('m' + b.dataset.m))));
+        document.getElementById('artists').insertAdjacentHTML('beforeend', ARTISTS.map(([v, label, dot, on]) =>
+            `<label class="chip"><input type="checkbox" value="${v}"${on ? ' checked' : ''}><span class="dot ${dot}"></span>${label}</label>`).join(''));
+        document.getElementById('cats').insertAdjacentHTML('beforeend', CATS.map(([k, label, , on]) =>
+            `<label class="chip"><input type="checkbox" id="cat-${k}"${on ? ' checked' : ''}>${label}</label>`).join(''));
+        document.querySelectorAll('.cal-controls input').forEach(i => i.addEventListener('change', render));
+
         fetch('event.json')
             .then(response => response.json())
             .then(data => {
-                const eventsTable = document.getElementById('eventsTable');
-                const tbody = eventsTable.getElementsByTagName('tbody')[0];
-                const maxday = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-
-                for (let i = 1; i <= 12; i++) {
-                    for (let j = 1; j <= maxday[i - 1]; j++) {
-                        const events = data.filter(event => event.Month === String(i) && event.Day === String(j));
-
-                        const row = tbody.insertRow();
-                        const dateCell = row.insertCell(0);
-                        const titleCell = row.insertCell(1);
-
-                        dateCell.textContent = i + '月' + j + '日';
-                        events.forEach((event, index) => {
-                            let artistClass = '';
-                            if (Array.isArray(event.Artist)) {
-                                if (event.Artist.length > 0) {
-                                    if (event.Artist[0] === '小倉唯') {
-                                        artistClass = 'artist1';
-                                    } else if (event.Artist[0] === '石原夏織') {
-                                        artistClass = 'artist2';
-                                    } else if (event.Artist[0] === 'ゆいかおり') {
-                                        artistClass = 'artist3';
-                                    }
-                                }
-                            } else {
-                                if (event.Artist === '小倉唯') {
-                                    artistClass = 'artist1';
-                                } else if (event.Artist === '石原夏織') {
-                                    artistClass = 'artist2';
-                                } else if (event.Artist === 'ゆいかおり') {
-                                    artistClass = 'artist3';
-                                }
-                            }
-                            if (event.class1 === 'リリース') {
-                                release1 = event.class2 + '「';
-                                release2 = '」リリース';
-                            } else {
-                                release1 = '';
-                                release2 = '';
-                            }
-                            titleCell.innerHTML += `<span class="${artistClass}">${release1}${event.title}${release2} (${event.Year}年)</span>` + (index < events.length - 1 ? '<br>' : '');
-                        });
-                    }
-                }
+                events = data;
+                render();
+                // 最初は今日の日付の位置を表示する
+                const el = document.getElementById(`d${TM}-${TD}`);
+                if (el) scrollToElement(el);
             })
             .catch(error => console.error('Error fetching events data: ', error));
     </script>
+<script src="site.js"></script>
 </body>
 
 </html>

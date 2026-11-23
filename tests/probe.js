@@ -175,11 +175,79 @@ const checks = {
     return { lives: out, notFound: await message('?id=0000000000'), noId: await message('') };
   },
 
+  // 作家：一覧の人数と曲数、絞り込み、作家ごとのページの曲と担当、楽曲一覧・披露一覧からのリンク
+  async writers() {
+    const songs = await json('song.json');
+    // JSON から作家ごとの曲を数える（ページと同じまとめ方を、ここでも独立に求める）
+    const key = n => String(n).normalize('NFKC').replace(/\s*\([^()]*\)\s*$/, '').trim();
+    const names = v => arr(v).flatMap(x => String(x).split(' / ')).map(t => t.trim()).filter(Boolean);
+    const expected = new Map();
+    songs.forEach(song => {
+      const keys = new Set(['lyrics', 'music', 'arranger'].flatMap(f => names(song[f]).map(key)));
+      keys.forEach(k => expected.set(k, (expected.get(k) || 0) + 1));
+    });
+
+    const w = await openPage('writers.html');
+    const doc = w.document;
+    await stableRows(doc, '#writerTable tbody tr');
+    const rows = () => [...doc.querySelectorAll('#writerTable tbody tr')].map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.trim()));
+    const all = rows();
+    const listMatches = all.every(([name, n]) => expected.get(name) === Number(n));
+    const sortedByCount = all.every((r, i) => i === 0 || Number(all[i - 1][1]) >= Number(r[1]));
+
+    // 表記が 2 通りある作家（あれば）と、いちばん曲の多い作家
+    const variant = [...expected.keys()].find(k => new Set(songs.flatMap(s => ['lyrics', 'music', 'arranger']
+      .flatMap(f => names(s[f]))).filter(n => key(n) === k)).size > 1);
+    const top = all[0][0];
+
+    const search = doc.getElementById('writerSearch');
+    search.value = top; search.dispatchEvent(new Event('input'));
+    const searched = rows().map(r => r[0]);
+    search.value = ''; search.dispatchEvent(new Event('input'));
+    const yui = doc.getElementById('w-yui'); yui.checked = true; yui.dispatchEvent(new Event('change'));
+    const yuiRows = rows();
+    const yuiSongs = songs.filter(s => s.artist === '小倉唯');
+    const yuiTotal = new Set(yuiSongs.flatMap(s => ['lyrics', 'music', 'arranger'].flatMap(f => names(s[f]).map(key)))).size;
+
+    const writerPage = async name => {
+      const p = await openPage(`sub/writer.html?name=${encodeURIComponent(name)}`);
+      await stableRows(p.document, '#songTable tbody tr');
+      const titles = [...p.document.querySelectorAll('#songTable tbody tr td:first-child')].map(td => td.textContent);
+      const roles = [...p.document.querySelectorAll('#songTable tbody tr')].map(tr => tr.querySelectorAll('td')[2].textContent);
+      const exp = songs.filter(s => ['lyrics', 'music', 'arranger'].some(f => names(s[f]).map(key).includes(name)));
+      const expRoles = exp.map(s => [['lyrics', '作詞'], ['music', '作曲'], ['arranger', '編曲']]
+        .filter(([f]) => names(s[f]).map(key).includes(name)).map(([, l]) => l).join('・'));
+      return { name, titles: [...titles].sort(), expected: exp.map(s => s.title).sort(),
+               rolesOk: titles.every((t, i) => roles[i] === expRoles[exp.findIndex(s => s.title === t)]),
+               heading: p.document.getElementById('title').textContent };
+    };
+    const missing = await openPage('sub/writer.html?name=' + encodeURIComponent('いない作家' + Date.now()));
+    const missingText = (await waitFor(() => missing.document.querySelector('#writerInfo .sr-note'))).textContent;
+
+    // 楽曲一覧と披露一覧の作家名がリンクになっている
+    const sp = await openPage('songs.html');
+    await stableRows(sp.document, '#songTable tr');
+    const firstLink = sp.document.querySelector('#songTable a.writer');
+    const s0 = songs.find(s => s.artist === '小倉唯');
+    const se = await openPage(`sub/search.html?name=${encodeURIComponent(s0.title)}`);
+    const seLinks = await waitFor(() => [...se.document.querySelectorAll('#songInfo a.writer')].length ? [...se.document.querySelectorAll('#songInfo a.writer')] : null);
+    return {
+      count: all.length, expectedCount: expected.size, listMatches, sortedByCount, top, searched,
+      yuiCount: yuiRows.length, yuiTotal,
+      topPage: await writerPage(top), variantPage: variant ? await writerPage(variant) : null,
+      missingText,
+      songsLink: firstLink ? decodeURIComponent(new URL(firstLink.href).searchParams.get('name')) === key(firstLink.textContent) : false,
+      searchLinks: seLinks.map(a => [a.textContent, new URL(a.href).pathname.endsWith('/sub/writer.html')]),
+      searchExpected: names(s0.lyrics).length + names(s0.music).length + names(s0.arranger).length,
+    };
+  },
+
   // 全ページ共通：ナビゲーション（リンク先があり、今のページに印が付く）とフッター（データ更新の日付）
   async common() {
     const meta = await json('meta.json').catch(() => null);
-    const pages = ['index.html', 'songs.html', 'tour.html', 'event.html', 'calendar.html', 'my.html', 'my_c.html',
-                   'my_f.html', 'sub/setlist.html?id=' + (await json('setlist.json'))[0].id, 'sub/search.html?name=Raise'];
+    const pages = ['index.html', 'songs.html', 'writers.html', 'tour.html', 'event.html', 'calendar.html', 'my.html', 'my_c.html',
+                   'my_f.html', 'sub/setlist.html?id=' + (await json('setlist.json'))[0].id, 'sub/search.html?name=Raise',
+                   'sub/writer.html?name=' + encodeURIComponent('佐々木喫茶')];
     const out = {};
     for (const page of pages) {
       const w = await openPage(page);

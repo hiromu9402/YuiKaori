@@ -28,9 +28,10 @@ sys.path.insert(0, str(HERE.parent / "tools"))
 import build_site  # noqa: E402
 
 # JavaScript のエラーを調べるページ（公開サイトの全ページと、URL の指定で表示が変わるもの）
-PAGES = ["index.html", "songs.html", "tour.html", "event.html", "calendar.html", "my.html", "my_c.html", "my_f.html",
-         "sub/setlist.html", "sub/search.html"]
-NAV = ["index.html", "songs.html", "tour.html", "event.html", "calendar.html", "my.html", "my_c.html", "my_f.html"]
+PAGES = ["index.html", "songs.html", "writers.html", "tour.html", "event.html", "calendar.html", "my.html", "my_c.html",
+         "my_f.html", "sub/setlist.html", "sub/search.html", "sub/writer.html"]
+NAV = ["index.html", "songs.html", "writers.html", "tour.html", "event.html", "calendar.html", "my.html", "my_c.html",
+       "my_f.html"]
 
 
 def browser():
@@ -107,7 +108,8 @@ class PageTests(unittest.TestCase):
         first, last = self.lives[0]["id"], self.lives[-1]["id"]
         urls = PAGES + [f"tour.html?tour={self.lives[-1].get('tourtitle') or ''}",
                         f"sub/setlist.html?id={first}", f"sub/setlist.html?id={last}", "sub/setlist.html?id=0000000000",
-                        "sub/search.html?name=Raise"]
+                        "sub/search.html?name=Raise", "sub/writer.html?name=%E4%BD%90%E3%80%85%E6%9C%A8%E5%96%AB%E8%8C%B6",
+                        "sub/writer.html?name=nobody"]
         for url in urls:
             with self.subTest(url=url):
                 _, console = run_chromium(f"{self.base}/{url}")
@@ -164,6 +166,30 @@ class PageTests(unittest.TestCase):
         self.assertTrue(all(label == "初披露" for _, label in first))
         self.assertEqual(r["notFound"], "指定された公演が見つかりません。")
         self.assertEqual(r["noId"], "公演が指定されていません。")
+
+    def test_writers(self):
+        r = self.probe("writers")
+        # 一覧：人数と各作家の曲数が JSON と合い、曲数の多い順
+        self.assertEqual(r["count"], r["expectedCount"])
+        self.assertTrue(r["listMatches"])
+        self.assertTrue(r["sortedByCount"])
+        self.assertIn(r["top"], r["searched"])
+        self.assertEqual(r["yuiCount"], r["yuiTotal"])
+        self.assertLess(r["yuiCount"], r["count"])
+        # 作家ごとのページ：曲と担当が JSON と合う。表記が 2 通りある作家もまとまる
+        for page in [r["topPage"], r["variantPage"]]:
+            if page is None:
+                continue
+            with self.subTest(writer=page["name"]):
+                self.assertEqual(page["titles"], page["expected"])
+                self.assertTrue(page["rolesOk"])
+                self.assertIn(f"（{len(page['expected'])}曲）", page["heading"])
+        self.assertIsNotNone(r["variantPage"], "表記が 2 通りある作家がいない（まとめる処理を確かめられない）")
+        self.assertEqual(r["missingText"], "この作家の曲は、楽曲一覧にありません。")
+        # 楽曲一覧と披露一覧の作家名が、作家ごとのページへのリンクになっている
+        self.assertTrue(r["songsLink"])
+        self.assertEqual(len(r["searchLinks"]), r["searchExpected"])
+        self.assertTrue(all(ok for _, ok in r["searchLinks"]))
 
     def test_navigation_and_footer(self):
         r = self.probe("common")

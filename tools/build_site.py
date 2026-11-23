@@ -3,7 +3,7 @@
 許可リスト（site_files.py）に合うファイルだけをコピーする。GitHub Actions（.github/workflows/pages.yml）で使うほか、
 公開される内容を手元で確かめるときにも使う。
 
-    python3 admin/deploy/build_site.py _site
+    python3 tools/build_site.py _site
 """
 import argparse
 import shutil

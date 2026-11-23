@@ -1,8 +1,8 @@
 # 作業用のメモ（コミットしない）
 HANDOFF.md
-# 管理画面の仮想環境とデータ（DB・秘密鍵はリポジトリの外に置くが、念のため）
+# 管理画面（hiromu9402/YuiKaori-admin）の名残や、Python の一時ファイル
+admin/
 .venv
-admin/data/
 *.sqlite3
 __pycache__/
 *.pyc

@@ -1,10 +1,10 @@
 """公開サイトを配信する小さなサーバー（許可リスト方式）。
 
 許可リスト（site_files.py。GitHub Pages に載せる内容と同じ）に合うファイルだけを返し、それ以外は 404 にする。
-.git/、admin/（管理画面のソースやデータ）、HANDOFF.md などの作業用ファイルは外から見えない。
+.git/、tools/、HANDOFF.md などの作業用ファイルは外から見えない。
 
-    python3 admin/deploy/serve_site.py            # 127.0.0.1:8765 で待ち受ける
-    python3 admin/deploy/serve_site.py --port 8766
+    python3 tools/serve_site.py            # 127.0.0.1:8765 で待ち受ける
+    python3 tools/serve_site.py --port 8766
 """
 import argparse
 import http.server

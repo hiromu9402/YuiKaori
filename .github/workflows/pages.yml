@@ -1,5 +1,5 @@
 # main に push されたら、公開サイトのファイルだけを GitHub Pages に公開する。
-# 公開するファイルは admin/deploy/site_files.py の許可リストで決める（admin/ や README.md は公開しない）。
+# 公開するファイルは tools/site_files.py の許可リストで決める（tools/ や README.md は公開しない）。
 name: Pages
 
 on:
@@ -21,8 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: 公開ファイルを集める（ubuntu-latest に入っている python3 を使う）
-        run: python3 admin/deploy/build_site.py _site
+      - name: 許可リストのテスト（ubuntu-latest に入っている python3 を使う）
+        run: python3 -m unittest discover -s tools -p 'test_*.py' -v
+      - name: 公開ファイルを集める
+        run: python3 tools/build_site.py _site
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site

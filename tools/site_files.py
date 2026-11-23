@@ -2,12 +2,12 @@
 
 serve_site.py（手元での確認用の配信）と build_site.py（GitHub Pages に載せるファイルの収集）で共通に使う。
 リポジトリ直下の .html / .css / .js / .json と、sub/ の .html だけを公開する。
-.git/、admin/（管理画面のソース）、.github/、README.md、HANDOFF.md などの作業用ファイルは含めない。
+.git/、tools/、.github/、README.md、HANDOFF.md などの作業用ファイルは含めない。
 """
 import re
 from pathlib import Path
 
-SITE_DIR = Path(__file__).resolve().parents[2]  # admin/deploy/ → リポジトリの直下
+SITE_DIR = Path(__file__).resolve().parents[1]  # tools/ → リポジトリの直下
 
 # 公開してよいパス（リポジトリ直下からの相対パス）
 ALLOWED = [

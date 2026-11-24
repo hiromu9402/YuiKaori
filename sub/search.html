@@ -58,7 +58,7 @@ async function searchSetlist() {
         const first = cdDates.sort((a, b) => ymd(a.date).join('-').localeCompare(ymd(b.date).join('-')))[0];
         const links = [
             song.utanet && `<a href="https://www.uta-net.com/song/${esc(song.utanet)}/" target="_blank" rel="noopener">歌詞（歌ネット）</a>`,
-            song.MVlink && `<a href="https://www.youtube.com/watch?v=${esc(song.MVlink)}" target="_blank" rel="noopener">MV</a>`,
+            song.MVlink && `<a href="https://www.youtube.com/watch?v=${esc(song.MVlink)}" target="_blank" rel="noopener">動画</a>`,
             song.videolink && `<a href="https://www.youtube.com/watch?v=${esc(song.videolink)}" target="_blank" rel="noopener">ライブ映像</a>`,
             song.call && `<a href="${isNaN(Number(song.call)) ? `https://yuicom-callbook.hatenablog.com/entry/${esc(song.call)}` : `https://salvageyuikaori.seesaa.net/article/${esc(song.call)}.html`}" target="_blank" rel="noopener">コール表</a>`,
         ].filter(Boolean);

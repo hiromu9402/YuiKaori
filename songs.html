@@ -53,7 +53,7 @@
             <tr>
                 <th onclick="sortTable('title')" data-col="title">楽曲名</th>
                 <th>コール表</th>
-                <th>MV(抜け有)</th>
+                <th>動画(抜け有)</th>
                 <th>ライブ映像(抜け有)</th>
                 <th onclick="sortTable('performanceCount')" data-col="performanceCount">披露回数</th>
                 <th onclick="sortTable('latestPerformanceDate')" data-col="latestPerformanceDate">最終披露日</th>
@@ -178,7 +178,7 @@
                                               : `<a href="https://yuicom-callbook.hatenablog.com/entry/${song.call}" target="_blank">コール表</a>`)
                                           : '';
 
-                                        const MVLink = song.MVlink ? `<a href="https://www.youtube.com/watch?v=${song.MVlink}" target="_blank">MV</a>` : '';
+                                        const MVLink = song.MVlink ? `<a href="https://www.youtube.com/watch?v=${song.MVlink}" target="_blank">動画</a>` : '';
                                         const videoLink = song.videolink ? `<a href="https://www.youtube.com/watch?v=${song.videolink}" target="_blank">ライブ映像</a>` : '';
                                         // 歌ネットの曲ページは末尾のスラッシュが必要（ないと開けない）
                                         // 曲名はその曲の披露一覧を開く（歌詞へのリンクは披露一覧のページにある）

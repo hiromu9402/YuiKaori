@@ -116,7 +116,7 @@ tbody tr:hover { background: var(--hover); }
 .zoombar .how { font-size: 12px; }
 
 /* 楽曲一覧: 短い列は折り返さない */
-#songTable td:nth-child(n+2):nth-child(-n+6), #songTable td:nth-child(10), #songTable td:nth-child(12) { white-space: nowrap; }
+#songTable td:nth-child(n+2):nth-child(-n+3), #songTable td:nth-child(7), #songTable td:nth-child(n+9) { white-space: nowrap; }
 #songTable td:first-child { min-width: 11em; }
 th:first-child { white-space: normal; }
 

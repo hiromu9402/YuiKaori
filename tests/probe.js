@@ -88,7 +88,7 @@ const checks = {
 
     // 披露回数の見出しを2回押す（押すたびに向きが変わる）
     const th = doc.querySelector('th[data-col="performanceCount"]');
-    const counts = () => rows().map(tr => Number(tr.querySelectorAll('td')[4].textContent));
+    const counts = () => rows().map(tr => Number(tr.querySelectorAll('td')[1].textContent));
     th.click();
     const first = { sort: th.getAttribute('aria-sort'), counts: counts() };
     th.click();

@@ -52,9 +52,6 @@
         <thead>
             <tr>
                 <th onclick="sortTable('title')" data-col="title">楽曲名</th>
-                <th>コール表</th>
-                <th>動画(抜け有)</th>
-                <th>ライブ映像(抜け有)</th>
                 <th onclick="sortTable('performanceCount')" data-col="performanceCount">披露回数</th>
                 <th onclick="sortTable('latestPerformanceDate')" data-col="latestPerformanceDate">最終披露日</th>
                 <th>作詞</th>
@@ -63,6 +60,9 @@
                 <th onclick="sortTable('length')" data-col="length">長さ</th>
                 <th>収録CD</th>
                 <th onclick="sortTable('releaseDate')" data-col="releaseDate">リリース日</th>
+                <th>コール表</th>
+                <th>動画</th>
+                <th>ライブ映像</th>
             </tr>
         </thead>
         <tbody id="songTable"></tbody>
@@ -187,9 +187,6 @@
                                         const row =
                                             `<tr>
                                                 <td>${titleCell}</td>
-                                                <td>${callLink}</td>
-                                                <td>${MVLink}</td>
-                                                <td>${videoLink}</td> 
                                                 <td><a href="./sub/search.html?name=${encodeURIComponent(song.title)}">${performanceData.count}</a></td> 	
                                                 <td><a href="./sub/setlist.html?id=${performanceData.id}">${performanceData.latestDate ? formatDateToJapanese(new Date(performanceData.latestDate)) : '未披露'}</a></td>
                                                 <td class="${lyricsClass}">${YKWriters.writerLinks(song.lyrics, './')}</td>
@@ -198,6 +195,9 @@
                                                 <td>${song.length}</td>
                                                 <td>${song.CDtitle}</td>
                                                 <td>${formattedDate}</td>
+                                                <td>${callLink}</td>
+                                                <td>${MVLink}</td>
+                                                <td>${videoLink}</td>
                                             </tr>`;
 
                                         songData.push({
